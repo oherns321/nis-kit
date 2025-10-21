@@ -1,7 +1,6 @@
 {
   "mappings": [
-    "/content/nis-kit/:/",
-    "/content/adobe-code-kit/aem-code-kit-config:/aem-code-kit-config.json"
+    "/content/nis-kit/:/"
   ],
   "includes": [
     "/content/nis-kit/"
