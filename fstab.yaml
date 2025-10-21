@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p7906-e1488805.adobeaemcloud.com/bin/franklin.delivery/eysean/adobe-code-kit/main"
+    url: "https://author-p7906-e1488805.adobeaemcloud.com/bin/franklin.delivery/oherns321/nis-kit/main"
     type: "markup"
     suffix: ".html"
