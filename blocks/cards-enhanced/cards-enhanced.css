@@ -1,0 +1,293 @@
+/* Cards Enhanced Block - Adobe EDS with Figma Design System */
+
+.cards-enhanced-container {
+  background-color: var(--surface-black);
+  padding-bottom: unset !important;
+}
+
+.cards-enhanced {
+  background-color: var(--surface-black);
+  color: var(--text-on-color);
+
+  /* padding: var(--spacing-xl) var(--grid-margin); */
+  width: 100%;
+}
+
+.cards-enhanced .cards-enhanced-content {
+  max-width: var(--grid-max-width-desktop);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  align-items: start;
+}
+
+/* Container Header - Spans Full Width */
+.cards-enhanced .container-header {
+  grid-column: 1 / -1; /* Span all columns */
+  width: 100%;
+  margin-bottom: var(--spacing-l);
+}
+
+.cards-enhanced .header-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.cards-enhanced .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-l);
+}
+
+.cards-enhanced .header h1 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  font-size: var(--font-size-heading-xl);
+  line-height: var(--line-height-headings-xl);
+  color: var(--text-on-color);
+  text-align: left;
+  margin: 0;
+  flex: 1;
+}
+
+/* Container Wrap - Grid Layout for Cards */
+.cards-enhanced .container-wrap {
+  grid-column: 1 / -1; /* Span all columns */
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  width: 100%;
+}
+
+/* Individual Card Containers - Mobile First (Full Width) */
+.cards-enhanced .container-wrap > div {
+  grid-column: span var(--grid-columns); /* Mobile: span all 4 columns */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  position: relative;
+  
+  /* Create gradient border container - gradient from top to bottom */
+  background: linear-gradient(to bottom, #32FFFF, #B4FF00, #FFD500);
+  padding: 4px; /* This creates the 4px border effect */
+}
+
+/* Card Type Default */
+.cards-enhanced .card-type-default {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--surface-black);
+}
+
+/* Card Content */
+.cards-enhanced .card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+  padding: var(--padding-width);
+  height: 100%;
+}
+
+/* Card Title */
+.cards-enhanced .card-title {
+  display: flex;
+  gap: var(--spacing-m);
+  align-items: center;
+  width: 100%;
+}
+
+.cards-enhanced .card-title h3 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-headings-l);
+  color: var(--text-on-color);
+  margin: 0;
+  flex: 1;
+}
+
+/* Card Text */
+.cards-enhanced .card-text {
+  display: flex;
+  gap: var(--spacing-m);
+  width: 100%;
+}
+
+.cards-enhanced .card-body {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  color: var(--text-on-color);
+  flex: 1;
+}
+
+/* Card Buttons */
+.cards-enhanced .card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  width: 100%;
+  margin-top: auto; /* Push buttons to bottom of card */
+}
+
+.cards-enhanced .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-button); /* 500 - matches Figma medium */
+  font-size: var(--font-size-button-m); /* 20px from Figma */
+  line-height: var(--line-height-button-m); /* 27px from Figma */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  /* Figma button padding: 24px horizontal, 16px vertical */
+  padding: 16px 24px;
+
+  /* No corner radius */
+  border-radius: 0;
+}
+
+.cards-enhanced .card-buttons .button-secondary {
+  background-color: transparent;
+  color: var(--text-on-color);
+  border: 2px solid var(--text-on-color);
+  border-radius: 0;
+}
+
+.cards-enhanced .card-buttons .button-secondary:hover {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  border-color: var(--button-primary);
+  border-radius: 0;
+}
+
+.cards-enhanced .card-buttons a.button-secondary:hover,
+.cards-enhanced .card-buttons a.button.button-secondary:hover {
+  background-color: var(--button-primary) !important;
+  color: var(--text-on-color) !important;
+  border-color: var(--button-primary) !important;
+  border-radius: 0 !important;
+}
+
+/* Mobile Responsive Design (default) */
+@media (width <= 767px) {
+  /* .cards-enhanced {
+    padding: var(--spacing-l) var(--grid-margin);
+  } */
+  
+  .cards-enhanced .cards-enhanced-content {
+    max-width: var(--grid-max-width);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+  }
+  
+  .cards-enhanced .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+  }
+  
+  .cards-enhanced .container-wrap > div {
+    grid-column: span var(--grid-columns); /* Mobile: Full width (4/4 columns) */
+  }
+  
+  .cards-enhanced .header h1 {
+    font-size: var(--font-size-heading-l);
+    line-height: var(--line-height-headings-l);
+  }
+}
+
+/* Tablet Responsive Design */
+@media (width >= 768px) and (width <= 899px) {
+/*   .cards-enhanced {
+    padding: var(--spacing-xl) var(--grid-margin-tablet);
+  } */
+  
+  .cards-enhanced .cards-enhanced-content {
+    max-width: var(--grid-max-width-tablet);
+    grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
+    gap: var(--grid-gutter-tablet);
+  }
+  
+  .cards-enhanced .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
+    gap: var(--grid-gutter-tablet);
+  }
+  
+  .cards-enhanced .container-wrap > div {
+    grid-column: span 4; /* Tablet: 50% width (4/8 columns) */
+  }
+}
+
+/* Desktop Responsive Design */
+@media (width > 900px) {
+  /* cards-enhanced {
+    padding: var(--spacing-xl) var(--grid-margin-desktop);
+  } */
+  
+  .cards-enhanced .cards-enhanced-content {
+    max-width: var(--grid-max-width-desktop);
+    grid-template-columns: repeat(var(--grid-columns-desktop), 1fr);
+    gap: var(--grid-gutter-desktop);
+  }
+  
+  .cards-enhanced .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns-desktop), 1fr);
+    gap: var(--grid-gutter-desktop);
+  }
+  
+  .cards-enhanced .container-wrap > div {
+    grid-column: span 6; /* Desktop: 50% width (6/12 columns) */
+  }
+  
+  .cards-enhanced .header h1 {
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--line-height-headings-xl);
+  }
+}
+
+/* Accessibility */
+.cards-enhanced .button:focus-visible {
+  outline: 2px solid var(--button-primary);
+  outline-offset: 2px;
+}
+
+.cards-enhanced .card-type-default:focus-within {
+  outline: 2px solid var(--button-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure proper contrast for accessibility */
+@media (prefers-contrast: more) {
+  .cards-enhanced .card-type-default::before {
+    border-color: #0ff; /* Higher contrast cyan */
+  }
+}
+
+/* Placeholder styling for empty cards in Universal Editor */
+.cards-enhanced [data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: var(--text-disabled);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.cards-enhanced .empty-cta[data-placeholder] {
+  background-color: transparent;
+  border: 2px dashed var(--border-tertiary);
+  color: var(--text-disabled);
+  cursor: default;
+}
+
+.cards-enhanced .empty-cta[data-placeholder]:hover {
+  background-color: transparent;
+  border-color: var(--text-disabled);
+  color: var(--text-secondary);
+}

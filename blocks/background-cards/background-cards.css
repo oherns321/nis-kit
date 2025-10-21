@@ -1,0 +1,312 @@
+/*
+ * Background Cards Block - Adobe EDS with Figma Design System
+ * - Image-focused cards with titles and descriptions
+ * - Clean, simple design matching Figma mockup
+ * - Responsive grid layout
+ * - Optional background image support
+ */
+
+.background-cards-container {
+  background-color: var(--surface-black);
+  padding: 0;
+}
+
+.background-cards-container .background-cards-wrapper {
+  max-width: unset; /* Allow background to span full width */
+  padding: 0;
+}
+
+.background-cards {
+  /* Background handling pattern from teaser-hero */
+  position: relative;
+  background-color: var(--surface-black);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+  width: 100%;
+  aspect-ratio: 2/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Padding using grid system */
+  padding: var(--spacing-xl) 0;
+}
+
+/* Optional overlay for background images */
+.background-cards::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay-dark);
+  z-index: 1;
+}
+
+.background-cards.no-overlay::before {
+  opacity: 0;
+}
+
+.background-cards .background-cards-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+  width: 100%;
+}
+
+/* Container Wrap - Grid Layout for Image Cards */
+.background-cards .container-wrap {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  width: 100%;
+  justify-content: center;
+  place-items: center center;
+}
+
+/* Individual Card Containers - Mobile First (Full Width) */
+.background-cards .container-wrap > div {
+  grid-column: span var(--grid-columns); /* Mobile: span all columns */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: var(--grid-min-column-width); /* Figma: 282px minimum */
+  place-self: center center;
+}
+
+/* Image Card Styling */
+.background-cards .image-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs); /* 12px gap between image and text */
+  width: 100%;
+}
+
+/* Image Container */
+.background-cards .image-container {
+  width: 100%;
+  aspect-ratio: 3 / 2; /* 3:2 aspect ratio from Figma */
+  overflow: hidden;
+  position: relative;
+}
+
+.background-cards .image-container picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.background-cards .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Image Placeholder */
+.background-cards .image-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-color: var(--surface-grey-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-disabled);
+  font-style: italic;
+  border: var(--border-width-thick) dashed var(--border-tertiary);
+}
+
+/* Card Text Content */
+.background-cards .card-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1); /* 4px gap between title and description */
+  color: var(--text-primary);
+  width: 100%;
+}
+
+/* Card Description */
+.background-cards .card-text-content p {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-caption-xs); /* 14px from Figma */
+  line-height: var(--line-height-body-xs); /* 21px from Figma */
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Card Heading - h6 styling */
+.background-cards .card-text-content h6 p {
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  font-size: var(--font-size-heading-xs); /* h6: 18px */
+  line-height: var(--line-height-headings-xs); /* h6: 22px */
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Responsive Design - Tablet and up */
+@media (width >= 768px) {
+  .background-cards .container-wrap > div {
+    grid-column: span 6; /* Tablet: span 6 of 12 columns (2 cards per row) */
+  }
+}
+
+/* Responsive Design - Desktop and up */
+@media (width >= 1200px) {
+  .background-cards .container-wrap > div {
+    grid-column: span 6; /* Desktop: Still 2 cards per row for proper sizing */
+  }
+}
+
+/* Mobile Responsive Design (default) */
+@media (width <= 767px) {
+  .background-cards .background-cards-content {
+    max-width: var(--grid-max-width);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    padding: 0 var(--grid-margin);
+  }
+  
+  .background-cards .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+  }
+  
+  .background-cards .container-wrap > div {
+    grid-column: span var(--grid-columns); /* Mobile: Full width (4/4 columns) */
+  }
+  
+  .background-cards .header h1 {
+    font-size: var(--font-size-heading-l);
+    line-height: var(--line-height-headings-l);
+  }
+}
+
+/* Tablet Responsive Design */
+@media (width >= 768px) and (width <= 899px) {
+  .background-cards .background-cards-content {
+    max-width: var(--grid-max-width-tablet);
+    grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
+    gap: var(--grid-gutter-tablet);
+    padding: 0 var(--grid-margin-tablet);
+  }
+  
+  .background-cards .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns-tablet), 1fr);
+    gap: var(--grid-gutter-tablet);
+  }
+  
+  .background-cards .container-wrap > div {
+    grid-column: span 4; /* Tablet: 50% width (4/8 columns) */
+  }
+}
+
+/* Desktop Responsive Design */
+@media (width > 900px) {
+  .background-cards .background-cards-content {
+    max-width: var(--grid-max-width-desktop);
+    grid-template-columns: repeat(var(--grid-columns-desktop), 1fr);
+    gap: var(--grid-gutter-desktop);
+    padding: 0 var(--grid-margin-desktop);
+  }
+  
+  .background-cards .container-wrap {
+    grid-template-columns: repeat(var(--grid-columns-desktop), 1fr);
+    gap: var(--grid-gutter-desktop);
+  }
+  
+  .background-cards .container-wrap > div {
+    grid-column: span 6; /* Desktop: 50% width (6/12 columns) */
+    min-width: var(--grid-min-column-width); /* Figma: 282px minimum */
+  }
+  
+  .background-cards .header h1 {
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--line-height-headings-xl);
+  }
+}
+
+/* Accessibility */
+.background-cards .button:focus-visible {
+  outline: var(--border-width-thick) solid var(--button-primary);
+  outline-offset: var( --border-width-thick-offset);
+}
+
+.background-cards .card-type-default:focus-within {
+  outline: var(--border-width-thick) solid var(--button-primary);
+  outline-offset: var(--border-width-thick-offset);
+}
+
+@media (width >= 1200px) and (width <= 1440px) {
+  .background-cards .background-cards-content {
+    max-width: unset;
+  }
+}
+
+/* Ensure proper contrast for accessibility */
+@media (prefers-contrast: more) {
+  .background-cards .container-wrap > div {
+    background: linear-gradient(to bottom, #0ff, #8f0, #ff0); /* Higher contrast gradient */
+  }
+}
+
+/* Placeholder styling for empty cards in Universal Editor */
+.background-cards [data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: var(--text-disabled);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.background-cards .empty-cta[data-placeholder] {
+  background-color: transparent;
+  border: var(--border-width-thick) dashed var(--border-tertiary);
+  color: var(--text-disabled);
+  cursor: default;
+}
+
+.background-cards .empty-cta[data-placeholder]:hover {
+  background-color: transparent;
+  border-color: var(--text-disabled);
+  color: var(--text-secondary);
+}
+
+/* Ensure empty containers remain visible */
+.background-cards [data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  display: inline-block;
+  min-height: 1em;
+  min-width: 100px;
+}
+
+/* Light variant support */
+.background-cards.light {
+  background-color: var(--surface-white);
+  color: var(--text-primary);
+}
+
+.background-cards.light::before {
+  background-color: var(--overlay-light);
+}
+
+.background-cards.light .header h1,
+.background-cards.light .card-title h3,
+.background-cards.light .card-body {
+  color: var(--text-primary);
+}
+
+.background-cards.light .card-type-default {
+  background: var(--surface-white);
+}
+
+.background-cards.light .card-buttons .button-secondary {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.background-cards.light .card-buttons .button-secondary:hover {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  border-color: var(--button-primary);
+}

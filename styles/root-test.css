@@ -1,0 +1,45 @@
+/* Light theme: attach to <html data-theme="light"> or paste after :root */
+:root {
+  /* Core palette */
+  --background-primary: #fff;
+  --surface-white: #fff;
+  --surface-grey-light: #f2f4f7;
+  --surface-black: #0b1220; /* only for icons-on-dark chips, etc. */
+
+  /* Text */
+  --text-primary: #0b1220;
+  --text-secondary: #3a3f4b;
+  --text-tertiary: #7a8190;
+  --text-on-color: #fff;
+  --text-disabled: #b6bdc7;
+  --text-link-header-default: #0b1220;
+
+  /* Accent (blue) */
+  --button-primary: #1749ff;
+  --button-primary-background: #1749ff;
+  --button-primary-border: #1749ff;
+  --button-primary-hover: #0b1220;
+  --button-primary-hover-background: #0f37c9;
+  --button-primary-hover-border: #0f37c9;
+  --color-semantic-link: #1749ff;
+  --border-button: #1749ff;
+  --border-primary: #0b122033; /* softer borders */
+
+  /* Overlays */
+  --overlay-dark: #0b12204d;   /* 30% */
+  --overlay-light: #e6ebf566;  /* 40% */
+
+  /* Legacy mappings */
+  --link-color: var(--color-semantic-link);
+  --link-hover-color: #0f37c9;
+
+  /* Shape + spacing “softer” feel */
+  --border-radius-small: 10px;
+  --border-radius-button: 10px;
+
+  /* Typography: slightly lighter headings, larger body */
+  --font-weight-headings: 600;
+  --font-weight-body: 400;
+  --font-size-body-m: 17px;
+  --line-height-paragraph-body: 1.4;
+}

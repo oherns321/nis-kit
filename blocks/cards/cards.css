@@ -1,0 +1,187 @@
+/*
+ * Cards Block - Using Adobe EDS Design System
+ * - Grid: 12-column responsive grid with Figma specifications
+ * - Typography: Automatic responsive scaling
+ * - Colors: Figma design tokens
+ * - Spacing: Consistent spacing scale
+ */
+
+.cards {
+  margin: var(--spacing-xl) 0;
+}
+
+.cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  max-width: var(--grid-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards > ul > li {
+  /* Mobile: Full width (4 columns) */
+  grid-column: span var(--grid-columns);
+  
+  /* Card styling using design system */
+  background-color: var(--surface-white);
+  border: var(--border-width-default) solid var(--border-light);
+  border-radius: var(--border-radius-default);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  
+  /* Elevation for depth */
+  box-shadow: var(--shadow-default);
+}
+
+.cards > ul > li:hover {
+  /* Hover state using design tokens */
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--border-dark);
+}
+
+/* Card image container */
+.cards .cards-card-image {
+  line-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cards > ul > li img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cards > ul > li:hover img {
+  transform: scale(1.05);
+}
+
+/* Card content body */
+.cards .cards-card-body {
+  padding: var(--spacing-m);
+}
+
+/* Typography using design system */
+.cards .cards-card-body h1,
+.cards .cards-card-body h2,
+.cards .cards-card-body h3,
+.cards .cards-card-body h4,
+.cards .cards-card-body h5,
+.cards .cards-card-body h6 {
+  /* Headers automatically get responsive scaling */
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--text-primary);
+}
+
+.cards .cards-card-body p {
+  /* Body text using design system */
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body-m);
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.cards .cards-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links and buttons in cards */
+.cards .cards-card-body a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.cards .cards-card-body a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Button styling in cards */
+.cards .cards-card-body .button {
+  display: inline-block;
+  margin-top: var(--spacing-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button-m);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button-m);
+  border: none;
+  border-radius: var(--border-radius-default);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cards .cards-card-body .button:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Tablet responsive (768px+) */
+@media (width >= 768px) {
+  .cards > ul > li {
+    /* Tablet: 2 cards per row (4 columns each) */
+    grid-column: span 4;
+  }
+}
+
+/* Desktop responsive (900px+) */
+@media (width >= 900px) {
+  .cards {
+    margin: var(--spacing-xxl) 0;
+  }
+  
+  .cards > ul > li {
+    /* Desktop: 3 cards per row (4 columns each) */
+    grid-column: span 4;
+  }
+}
+
+/* Cards variant: 2-column layout */
+.cards.two-columns > ul > li {
+  grid-column: span var(--grid-columns); /* Mobile: full width */
+}
+
+@media (width >= 768px) {
+  .cards.two-columns > ul > li {
+    grid-column: span 4; /* Tablet: 2 per row */
+  }
+}
+
+@media (width >= 900px) {
+  .cards.two-columns > ul > li {
+    grid-column: span 6; /* Desktop: 2 per row (6 columns each) */
+  }
+}
+
+/* Cards variant: 4-column layout */
+.cards.four-columns > ul > li {
+  grid-column: span var(--grid-columns); /* Mobile: full width */
+}
+
+@media (width >= 768px) {
+  .cards.four-columns > ul > li {
+    grid-column: span 4; /* Tablet: 2 per row */
+  }
+}
+
+@media (width >= 900px) {
+  .cards.four-columns > ul > li {
+    grid-column: span 3; /* Desktop: 4 per row (3 columns each) */
+  }
+}

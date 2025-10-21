@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <linearGradient id="separatorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#32FFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B4FF00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <line x1="2" y1="12" x2="22" y2="12" stroke="url(#separatorGradient)" stroke-width="3"/>
+</svg>

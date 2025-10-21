@@ -1,0 +1,202 @@
+/*
+ * Carousel Block - Horizontal Gallery Design
+ * - Multiple visible items
+ * - Active item highlighted with larger size and full opacity
+ * - Inactive items with smaller size and reduced opacity
+ * - Navigation arrows positioned in top right
+ */
+
+.carousel-wrapper {
+	max-width: unset !important;
+	padding-right: unset !important;
+	padding-left: unset !important;
+}
+
+.carousel {
+	padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-xl) 0; /* Extra top padding for navigation buttons */
+	overflow: hidden;
+}
+
+.carousel .carousel-slides-container {
+	position: relative;
+	max-width: var(--grid-max-width);
+	margin: 0 auto;
+}
+
+.carousel .carousel-slides,
+.carousel .carousel-slide-indicators {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.carousel .carousel-slides {
+	display: flex;
+	gap: var(--spacing-s); /* 24px gap between items */
+	scroll-behavior: smooth;
+	overflow: scroll visible; /* shorthand for overflow-x: scroll, overflow-y: visible */
+	padding: 0 var(--grid-margin); /* 120px horizontal padding */
+	align-items: end; /* Align items to bottom */
+}
+
+.carousel .carousel-slides::-webkit-scrollbar {
+	display: none;
+}
+
+.carousel .carousel-slide {
+	flex: 0 0 350px; /* Fixed width for inactive slides */
+	scroll-snap-align: start;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	transition: all 0.3s ease;
+	opacity: 0.6; /* Inactive opacity */
+	cursor: pointer;
+}
+
+/* Active slide styling */
+.carousel .carousel-slide.active {
+	flex: 0 0 450px; /* Larger width for active slide */
+	opacity: 1; /* Full opacity for active */
+}
+
+.carousel .carousel-slide .carousel-slide-image {
+	width: 100%;
+	aspect-ratio: 3/4; /* 900/1200 ratio from Figma */
+	overflow: hidden;
+	border-radius: 0;
+	background-color: var(--surface-white);
+}
+
+.carousel .carousel-slide .carousel-slide-image picture {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.carousel .carousel-slide .carousel-slide-image picture > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.carousel .carousel-slide .carousel-slide-content {
+	padding: var(--spacing-xs) 0 0 0; /* 12px top padding */
+	margin: 0;
+	width: 100%;
+	color: var(--text-color);
+	position: relative;
+	z-index: 1;
+}
+
+.carousel .carousel-slide .carousel-slide-content p {
+	font-family: var(--body-font-family);
+	font-size: var(--font-size-body-xs); /* 14px */
+	font-weight: var(--font-weight-body); /* 400 */
+	line-height: var(--line-height-body-xs); /* 21px */
+	margin: 0;
+	padding: 0;
+	color: var(--text-color);
+}
+
+/* Inactive slide text color */
+.carousel .carousel-slide:not(.active) .carousel-slide-content p {
+	color: var(--text-tertiary); /* #b0b0b0 equivalent */
+}
+
+/* Navigation buttons - positioned in top right */
+.carousel .carousel-navigation-buttons {
+	position: absolute;
+	top: -60px; /* Position higher above the slides */
+	right: var(--grid-margin); /* 120px from right edge */
+	display: flex;
+	gap: var(--spacing-xs); /* 12px gap between buttons */
+	z-index: 2;
+}
+
+.carousel .carousel-navigation-buttons button {
+	width: 45px;
+	height: 45px;
+	margin: 0;
+	padding: 0;
+	border: 2px solid var(--border-button);
+	border-radius: 44px;
+	background-color: transparent;
+	color: var(--border-button);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.carousel .carousel-navigation-buttons button:hover {
+	opacity: 0.8;
+}
+
+.carousel .carousel-navigation-buttons button::after {
+	display: block;
+	content: '';
+	border: var(--border-width-thick) solid currentcolor;
+	border-bottom: 0;
+	border-left: 0;
+	height: 8px;
+	width: 8px;
+	transform: rotate(-135deg);
+}
+
+.carousel .carousel-navigation-buttons button.slide-next::after {
+	transform: rotate(45deg);
+}
+
+/* Hide slide indicators for this design */
+.carousel .carousel-slide-indicators {
+	display: none;
+}
+
+/* Responsive adjustments */
+@media (width < 768px) {
+	.carousel .carousel-slides {
+		padding: 0 var(--spacing-m); /* Smaller padding on mobile */
+	}
+
+	.carousel .carousel-navigation-buttons {
+		display: none; /* Hide navigation buttons on mobile */
+	}
+
+	.carousel .carousel-slide {
+		flex: 0 0 280px; /* Smaller inactive slides on mobile */
+	}
+
+	.carousel .carousel-slide.active {
+		flex: 0 0 320px; /* Smaller active slides on mobile */
+	}
+}
+
+@media (width >= 768px) and (width <= 900px) {
+	.carousel .carousel-slides {
+		padding: 0 var(--spacing-xl); /* Medium padding on tablet */
+	}
+
+	.carousel .carousel-navigation-buttons {
+		top: -60px; /* Maintain higher positioning on tablet */
+		right: var(--spacing-xl);
+	}
+}
+
+@media (width >= 1440px) {
+	.carousel .carousel-slides-container {
+		max-width: unset;
+	}
+
+	.carousel .carousel-navigation-buttons {
+		position: absolute;
+		right: calc(((100% - var(--grid-max-width-desktop))/2) + var(--grid-margin-desktop));
+	}
+}
+
+/* Remove unused styles from old carousel design */
+.carousel-container {
+	margin-top: unset !important;
+}

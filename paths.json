@@ -1,0 +1,9 @@
+{
+  "mappings": [
+    "/content/adobe-code-kit/:/",
+    "/content/adobe-code-kit/aem-code-kit-config:/aem-code-kit-config.json"
+  ],
+  "includes": [
+    "/content/adobe-code-kit/"
+  ]
+}

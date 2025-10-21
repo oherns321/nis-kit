@@ -1,0 +1,66 @@
+/* Separator Block - Adobe EDS with Figma Design System */
+
+.separator-container {
+  background-color: var(--surface-black);
+  padding-bottom: unset !important;
+}
+
+.separator {
+  background-color: var(--surface-black);
+  width: 100%;
+}
+
+.separator .separator-content {
+  max-width: var(--grid-max-width-desktop);
+  margin: 0 auto;
+  padding: var(--spacing-xs) 0; /* 8px top/bottom padding */
+  position: relative;
+}
+
+.separator .separator-line {
+  width: 100%;
+  height: var(--border-width-default);
+  background: linear-gradient(to right, #32FFFF, #B4FF00, #FFD500);
+  position: relative;
+}
+
+/* Mobile Responsive Design (default) */
+@media (width <= 767px) {
+  .separator .separator-content {
+    max-width: var(--grid-max-width);
+  }
+}
+
+/* Tablet Responsive Design */
+@media (width >= 768px) and (width <= 899px) {
+  .separator .separator-content {
+    max-width: var(--grid-max-width-tablet);
+  }
+}
+
+/* Desktop Responsive Design */
+@media (width > 900px) {
+  .separator .separator-content {
+    max-width: var(--grid-max-width-desktop);
+  }
+}
+
+/* Large desktop - apply max-width constraint only on very wide screens */
+@media (width >= 1440px) {
+  .separator .separator-content {
+    max-width: var(--grid-max-width-desktop);
+  }
+}
+
+/* Accessibility */
+.separator .separator-line:focus-visible {
+  outline: var(--border-width-thick) solid var(--button-primary);
+  outline-offset: var(--border-width-thick-offset);
+}
+
+/* High contrast support */
+@media (prefers-contrast: more) {
+  .separator .separator-line {
+    background: linear-gradient(to right, #0FF, #CF0, #FF0);
+  }
+}

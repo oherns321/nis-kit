@@ -1,0 +1,14 @@
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  window.EDS_AUTH = {
+    clientId: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
+    // set to true if you want sessionStorage persistence across navigations (still client-only)
+    persistSession: true 
+  };
+</script>
+<script type="module" src="/scripts/auth.js"></script>
+
+<link rel="stylesheet" href="/styles/styles.css"/>

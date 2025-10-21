@@ -1,0 +1,251 @@
+/*
+ * Columns Block - Using Adobe EDS Design System
+ * - Grid: 12-column responsive grid with Figma specifications
+ * - Typography: Automatic responsive scaling
+ * - Colors: Figma design tokens
+ * - Spacing: Consistent spacing scale
+ */
+
+/* Main columns container using 12-column grid */
+.columns > div {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  max-width: var(--grid-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+/* Default: Each column takes full width on mobile */
+.columns > div > div {
+  grid-column: span var(--grid-columns);
+}
+
+/* Images in columns */
+.columns img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.columns-img-col {
+  line-height: 0; /* Remove space below images */
+}
+
+.columns-img-col img {
+  border-radius: var(--border-radius-default);
+  transition: transform 0.3s ease;
+}
+
+.columns-img-col:hover img {
+  transform: scale(1.02);
+}
+
+/* Typography using design system */
+.columns h1,
+.columns h2,
+.columns h3,
+.columns h4,
+.columns h5,
+.columns h6 {
+  /* Headers automatically get responsive scaling */
+  margin: 0 0 var(--spacing-s) 0;
+  color: var(--text-primary);
+}
+
+.columns p {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body-m);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.columns p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links in columns */
+.columns a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.columns a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Buttons in columns */
+.columns .button {
+  display: inline-block;
+  margin-top: var(--spacing-s);
+  padding: var(--spacing-s) var(--spacing-m);
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button-m);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button-m);
+  border: none;
+  border-radius: var(--border-radius-default);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.columns .button.primary {
+  background-color: transparent;
+  color: var(--text-on-color);
+  border: var(--border-width-thick) solid var(--text-on-color);
+  border-radius: 0;
+}
+
+.columns .button:hover {
+  background-color: var(--button-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Desktop responsive (900px+) */
+@media (width >= 900px) {
+/*   .columns {
+    margin: var(--spacing-xxl) 0;
+  } */
+}
+
+@media (width >= 900px) and (width <= 1200px) {
+  .columns-2-cols > div > div > h1 {
+    font-size: var(--font-size-heading-xl);
+    line-height: var(--line-height-headings-xl);
+  }
+}
+
+@media (width >= 1200px) {
+    .columns-2-cols > div > div:nth-child(2) {
+      padding-left: var(--spacing-l);
+    }
+}
+
+/* 2-Column Layout (Default) */
+.columns-2-cols > div > div {
+  grid-column: span var(--grid-columns); /* Mobile: stacked */
+}
+
+@media (width >= 768px) {
+  .columns-2-cols > div > div {
+    grid-column: span 4; /* Tablet: 2 columns (4/8 each) */
+  }
+}
+
+@media (width >= 900px) {
+  .columns-2-cols > div > div {
+    grid-column: span 6; /* Desktop: 2 columns (6/12 each) */
+  }
+}
+
+/* 3-Column Layout */
+.columns-3-cols > div > div {
+  grid-column: span var(--grid-columns); /* Mobile: stacked */
+}
+
+@media (width >= 768px) {
+  .columns-3-cols > div > div {
+    grid-column: span 4; /* Tablet: 2 per row (4/8 each), 3rd wraps */
+  }
+}
+
+@media (width >= 900px) {
+  .columns-3-cols > div > div {
+    grid-column: span 4; /* Desktop: 3 columns (4/12 each) */
+  }
+}
+
+/* 4-Column Layout */
+.columns-4-cols > div > div {
+  grid-column: span var(--grid-columns); /* Mobile: stacked */
+}
+
+@media (width >= 768px) {
+  .columns-4-cols > div > div {
+    grid-column: span 4; /* Tablet: 2 per row */
+  }
+}
+
+@media (width >= 900px) {
+  .columns-4-cols > div > div {
+    grid-column: span 3; /* Desktop: 4 columns (3/12 each) */
+  }
+}
+
+/* Single Column Layout */
+.columns-1-cols > div > div {
+  grid-column: span var(--grid-columns); /* Always full width */
+  max-width: 800px; /* Limit width for readability */
+  justify-self: center;
+}
+
+/* Equal height columns */
+.columns.equal-height > div {
+  align-items: stretch;
+}
+
+/* Reverse layout: Text first, then image */
+.columns.reverse > div {
+  direction: rtl; /* Reverses grid order */
+}
+
+.columns.equal-height > div > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.columns.reverse > div > div {
+  direction: ltr; /* Reset text direction */
+}
+
+/* Image-Text Layout Optimization */
+.columns-2-cols > div > .columns-img-col {
+  /* Image column in 2-column layout */
+  display: flex;
+  align-items: center;
+}
+
+.columns-2-cols > div > .columns-img-col img {
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Content column in 2-column layout */
+.columns-2-cols > div > div:not(.columns-img-col) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Centered content variant */
+.columns.centered > div > div {
+  text-align: center;
+}
+
+.columns.centered .columns-img-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* EYSP content variant */
+.columns.dark > div > div {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.columns.dark > div > div > p, 
+.columns.dark > div > div > h1 {
+  color: var(--text-primary);
+}

@@ -1,0 +1,239 @@
+/*
+ * Footer Block - Using Adobe EDS Design System
+ * Matches Figma design: node-id=10438:8071
+ * - Grid: Responsive grid margins (16px → 32px → 120px)
+ * - Typography: Design system font variables
+ * - Colors: Surface black background
+ */
+
+footer {
+  background-color: var(--surface-black);
+}
+
+footer .footer > div {
+  margin: auto;
+  max-width: var(--grid-max-width);
+  padding: var(--spacing-xxl) var(--spacing-m); /* Mobile first - 24px margins */
+}
+
+@media (width >= 769px) {
+  footer .footer > div {
+    padding: var(--spacing-xxl) var(--grid-margin); /* Desktop - use responsive grid margins */
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+  width: 100%;
+}
+
+/* Footer Grid Layout */
+.footer-grid {
+  display: grid;
+  gap: var(--spacing-s);
+  width: 100%;
+
+  /* Mobile: 1 column, stacked layout */
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "social"
+    "col1"
+    "col2" 
+    "col3";
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+/* Grid area assignments */
+.social-column {
+  grid-area: social;
+}
+
+.footer-column:nth-child(2) {
+  grid-area: col1;
+}
+
+.footer-column:nth-child(3) {
+  grid-area: col2;
+}
+
+.footer-column:nth-child(4) {
+  grid-area: col3;
+}
+
+/* Column headings */
+.footer-column h6 {
+  font-weight: 600;
+  font-size: var(--font-size-body-m); /* Mobile first - 18px */
+  line-height: var(--line-height-footer-body); /* Mobile first - 20px */
+  color: var(--text-on-color);
+  margin: 0;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+}
+
+.social-icon {
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  border-radius: 50%;
+  background-color: var(--social-icon-background-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: var(--social-icon-padding);
+}
+
+.social-icon:hover {
+  background-color: var(--social-icon-hover-color);
+}
+
+.social-icon img {
+  width: var(--social-icon-image-size);
+  height: var(--social-icon-image-size);
+  filter: brightness(0) saturate(100%); /* Make icons black */
+}
+
+/* Footer links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-links a {
+  font-weight: var(--font-weight-body);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-l);
+  color: var(--text-link-footer-default);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-links a:hover {
+  color: var(--text-link-footer-hover);
+  text-decoration: underline;
+}
+
+/* Bottom section with logo and legal - Desktop defaults */
+.footer-bottom {
+  display: flex;
+  gap: var(--spacing-m);
+  align-items: flex-end;
+  width: 100%;
+}
+
+.footer-logo {
+  /* padding: var(--spacing-xs) var(--spacing-5) var(--spacing-xs) 0; */
+  min-width: var(--footer-logo-min-width);
+}
+
+.logo-text {
+  color: var(--text-on-color);
+}
+
+.logo-line {
+  font-size: var(--font-size-nav-xs);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body-xs);
+  display: block;
+}
+
+.logo-main {
+  font-size: var(--font-size-heading-m);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-headings-m); 
+  display: block;
+  letter-spacing: 0.1em;
+}
+
+/* Legal content */
+.footer-legal {
+  flex: 1;
+  font-weight: var(--font-weight-label);
+  font-size: var(--font-size-nav-xs);
+  line-height: var(--line-height-body-xs);
+  color: var(--text-on-color);
+  padding-bottom: var(--spacing-m);
+}
+
+.footer-legal p {
+  margin: 0;
+}
+
+.footer-legal p + p {
+  margin-top: var(--footer-legal-paragraph-margin);
+}
+
+/* Mobile design (default) */
+@media (width < 769px) {
+  .footer-grid {
+    /* Mobile: 2x2 grid for placeholder columns, social spans full width */
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "social social"
+      "col1 col2"
+      "col3 col3";
+    gap: var(--spacing-s);
+  }
+
+  /* Add extra margin to the 4th column (3rd placeholder column) on mobile */
+  .footer-column:nth-child(4) {
+    margin-top: var(--spacing-m);
+  }
+
+  .footer-bottom {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    gap: var(--spacing-s);
+  }
+
+  .footer-logo {
+    min-width: auto;
+    padding: 0;
+  }
+
+  .footer-logo > img {
+      width: 166px
+  }
+}
+
+/* Desktop - 4-column layout */
+@media (width >= 769px) {
+  .footer-grid {
+    /* Desktop: 4 equal columns */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "social col1 col2 col3";
+    gap: var(--spacing-m);
+  }
+  
+  .footer-column h6 {
+    font-size: var(--font-size-heading-m); /* Desktop - 24px */
+    line-height: var(--line-height-footer-column); /* Desktop - 26px */
+  }
+  
+  .footer-bottom {
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    gap: var(--spacing-m);
+  }
+  
+  .footer-logo {
+    min-width: var(--footer-logo-min-width);
+    padding: var(--spacing-xs) var(--spacing-5) var(--spacing-xs) 0;
+  }
+}

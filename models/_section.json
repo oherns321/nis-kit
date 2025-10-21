@@ -1,0 +1,83 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "text",
+          "name": "name",
+          "label": "Section Name",
+          "description": "The label shown for this section in the Content Tree"
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Highlight",
+              "value": "highlight"
+            },
+            {
+              "name": "Use Padding",
+              "value": "use-padding"
+            },
+            {
+              "name": "Dark Mode",
+              "value": "dark"
+            },
+            {
+              "name": "Tab Content",
+              "value": "tab-content"
+            },
+            {
+              "name": "Initially hidden",
+              "value": "hidden"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "hero",
+        "cards",
+        "cards-enhanced",
+        "columns",
+        "fragment",
+        "teaser-hero",
+        "my-account",
+        "separator",
+        "background-cards",
+        "tab-cards",
+        "tabs",
+        "carousel",
+        "super-cards",
+        "feature-cards"
+      ]
+    }
+  ]
+}

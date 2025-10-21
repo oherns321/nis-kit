@@ -1,0 +1,37 @@
+/* Dark theme with plum accent */
+:root {
+  --background-primary: #0d0b12;
+  --surface-black: #0d0b12;
+  --surface-white: #171422;
+  --surface-grey-light: #242135;
+  --text-primary: #f5f4ff;
+  --text-secondary: #cfcbe6;
+  --text-tertiary: #a69fc9;
+  --text-on-color: #fff;
+  --text-disabled: #807a9f;
+
+  /* Accent (plum/purple) */
+  --button-primary: #8b5cf6;
+  --button-primary-background: #8b5cf6;
+  --button-primary-border: #8b5cf6;
+  --button-primary-hover: #0d0b12;
+  --button-primary-hover-background: #6d28d9;
+  --button-primary-hover-border: #6d28d9;
+  --color-semantic-link: #a78bfa;
+  --border-primary: #ffffff1a;
+  --border-button: #a78bfa;
+  --overlay-dark: #0d0b1280;
+  --overlay-light: #ffffff14;
+  --link-color: var(--color-semantic-link);
+  --link-hover-color: #c4b5fd;
+
+  /* Crisp + compact */
+  --border-radius-small: 6px;
+  --border-radius-button: 6px;
+  --line-height-default: 1.45;
+  --font-weight-headings: 700;
+
+  /* Optional display type tweak */
+  --inter-font-family: "Inter", system-ui, -apple-system, sans-serif;
+  --heading-font-family: var(--inter-font-family);
+}

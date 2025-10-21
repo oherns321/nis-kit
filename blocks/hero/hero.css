@@ -1,0 +1,65 @@
+/*
+ * Hero Block - Using Adobe EDS Design System
+ * - Grid: 12-column responsive grid with Figma gutters
+ * - Spacing: Consistent spacing scale
+ * - Typography: Automatic responsive scaling
+ */
+
+.hero-container .hero-wrapper {
+  max-width: unset; /* Allow background to span full width */
+  padding: 0; /* No padding on wrapper - content handles its own margins */
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--spacing-s); /* 16px - matches Figma spacing between content sections */
+  max-width: var(--grid-max-width);
+  width: 100%;
+  margin: 0 auto; /* Center the content */
+  padding: 0 var(--grid-margin); /* Apply responsive margins to content */
+  color: var(--text-on-color);
+}
+
+.hero h1 {
+  /* h1 automatically gets Figma typography - only override what's different */
+  grid-column: 1 / -1; /* Full width on mobile */
+  margin: 0;
+  color: var(--text-on-color);
+}
+
+/* Tablet adjustments */
+@media (width >= 768px) {
+  .hero {
+    min-height: 700px;
+  }
+
+  .hero h1 {
+    grid-column: span var(--content-width-tablet); /* 6 out of 8 columns on tablet */
+  }
+}
+
+/* Desktop adjustments */
+@media (width >= 900px) {
+  .hero {
+    min-height: 958px; /* Match Figma aspect ratio 3:2 (1440x958) */
+  }
+
+  .hero h1 {
+    grid-column: span var(--content-width-desktop); /* 8 columns out of 12 - matches Figma design */
+  }
+}

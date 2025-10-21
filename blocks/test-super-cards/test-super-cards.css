@@ -1,0 +1,114 @@
+/* Test Super Cards Block */
+
+/* Container styling */
+.test-super-cards-container .test-super-cards-wrapper {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+.test-super-cards {
+  padding: var(--spacing-xl) var(--grid-margin);
+}
+
+/* Content styling */
+.test-super-cards .content {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+}
+
+/* Heading styling */
+.test-super-cards .heading {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-l);
+}
+
+/* Text content styling */
+.test-super-cards .text-content {
+  color: var(--text-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+}
+
+/* CTA buttons container */
+.test-super-cards .ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+/* Button base styles */
+.test-super-cards .ctas .button {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-button);
+  font-size: var(--font-size-button-m);
+  line-height: var(--line-height-button-m);
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Primary button */
+.test-super-cards .ctas .button-primary {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  border: 2px solid var(--button-primary);
+}
+
+.test-super-cards .ctas .button-primary:hover {
+  background-color: var(--button-primary-hover, var(--button-primary));
+  border-color: var(--button-primary-hover, var(--button-primary));
+}
+
+/* Secondary button */
+.test-super-cards .ctas .button-secondary {
+  background-color: transparent;
+  color: var(--button-primary);
+  border: 2px solid var(--button-primary);
+}
+
+.test-super-cards .ctas .button-secondary:hover {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+}
+
+/* Empty state placeholder styling for Universal Editor */
+.test-super-cards [data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.test-super-cards .empty-cta[data-placeholder] {
+  background-color: transparent;
+  border: 2px dashed #ccc;
+  color: #999;
+  cursor: default;
+}
+
+.test-super-cards .empty-cta[data-placeholder]:hover {
+  background-color: transparent;
+  border-color: #999;
+  color: #666;
+}
+
+.test-super-cards [data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  display: inline-block;
+  min-height: 1em;
+  min-width: 100px;
+}
+

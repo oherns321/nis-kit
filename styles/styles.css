@@ -1,0 +1,264 @@
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* fallback fonts */
+@font-face {
+  font-family: roboto-condensed-fallback;
+  size-adjust: 88.82%;
+  src: local('Arial');
+}
+
+@font-face {
+  font-family: roboto-fallback;
+  size-adjust: 99.529%;
+  src: local('Arial');
+}
+
+@font-face {
+  font-family: inter-fallback;
+  size-adjust: 107.4%;
+  src: local('Arial');
+}
+
+/* Responsive typography is now handled in root.css with complete Figma integration */
+
+body {
+  display: none;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-m);    /* 18px from Figma */
+  font-weight: var(--font-weight-body);  /* 400 from Figma */
+  line-height: var(--line-height-body-m); /* 27px from Figma */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Prevent horizontal overflow on all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body.appear {
+  display: block;
+}
+
+header {
+  height: var(--nav-height);
+}
+
+header .header,
+footer .footer {
+  visibility: hidden;
+}
+
+header .header[data-block-status="loaded"],
+footer .footer[data-block-status="loaded"] {
+  visibility: visible;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0; /* Reset margins - let blocks control spacing via grid system */
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  line-height: var(--line-height-paragraph-headings);
+  scroll-margin: var(--spacing-xl);
+}
+
+/* Automatic Figma Typography Application */
+h1 { 
+  font-size: var(--font-size-heading-xxl);    /* 126px */
+  line-height: var(--line-height-headings-xxl); /* 106px */
+}
+
+h2 { 
+  font-size: var(--font-size-heading-xl);     /* 60px */
+  line-height: var(--line-height-headings-xl); /* 66px */
+}
+
+h3 { 
+  font-size: var(--font-size-heading-l);      /* 48px */
+  line-height: var(--line-height-headings-l);  /* 53px */
+}
+
+h4 { 
+  font-size: var(--font-size-heading-m);      /* 32px */
+  line-height: var(--line-height-headings-m);  /* 35px */
+}
+
+h5 { 
+  font-size: var(--font-size-heading-s);      /* 24px */
+  line-height: var(--line-height-headings-s);  /* 26px */
+}
+
+h6 { 
+  font-size: var(--font-size-heading-xs);     /* 18px */
+  line-height: var(--line-height-headings-xs); /* 22px */
+}
+
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
+  margin: 0; /* Reset margins - let blocks control spacing via grid system */
+}
+
+code,
+pre {
+  font-size: var(--body-font-size-s);
+}
+
+pre {
+  padding: var(--spacing-s);
+  border-radius: var(--border-radius-small);
+  background-color: var(--light-color);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* main > div {
+  margin: var(--spacing-xl) var(--spacing-s);
+} */
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/* links */
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* buttons */
+a.button:any-link,
+button {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  margin: var(--margin-button-vertical) 0;
+  border: var(--border-width-thick) solid transparent;
+  border-radius: var(--border-radius-button);
+  padding: var(--padding-button-vertical) var(--padding-button-horizontal);
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-compact);
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--link-color);
+  color: var(--background-color);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.button:hover,
+a.button:focus,
+button:hover,
+button:focus {
+  background-color: var(--link-hover-color);
+  cursor: pointer;
+}
+
+button:disabled,
+button:disabled:hover {
+  background-color: var(--light-color);
+  cursor: unset;
+}
+
+a.button.secondary,
+button.secondary {
+  background-color: unset;
+  border: var(--border-width-thick) solid currentcolor;
+  color: var(--text-color);
+}
+
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.icon {
+  display: inline-block;
+  height: var(--spacing-m);
+  width: var(--spacing-m);
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
+}
+
+/* sections */
+
+/* main > .section {
+   margin: var(--spacing-xl) 0; 
+} */
+
+main > .section > div {
+  max-width: var(--grid-max-width); /* Use grid system max-width */
+  margin: auto;
+  padding: 0 var(--grid-margin); /* Use responsive grid margins */
+  padding-top: var(--grid-section-margin);
+  padding-bottom: var(--grid-section-margin);
+}
+
+/* Override max-width for desktop range to prevent whitespace */
+@media (width >= 900px) and (width <= 1439px) {
+  main > .section > div {
+    max-width: none; /* Remove max-width constraint for 900px-1439px range */
+  }
+}
+
+main > .section:first-of-type {
+  margin-top: 0;
+}
+
+/* Grid margin is automatically responsive:
+   Mobile: 16px, Tablet: 32px, Desktop: 120px */
+
+/* section metadata */
+main .section.light,
+main .section.highlight {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: var(--spacing-xl) 0;
+}
+
+main .section.dark {
+  background-color: var(--background-primary);
+}
+
+/* section metadata */
+main .section.dark > div {
+  background-color: var(--background-primary);
+  color: var(--color-eysp-text);
+}

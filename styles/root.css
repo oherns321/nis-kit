@@ -1,0 +1,367 @@
+:root {
+  /* Figma Design System Variables */
+
+  /* Colors - Figma Design System Variables */
+  
+  /* Text Colors */
+  --text-primary: #fff;
+  --text-secondary: #505050;
+  --text-tertiary: #b0b0b0;
+  --text-on-color: #f8f8f8;
+  --text-disabled: #b0b0b0;
+  --text-error: #b40001;
+  --text-success: #3b63fb;
+  
+  /* Text - Link Colors */
+  --text-link-general-disabled: #b0b0b0;
+  --text-link-header-default: #fff;
+  --text-link-header-hover: #fff;
+  --text-link-header-visited: #fff;
+  --text-link-header-disabled: #b0b0b0;
+  --text-link-footer-default: #fff;
+  --text-link-footer-hover: #fff;
+  --text-link-footer-visited: #fff;
+  --text-link-footer-disabled: #b0b0b0;
+
+  /* Surface Colors */
+  --surface-white: #fff;
+  --surface-black: #000;
+  --surface-grey-light: #e7e7e7;
+  --surface-disabled: #e7e7e7;
+  
+  /* Border Colors */
+  --border-primary: #FFFFFF80;
+  --border-button: #fff;
+  --border-interactive: transparent;
+  --border-tertiary: #d1d1d1;
+  
+  /* Button Colors */
+  --button-primary: #fff;
+  --button-primary-background: transparent;
+  --button-primary-border: #fff;
+  --button-primary-hover: #000;
+  --button-primary-hover-background: #fff;
+  --button-primary-hover-border: #000;
+  --button-primary-disabled: #e7e7e7;
+  --button-secondary: #fff;
+  --button-secondary-hover: #000;
+  --button-tertiary: #fff;
+  --button-tertiary-disabled: #b0b0b0;
+  
+  /* Semantic Colors */
+  --color-ithrive-text-900: #111827;
+  --social-icon-background-color: #ffe600;
+  --social-icon-hover-color: #e6cf00;
+  --social-icon-image-size: 20px;
+  --social-icon-padding: 6px;
+  
+  /* Figma Semantic Colors */
+  --color-semantic-text: #131313;        /* Figma: colors/semantic/text-color */
+  --color-semantic-light: #f8f8f8;       /* Figma: colors/semantic/light-color */
+  --color-semantic-link: #fff;        /* Figma: colors/semantic/link-color */
+  --color-semantic-background: #000;  /* Figma: colors/semantic/background-color */
+  
+  /* Overlay Colors */
+  --overlay-dark: #0d0d0c80;            /* Figma: EYDS Colors/neutral/transparent-dark */
+  --overlay-light: #f3f2f280;           /* Light overlay equivalent */
+  --background-primary: var(--surface-black);
+
+  /* Legacy color compatibility */
+  --background-color: var(--background-primary);
+  --light-color: var(--text-on-color);
+  --dark-color: var(--text-secondary);
+  --text-color: var(--text-primary);
+  --link-color: var(--button-primary);
+  --link-hover-color: var(--button-primary-hover);
+
+  /* Typography - Font Families */
+
+  /* --body-font-family: "Roboto", roboto-fallback, sans-serif;
+  --heading-font-family: "Roboto Condensed", roboto-condensed-fallback, sans-serif;
+  --inter-font-family: "Inter", inter-fallback, sans-serif; /* For display typography */
+ 
+  --body-font-family: 'EY Interstate', sans-serif;
+  --heading-font-family: 'EY Interstate', sans-serif;
+  --inter-font-family: 'EY Interstate', sans-serif;
+
+  /* Typography - Font Sizes (Complete Figma Set - Mobile First) */
+  --font-size-heading-xxl: 48px;  /* Mobile: scaled down from 126px */
+  --font-size-heading-xl: 32px;   /* Mobile: scaled down from 60px */
+  --font-size-heading-l: 28px;    /* Mobile: scaled down from 48px */
+  --font-size-heading-m: 24px;    /* Mobile: scaled down from 32px */
+  --font-size-heading-s: 20px;    /* Mobile: scaled down from 24px */
+  --font-size-heading-xs: 16px;   /* Mobile: scaled down from 18px */
+  --font-size-body-l: 18px;       /* Mobile: scaled down from 20px */
+  --font-size-body-m: 16px;       /* Mobile: scaled down from 18px */
+  --font-size-body-s: 14px;       /* Mobile: scaled down from 16px */
+  --font-size-body-xs: 13px;      /* Mobile: scaled down from 14px */
+  --font-size-body-xxs: 11px;     /* Mobile: scaled down from 12px */
+  --font-size-button-m: 18px;     /* Mobile: scaled down from 20px */
+  --font-size-button-s: 16px;     /* Mobile: scaled down from 18px */
+  --font-size-link-l: 18px;       /* Mobile: scaled down from 20px */
+  --font-size-link-m: 16px;       /* Mobile: scaled down from 18px */
+  --font-size-link-s: 14px;       /* Mobile: scaled down from 16px */
+  --font-size-label-xs: 13px;     /* Mobile: scaled down from 14px */
+  --font-size-label-xxs: 11px;    /* Mobile: scaled down from 12px */
+  --font-size-list-m: 18px;       /* Mobile: scaled down from 20px */
+  --font-size-list-xs: 13px;      /* Mobile: scaled down from 14px */
+  --font-size-caption-xs: 13px;   /* Mobile: scaled down from 14px */
+  --font-size-caption-xxs: 11px;  /* Mobile: scaled down from 12px */
+  --font-size-nav-xs: 12px;
+  --font-size-nav-l: 20px;
+  
+  /* Inter Display Typography (from Figma) - Mobile scaled */
+  --font-size-display-xl: 36px;   /* Mobile: scaled down from 60px */
+  --font-size-display-xs: 18px;   /* Mobile: scaled down from 24px */
+  --font-size-text-xl: 16px;      /* Mobile: scaled down from 20px */
+
+  /* Typography - Font Weights (Complete Figma Set) */
+  --font-weight-headings: 600;    /* Figma: Typography/headings */
+  --font-weight-body: 400;        /* Figma: typography/font-weight/body */
+  --font-weight-body-semibold: 600; /* Figma: typography/font-weight/body-semibold */
+  --font-weight-button: 500;      /* Figma: typography/font-weight/button */
+  --font-weight-label: 500;       /* Figma: typography/font-weight/label */
+  --font-weight-link: 400;        /* Figma: typography/font-weight/link */
+  --font-weight-list: 400;        /* Figma: typography/font-weight/list */
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  /* Typography - Line Heights (Complete Figma Set - Mobile First) */
+  --line-height-headings-xxl: 52px;  /* Mobile: scaled from 106px */
+  --line-height-headings-xl: 36px;   /* Mobile: scaled from 66px */
+  --line-height-headings-l: 32px;    /* Mobile: scaled from 53px */
+  --line-height-headings-m: 28px;    /* Mobile: scaled from 35px */
+  --line-height-headings-s: 24px;    /* Mobile: scaled from 26px */
+  --line-height-headings-xs: 20px;   /* Mobile: scaled from 22px */
+  --line-height-body-l: 24px;        /* Mobile: scaled from 30px */
+  --line-height-body-m: 22px;        /* Mobile: scaled from 27px */
+  --line-height-body-s: 20px;        /* Mobile: scaled from 24px */
+  --line-height-body-xs: 18px;       /* Mobile: scaled from 21px */
+  --line-height-body-xxs: 16px;      /* Mobile: scaled from 18px */
+  --line-height-button-m: 22px;      /* Mobile: scaled from 27px */
+  --line-height-button-s: 20px;      /* Mobile: scaled from 24px */
+  --line-height-label-xs: 18px;      /* Mobile: scaled from 22.4px */
+  --line-height-label-xxs: 16px;     /* Mobile: scaled from 18px */
+  --line-height-paragraph-headings: 1.3; /* Mobile: tighter than desktop 1.4 */
+  --line-height-paragraph-body: 1.15;    /* Mobile: tighter than desktop 1.2 */
+  --line-height-nav-link: 30px;   /* Figma: 30px */
+  --line-height-footer-column: 26px;
+
+  /* Inter Display Line Heights (from Figma) - Mobile scaled */
+  --line-height-display-xl: 42px;    /* Mobile: scaled from 72px */
+  --line-height-display-xs: 22px;    /* Mobile: scaled from 32px */
+  --line-height-text-xl: 20px;       /* Mobile: scaled from 30px */
+  
+  /* Standard Line Height Ratios */
+  --line-height-default: 1.5;        /* Mobile: tighter than desktop */
+  --line-height-compact: 1.2;
+  --line-height-tight: 1;
+
+  /* Legacy font sizes for compatibility - Now using correct Figma values */
+  --body-font-size-m: var(--font-size-body-m);    /* 18px from Figma */
+  --body-font-size-s: var(--font-size-body-s);    /* 16px from Figma */
+  --body-font-size-xs: var(--font-size-body-xs);  /* 14px from Figma */
+  --heading-font-size-xxl: var(--font-size-heading-xxl); /* 126px from Figma */
+  --heading-font-size-xl: var(--font-size-heading-xl);   /* 60px from Figma */
+  --heading-font-size-l: var(--font-size-heading-l);     /* 48px from Figma */
+  --heading-font-size-m: var(--font-size-heading-m);     /* 32px from Figma */
+  --heading-font-size-s: var(--font-size-heading-s);     /* 24px from Figma */
+  --heading-font-size-xs: var(--font-size-heading-xs);   /* 18px from Figma */
+
+  /* Layout & Spacing - Including Figma Variables */
+  --max-width-content: 1200px;
+  --max-width-nav: 1248px;
+  --max-width-nav-desktop: 1264px;
+  --teaser-min-height: 600px;
+  --teaser-min-height-desktop: 700px;
+  --teaser-min-height-desktop-large: 958px;
+  --footer-logo-min-width: 288px;
+  --footer-legal-paragraph-margin: 4px;
+  --tab-card-min-width: 282px;
+  
+  /* Figma Spacing Variables */
+  --spacing-5: 20px;              /* Figma: Spacing/5 */
+  --padding-width: 32px;          /* Figma: sizing/padding/padding-width */
+  
+  /* Standard Spacing Scale */
+  --spacing-xs: 8px;
+  --spacing-s: 16px;
+  --spacing-m: 24px;
+  --spacing-l: 32px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 48px;
+  --border-radius-small: 8px;
+  --border-radius-button: 0;
+  --border-width-default: 1px;
+  --border-width-thick: 2px;
+  --border-width-thick-offset: 2px;
+
+  /* Nav - Responsive Variables from Figma */
+   --nav-gap-desktop: 68px;
+   --nav-gap-mobile: 24px;
+   --nav-padding-desktop: 28px;
+   --nav-item-height: 54px;
+   --nav-height: 64px;
+   --nav-hamburger-height: 2px;
+   --nav-hamburger-border-radius: 2px;
+   --nav-hamburger-false-top-before: -6px;
+   --nav-hamburger-false-top-after: 6px;
+   --nav-hamburger-true-top: 3px;
+   --nav-hamburger-true-top-after: unset;
+   --nav-hamburger-left: 1px;
+   --nav-hamburger-bottom: 3px;
+   --nav-top-padding: 2px;
+
+  /* Grid & Layout - Responsive Variables from Figma */
+   --grid-section-margin: 60px;
+  
+  /* Mobile Grid Variables (Mobile First - Default Values) */
+  --grid-columns: 4; /* Mobile: 4 columns */
+  --grid-gutter: 16px; /* Mobile: 16px gutter */
+  --grid-margin: 16px; /* Mobile: 16px side margins */
+  --grid-max-width: 343px; /* Mobile: 375px viewport - (16px * 2) margins */
+  
+  /* Tablet Grid Variables */
+  --grid-columns-tablet: 8;
+  --grid-gutter-tablet: 16px;
+  --grid-margin-tablet: 32px;
+  --grid-max-width-tablet: 704px; /* 768px - (32px * 2) */
+  
+  /* Desktop Grid Variables (from Figma) */
+  --grid-width-desktop: 1440px;
+  --grid-columns-desktop: 12;
+  --grid-gutter-desktop: 24px; /* Desktop: 24px */
+  --grid-margin-desktop: 120px; /* Figma: grid/margin */
+  --grid-max-width-desktop: 1200px; /* Figma: grid/containers - components/max-width */
+  
+  /* Legacy grid variables for compatibility */
+  --grid-gap: var(--grid-gutter);
+  --grid-min-column-width: 257px;
+
+  /* Content width spans - semantic grid usage */
+  --content-width-mobile: 4; /* Full width on mobile (4/4 columns) */
+  --content-width-tablet: 6; /* Content width on tablet (6/8 columns = 75%) */
+  --content-width-desktop: 9; /* Content width on desktop (9/12 columns = 75%) */
+
+  /* Z-index */
+  --z-index-nav: 5;
+  --z-index-behind: -1;
+
+  /* Responsive breakpoint */
+  --breakpoint-desktop: 900px;
+  
+  /* Typography margins (using em units for relative scaling) */
+  --margin-heading-top: 0.8em;
+  --margin-heading-bottom: 0.25em;
+  --margin-button-vertical: 12px;
+  --padding-button-horizontal: 1.2em;
+  --padding-button-vertical: 0.5em;
+  
+  /* Component dimensions */
+  --logo-width: 128px;
+  --icon-height: 22px;
+  --tab-mobile-min-width: 120px;
+}
+
+/* Responsive Typography System */
+
+/* Mobile Typography (0px+ / Default) */
+
+/* Base typography uses scaled-down versions for mobile */
+
+/* Tablet breakpoint (768px+) - Responsive Typography */
+@media (width >= 768px) {
+  :root {
+    /* Grid variables */
+    --grid-columns: var(--grid-columns-tablet); /* 8 */
+    --grid-gutter: var(--grid-gutter-tablet); /* 16px */
+    --grid-margin: var(--grid-margin-tablet); /* 32px */
+    --grid-max-width: var(--grid-max-width-tablet); /* 704px */
+    
+    /* Responsive typography scaling for tablet */
+    --font-size-heading-xxl: 72px;  /* Intermediate size */
+    --font-size-heading-xl: 44px;   /* Intermediate size */
+    --font-size-heading-l: 36px;    /* Intermediate size */
+    --font-size-heading-m: 28px;    /* Intermediate size */
+    --font-size-heading-s: 22px;    /* Intermediate size */
+    --font-size-heading-xs: 17px;   /* Intermediate size */
+    --font-size-body-l: 19px;       /* Intermediate size */
+    --font-size-body-m: 17px;       /* Intermediate size */
+    --font-size-body-s: 15px;       /* Intermediate size */
+    --font-size-button-m: 19px;     /* Intermediate size */
+    --font-size-button-s: 17px;     /* Intermediate size */
+    
+    /* Tablet line heights */
+    --line-height-headings-xxl: 78px;  /* Intermediate */
+    --line-height-headings-xl: 48px;   /* Intermediate */
+    --line-height-headings-l: 40px;    /* Intermediate */
+    --line-height-headings-m: 32px;    /* Intermediate */
+    --line-height-headings-s: 26px;    /* Intermediate */
+    --line-height-body-l: 26px;        /* Intermediate */
+    --line-height-body-m: 24px;        /* Intermediate */
+    --line-height-button-m: 24px;      /* Intermediate */
+    --line-height-paragraph-headings: 1.35; /* Between mobile and desktop */
+    --line-height-default: 1.55;       /* Between mobile and desktop */
+  }
+}
+
+/* Desktop breakpoint (900px+) - Uses Figma values */
+@media (width > 900px) {
+  :root {
+    /* Grid variables - use full desktop margins starting at 900px */
+    --grid-columns: var(--grid-columns-desktop); /* 12 */
+    --grid-gutter: var(--grid-gutter-desktop); /* 24px */
+    --grid-margin: var(--grid-margin-desktop); /* 120px - matches Figma design */
+    --grid-max-width: none; /* Remove max-width constraint - keep full width until 1440px */
+    
+    /* Full Figma typography values for desktop */
+    --font-size-heading-xxl: 126px; /* Full Figma size */
+    --font-size-heading-xl: 60px;   /* Full Figma size */
+    --font-size-heading-l: 48px;    /* Full Figma size */
+    --font-size-heading-m: 32px;    /* Full Figma size */
+    --font-size-heading-s: 24px;    /* Full Figma size */
+    --font-size-heading-xs: 18px;   /* Full Figma size */
+    --font-size-body-l: 20px;       /* Full Figma size */
+    --font-size-body-m: 18px;       /* Full Figma size */
+    --font-size-body-s: 16px;       /* Full Figma size */
+    --font-size-body-xs: 14px;      /* Full Figma size */
+    --font-size-body-xxs: 12px;     /* Full Figma size */
+    --font-size-button-m: 20px;     /* Full Figma size */
+    --font-size-button-s: 18px;     /* Full Figma size */
+    --font-size-display-xl: 60px;   /* Full Figma size */
+    --font-size-display-xs: 24px;   /* Full Figma size */
+    --font-size-text-xl: 20px;      /* Full Figma size */
+    
+    /* Full Figma line heights for desktop */
+    --line-height-headings-xxl: 106px; /* Full Figma line-height */
+    --line-height-headings-xl: 66px;   /* Full Figma line-height */
+    --line-height-headings-l: 53px;    /* Full Figma line-height */
+    --line-height-headings-m: 35px;    /* Full Figma line-height */
+    --line-height-headings-s: 26px;    /* Full Figma line-height */
+    --line-height-headings-xs: 22px;   /* Full Figma line-height */
+    --line-height-body-l: 30px;        /* Full Figma line-height */
+    --line-height-body-m: 27px;        /* Full Figma line-height */
+    --line-height-body-s: 24px;        /* Full Figma line-height */
+    --line-height-body-xs: 21px;       /* Full Figma line-height */
+    --line-height-body-xxs: 18px;      /* Full Figma line-height */
+    --line-height-button-m: 27px;      /* Full Figma line-height */
+    --line-height-button-s: 24px;      /* Full Figma line-height */
+    --line-height-display-xl: 72px;    /* Full Figma line-height */
+    --line-height-display-xs: 32px;    /* Full Figma line-height */
+    --line-height-text-xl: 30px;       /* Full Figma line-height */
+    --line-height-paragraph-headings: 1.4; /* Full Figma ratio */
+    --line-height-paragraph-body: 1.2;     /* Full Figma ratio */
+    --line-height-default: 1.6;        /* Full Figma ratio */
+    --line-height-footer-body: 20px;
+  }
+}
+
+/* Large desktop - apply max-width constraint only on very wide screens */
+@media (width >= 1440px) {
+  :root {
+    /* Apply Figma's 120px margins only at the intended 1440px+ breakpoint */
+    --grid-margin: var(--grid-margin-desktop); /* 120px - matches Figma design width */
+    --grid-max-width: var(--grid-max-width-desktop); /* 1200px - matches Figma design */
+  }
+}

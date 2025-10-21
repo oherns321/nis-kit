@@ -1,0 +1,337 @@
+/*
+ * Teaser Hero Block - Using Adobe EDS Design System
+ * - Typography: Automatic responsive scaling (h1: 48px → 72px → 126px)
+ * - Colors: Figma contextual variables
+ * - Grid: 12-column responsive grid with Figma gutters
+ * - Spacing: Consistent spacing scale
+ */
+
+.teaser-hero-container .teaser-hero-wrapper {
+  max-width: unset; /* Allow background to span full width */
+  padding: 0; /* No padding on wrapper - content handles its own margins */
+}
+
+.teaser-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--teaser-min-height);
+  background-color: var(--text-primary);
+  background-size: cover;
+  background-position: var(--teaser-background-position, center);
+  background-repeat: no-repeat;
+}
+
+.teaser-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay-dark); /* Use Figma design system variable */
+  z-index: 1;
+}
+
+.teaser-hero.no-overlay::before {
+  opacity: 0;
+}
+
+.teaser-hero .teaser-hero-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--spacing-s); /* 16px - matches Figma spacing between content sections */
+  max-width: var(--grid-max-width);
+  width: 100%;
+  margin: 0 auto; /* Center the content */
+  padding: 0 var(--grid-margin); /* Apply responsive margins to content */
+  color: var(--text-on-color);
+}
+
+/* Header content */
+.teaser-hero .header-content {
+  grid-column: 1 / -1; /* Full width on mobile */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.teaser-hero h1 {
+  /* h1 automatically gets Figma typography - only override what's different */
+  margin: 0;
+  color: var(--text-on-color);
+}
+
+.teaser-hero .subheader {
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  font-size: var(--font-size-heading-m); /* 32px from Figma */
+  line-height: var(--line-height-headings-m); /* 35px from Figma */
+  margin: 0;
+  color: var(--text-on-color);
+}
+
+/* Specific styling for h1 elements within the subheader div */
+.teaser-hero .subheader h1 {
+  font-family: inherit; /* Inherit from .subheader */
+  font-weight: inherit; /* Inherit from .subheader */
+  margin: 0;
+  color: var(--text-tertiary); /* Different color for h1 in subheader */
+}
+
+/* Body text */
+.teaser-hero .body-text {
+  grid-column: 1 / -1; /* Full width on mobile */
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-body);
+  font-size: var(--font-size-body-l); /* 20px from Figma */
+  line-height: var(--line-height-body-l); /* 30px from Figma */
+  margin: 0;
+}
+
+/* Button container */
+.teaser-hero .button-container {
+  grid-column: 1 / -1; /* Full width on mobile */
+  display: flex;
+  gap: var(--spacing-s);
+  flex-wrap: wrap;
+}
+
+.teaser-hero .button-container .button {
+  display: inline-block;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button-m);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button-m);
+  padding: var(--spacing-s) var(--spacing-m);
+  border-radius: 0;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.teaser-hero .button-container .button.primary {
+  background-color: var(--button-primary-background);
+  color: var(--button-primary);
+  border: var(--button-primary-border) solid var(--border-width-default);
+}
+
+.teaser-hero .button-container .button.primary:hover {
+  background-color: var(--button-primary-hover-background);
+  color: var(--button-primary-hover);
+}
+
+.teaser-hero .button-container .button.secondary {
+  background-color: transparent;
+  color: var(--text-on-color);
+  border: var(--border-width-thick) solid var(--text-on-color);
+}
+
+.teaser-hero .button-container .button.secondary:hover {
+  background-color: var(--text-on-color);
+  color: var(--button-secondary-hover);
+}
+
+/* Tablet adjustments */
+@media (width >= 768px) {
+  .teaser-hero {
+    padding-top: 64px;
+    min-height: var(--teaser-min-height-desktop);
+  }
+
+  /* Tablet: Use responsive column spans (8 columns available) */
+  .teaser-hero .header-content {
+    grid-column: span var(--content-width-tablet); /* 6 out of 8 columns on tablet */
+  }
+  
+  .teaser-hero .body-text {
+    grid-column: span var(--content-width-tablet); /* 6 out of 8 columns on tablet for readability */
+  }
+  
+  .teaser-hero .button-container {
+    grid-column: span var(--grid-columns-tablet); /* Full width for buttons on tablet */
+  }
+
+  /* Typography automatically scales via design system - no overrides needed */
+}
+
+/* Desktop adjustments */
+@media (width >= 900px) {
+  .teaser-hero {
+    padding-top: 64px;
+    min-height: var(--teaser-min-height-desktop-large); /* Match Figma aspect ratio 3:2 (1440x958) */
+  }
+
+  /* Use Figma grid system on desktop */
+  .teaser-hero .header-content {
+    grid-column: span var(--content-width-desktop); /* 8 columns out of 12 - matches Figma design */
+  }
+  
+  .teaser-hero .body-text {
+    grid-column: span var(--content-width-desktop); /* 8 columns out of 12 - same as header */
+  }
+  
+  .teaser-hero .button-container {
+    grid-column: span var(--grid-columns-desktop); /* Full width for buttons */
+  }
+
+  /* Typography automatically uses full Figma values via design system */
+}
+
+/* Mobile responsive */
+@media (width < 768px) {
+  .teaser-hero .header-content {
+    max-width: 100%;
+  }
+
+  .teaser-hero .body-text {
+    max-width: 100%;
+  }
+
+  /* Typography automatically optimized for mobile via design system */
+
+  .teaser-hero .button-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .teaser-hero .button-container .button:any-link {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+/* Dark variant support */
+.teaser-hero.dark {
+  background-color: var(--text-primary);
+}
+
+.teaser-hero.dark::before {
+  background-color: var(--overlay-dark); /* Use Figma design system variable */
+}
+
+/* Height variants */
+.teaser-hero.height-fixed {
+  /* Explicitly set fixed height behavior (same as default) */
+  min-height: var(--teaser-min-height);
+}
+
+.teaser-hero.height-fit-content {
+  min-height: auto;
+}
+
+.teaser-hero.height-fit-content .teaser-hero-content {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* Responsive height adjustments for fixed height */
+@media (width >= 768px) {
+  .teaser-hero.height-fixed {
+    min-height: var(--teaser-min-height-desktop);
+  }
+}
+
+@media (width >= 900px) {
+  .teaser-hero.height-fixed {
+    min-height: var(--teaser-min-height-desktop-large);
+  }
+}
+
+/* Responsive height adjustments for fit-content */
+@media (width >= 768px) {
+  .teaser-hero.height-fit-content {
+    padding: 0;
+  }
+  
+  .teaser-hero.height-fit-content .teaser-hero-content {
+    padding-top: calc(var(--spacing-xl) * 1.5);
+    padding-bottom: calc(var(--spacing-xl) * 1.5);
+  }
+}
+
+@media (width >= 900px) {
+  .teaser-hero.height-fit-content {
+    padding: 0;
+  }
+  
+  .teaser-hero.height-fit-content .teaser-hero-content {
+    padding-top: calc(var(--spacing-xl) * 2);
+    padding-bottom: calc(var(--spacing-xl) * 2);
+  }
+}
+
+/* Background position variants */
+.teaser-hero.bg-top {
+  --teaser-background-position: top;
+}
+
+.teaser-hero.bg-bottom {
+  --teaser-background-position: bottom;
+}
+
+.teaser-hero.bg-left {
+  --teaser-background-position: left;
+}
+
+.teaser-hero.bg-right {
+  --teaser-background-position: right;
+}
+
+.teaser-hero.bg-top-left {
+  --teaser-background-position: top left;
+}
+
+.teaser-hero.bg-top-right {
+  --teaser-background-position: top right;
+}
+
+.teaser-hero.bg-bottom-left {
+  --teaser-background-position: bottom left;
+}
+
+.teaser-hero.bg-bottom-right {
+  --teaser-background-position: bottom right;
+}
+
+/* Light variant support */
+.teaser-hero.light {
+  background-color: var(--surface-white);
+  color: var(--text-primary);
+}
+
+.teaser-hero.light::before {
+  background-color: var(--overlay-light); /* Use design system variable for light overlay */
+}
+
+.teaser-hero.light > div {
+  color: var(--text-primary);
+}
+
+.teaser-hero.light h1,
+.teaser-hero.light .subheader,
+.teaser-hero.light .body-text {
+  color: var(--text-primary);
+}
+
+.teaser-hero.light .button-container .button.primary {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+}
+
+.teaser-hero.light .button-container .button.primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.teaser-hero.light .button-container .button.secondary {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.teaser-hero.light .button-container .button.secondary:hover {
+  background-color: var(--text-primary);
+  color: var(--text-on-color);
+}

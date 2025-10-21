@@ -1,0 +1,146 @@
+/*
+ * Tabs Block - Matching Figma Design node-id=10454:20346
+ * - Black background with white text
+ * - Clean tab interface with active/inactive states
+ * - White underline for active tab
+ * - Design system typography and spacing
+ */
+
+.tabs {
+  background-color: var(--surface-black);
+  color: var(--text-on-color);
+}
+
+.tabs-container {
+  max-width: var(--grid-max-width);
+  width: 100%;
+}
+
+/* Tablet Responsive Design */
+@media (width >= 768px) and (width <= 800px) {
+  .tabs-container {
+    max-width: var(--grid-max-width-tablet);
+  }
+
+  .tabs-wrapper {
+    padding-left: var(--grid-section-margin) !important;
+  }
+}
+
+@media (width >= 801px) and (width <= 899px) {
+  .tabs-wrapper {
+    padding-left: var(--grid-margin-desktop) !important;
+  }
+}
+
+/* Desktop Responsive Design */
+@media (width >= 900px) {
+  .tabs-container {
+    max-width: var(--grid-max-width-desktop);
+  }
+}
+
+@media (width >= 1200px) and (width <= 1440px) {
+  .tabs {
+    margin: unset;
+  }
+
+  .tabs-container {
+    max-width: var(--grid-max-width-desktop);
+  }
+}
+
+@media (width > 1440px) {
+  .tabs-container {
+    margin: 0 auto;
+  }
+}
+
+@media (width < 768px) {
+  .tabs-container {
+    margin: 0 auto;
+  }
+}
+
+.tabs .tabs-list {
+  position: relative;
+  display: flex;
+  gap: 0; /* Remove gap so borders touch */
+  align-items: flex-start;
+  justify-content: flex-start; /* Explicitly left-align tabs */
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.tabs .tabs-list button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Left-align button content */
+  flex: 0 0 auto; /* Don't grow or shrink, size based on content */
+  padding: var(--spacing-xs) var(--spacing-m); /* Vertical 8px, horizontal 16px for spacing */
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-on-color);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+}
+
+/* Tablet and Desktop: Add minimum width for better layout */
+@media (width >= 768px) {
+  .tabs .tabs-list button {
+    min-width: var(--tab-mobile-min-width); /* Reasonable minimum width for larger screens */
+  }
+}
+
+.tabs .tabs-list button p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-s); /* 16px from Figma */
+  font-weight: var(--font-weight-body); /* 400 for inactive */
+  line-height: var(--line-height-body-s); /* 24px from Figma */
+  text-align: left; /* Left-align text */
+  color: inherit;
+}
+
+/* Active tab styling */
+.tabs .tabs-list button[aria-selected='true'] {
+  cursor: default;
+}
+
+/* Base border for all tabs */
+.tabs .tabs-list button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--button-tab-background);
+  pointer-events: none;
+}
+
+/* Active tab white underline - overrides base border */
+.tabs .tabs-list button[aria-selected='true']::after {
+  bottom: 0;
+  height: var(--border-width-thick);
+  background-color: var(--text-on-color); /* White underline */
+  z-index: 1;
+}
+
+/* Hover state for inactive tabs */
+.tabs .tabs-list button:not([aria-selected='true']):hover {
+  opacity: 0.8;
+}
+
+/* External tab-cards section visibility control */
+.section.tab-content {
+  display: block;
+}
+
+.section.tab-content.hidden {
+  display: none;
+}

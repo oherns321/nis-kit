@@ -1,0 +1,931 @@
+[
+  {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "keywords",
+        "multi": true,
+        "label": "Keywords"
+      }
+    ]
+  },
+  {
+    "id": "image",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      }
+    ]
+  },
+  {
+    "id": "title",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Section Name",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Highlight",
+            "value": "highlight"
+          },
+          {
+            "name": "Use Padding",
+            "value": "use-padding"
+          },
+          {
+            "name": "Dark Mode",
+            "value": "dark"
+          },
+          {
+            "name": "Tab Content",
+            "value": "tab-content"
+          },
+          {
+            "name": "Initially hidden",
+            "value": "hidden"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "background-cards",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "description": "Optional background image for the cards section",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "backgroundImageAlt",
+        "label": "Background Image Alt Text",
+        "description": "Alt text for the background image",
+        "required": false
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "noOverlay",
+        "label": "Remove Background Overlay",
+        "description": "Remove the semi-transparent overlay from background image",
+        "required": false,
+        "defaultValue": false
+      }
+    ]
+  },
+  {
+    "id": "background-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "cardImage",
+        "label": "Card Image",
+        "description": "Main image for this card",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardImageAlt",
+        "label": "Card Image Alt Text",
+        "description": "Alt text for the card image",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardHeading",
+        "label": "Card Heading",
+        "description": "Heading for this card",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardDescription",
+        "label": "Card Description",
+        "description": "Short description text for this card",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "cards-enhanced",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Main Heading",
+        "description": "Main heading displayed above the cards",
+        "required": true,
+        "maxLength": 100
+      }
+    ]
+  },
+  {
+    "id": "card-enhanced",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardHeading",
+        "label": "Card Heading",
+        "description": "Heading for the card",
+        "required": true,
+        "maxLength": 80
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "cardBody",
+        "label": "Card Body Text",
+        "description": "Body content for the card",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardCta",
+        "label": "Card CTA URL",
+        "description": "Call-to-action link URL for the card",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardCtaText",
+        "label": "Card CTA Button Text",
+        "description": "Text displayed on the card's button",
+        "required": false,
+        "maxLength": 30
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_image",
+        "label": "Carousel Item Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageAlt",
+        "value": "",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "content_text",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "content_more",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Light Blue",
+            "value": "background-lightblue"
+          },
+          {
+            "name": "Medium Blue",
+            "value": "background-mediumblue"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "background-darkblue"
+          },
+          {
+            "name": "Yellow",
+            "value": "background-yellow"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "link_url",
+        "value": "",
+        "label": "URL",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Classes",
+        "options": [
+          {
+            "name": "Highlight",
+            "value": "highlight"
+          },
+          {
+            "name": "Use Padding",
+            "value": "use-padding"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
+          },
+          {
+            "name": "Dark Mode",
+            "value": "dark"
+          },
+          {
+            "name": "Light Mode",
+            "value": "light"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "feature-cards",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Container Heading",
+        "description": "Main heading displayed above the feature cards",
+        "required": false,
+        "maxLength": 200
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Layout Variant",
+        "description": "Choose the layout style for the feature cards",
+        "options": [
+          {
+            "name": "Default (3 columns)",
+            "value": "three-columns"
+          },
+          {
+            "name": "Two Columns",
+            "value": "two-columns"
+          },
+          {
+            "name": "Four Columns",
+            "value": "four-columns"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style Options",
+        "description": "Additional styling options",
+        "options": [
+          {
+            "name": "Compact Spacing",
+            "value": "compact"
+          },
+          {
+            "name": "Centered Alignment",
+            "value": "centered"
+          },
+          {
+            "name": "Dark Theme",
+            "value": "dark"
+          },
+          {
+            "name": "Light Theme",
+            "value": "light"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "feature-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Feature Image",
+        "description": "Main image representing the feature",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "featureHeading",
+        "label": "Feature Heading",
+        "description": "Heading for the individual feature card",
+        "required": true,
+        "maxLength": 100
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "featureDescription",
+        "label": "Feature Description",
+        "description": "Detailed description of the feature",
+        "required": true,
+        "maxLength": 500
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta",
+        "label": "CTA URL",
+        "description": "URL for the call-to-action button",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "description": "Display text for the CTA button",
+        "required": false,
+        "maxLength": 50
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "my-account",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "Name",
+        "label": "Name",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "separator",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headline",
+        "label": "Headline",
+        "value": "Header"
+      }
+    ]
+  },
+  {
+    "id": "super-cards",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Container Heading",
+        "description": "Main heading displayed above the cards",
+        "required": true,
+        "maxLength": 200
+      }
+    ]
+  },
+  {
+    "id": "super-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardHeading",
+        "label": "Card Heading",
+        "description": "Heading for individual card",
+        "required": true,
+        "maxLength": 100
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "cardBody",
+        "label": "Card Body Text",
+        "description": "Main content text for the card",
+        "required": true,
+        "maxLength": 500
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primaryCta",
+        "label": "Primary CTA URL",
+        "description": "URL for the primary call-to-action button",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primaryCtaText",
+        "label": "Primary CTA Text",
+        "description": "Display text for the primary CTA button",
+        "required": false,
+        "maxLength": 50
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondaryCta",
+        "label": "Secondary CTA URL",
+        "description": "URL for the secondary call-to-action button",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondaryCtaText",
+        "label": "Secondary CTA Text",
+        "description": "Display text for the secondary CTA button",
+        "required": false,
+        "maxLength": 50
+      }
+    ]
+  },
+  {
+    "id": "tab-cards",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainHeading",
+        "label": "Main Heading",
+        "description": "Main heading displayed above the cards",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "tab-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "cardImage",
+        "label": "Card Image",
+        "description": "Image for the card",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardImageAlt",
+        "label": "Card Image Alt Text",
+        "description": "Alternative text for the card image",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cardHeading",
+        "label": "Card Heading",
+        "description": "Heading for the individual card",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "cardBody",
+        "label": "Card Body Text",
+        "description": "Body text content for the card",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "tabs-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tabName",
+        "value": "",
+        "label": "Tab Name"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "value": "",
+        "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "teaser-hero",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "backgroundImageAlt",
+        "label": "Background Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headline",
+        "label": "Headline",
+        "value": "Header"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subheader",
+        "label": "Subheader (Optional)",
+        "value": "Subheader"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "subheaderType",
+        "label": "Subheader Type",
+        "required": true,
+        "description": "HTML Subheader level",
+        "options": [
+          {
+            "value": "h1",
+            "name": "h1"
+          },
+          {
+            "value": "h2",
+            "name": "h2"
+          },
+          {
+            "value": "h3",
+            "name": "h3"
+          },
+          {
+            "value": "h4",
+            "name": "h4"
+          },
+          {
+            "value": "h5",
+            "name": "h5"
+          },
+          {
+            "value": "h6",
+            "name": "h6"
+          }
+        ],
+        "value": "h2"
+      },
+      {
+        "component": "richtext",
+        "name": "body",
+        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "label": "Body Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primaryButton",
+        "label": "Primary Button Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "primaryButtonText",
+        "label": "Primary Button Text"
+      },
+      {
+        "component": "select",
+        "name": "primaryButtonType",
+        "label": "Primary Button Type",
+        "valueType": "string",
+        "options": [
+          {
+            "value": "primary",
+            "name": "primary"
+          },
+          {
+            "value": "secondary",
+            "name": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondaryButton",
+        "label": "Secondary Button Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "secondaryButtonText",
+        "label": "Secondary Button Text"
+      },
+      {
+        "component": "select",
+        "name": "secondaryButtonType",
+        "label": "Secondary Button Type",
+        "valueType": "string",
+        "options": [
+          {
+            "value": "primary",
+            "name": "primary"
+          },
+          {
+            "value": "secondary",
+            "name": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Theme Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          }
+        ],
+        "value": "dark"
+      },
+      {
+        "component": "boolean",
+        "name": "showOverlay",
+        "label": "Show Overlay",
+        "value": true
+      },
+      {
+        "component": "select",
+        "name": "backgroundPosition",
+        "label": "Background Position",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Center",
+            "value": "bg-center"
+          },
+          {
+            "name": "Top",
+            "value": "bg-top"
+          },
+          {
+            "name": "Bottom",
+            "value": "bg-bottom"
+          },
+          {
+            "name": "Left",
+            "value": "bg-left"
+          },
+          {
+            "name": "Right",
+            "value": "bg-right"
+          },
+          {
+            "name": "Top Left",
+            "value": "bg-top-left"
+          },
+          {
+            "name": "Top Right",
+            "value": "bg-top-right"
+          },
+          {
+            "name": "Bottom Left",
+            "value": "bg-bottom-left"
+          },
+          {
+            "name": "Bottom Right",
+            "value": "bg-bottom-right"
+          }
+        ],
+        "value": "bg-center"
+      },
+      {
+        "component": "select",
+        "name": "heightVariant",
+        "label": "Height Behavior",
+        "valueType": "string",
+        "description": "Choose how the hero height should behave",
+        "options": [
+          {
+            "name": "Full Page (Viewport Height)",
+            "value": "height-full-page"
+          },
+          {
+            "name": "Fit Content (Auto Height)",
+            "value": "height-fit-content"
+          }
+        ],
+        "value": "height-full-page"
+      }
+    ]
+  }
+]

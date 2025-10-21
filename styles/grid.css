@@ -1,0 +1,125 @@
+/* Grid Utility Classes - Based on Figma Grid System */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+.grid-container {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+  width: 100%;
+}
+
+.grid-full-width {
+  width: 100%;
+  max-width: none;
+}
+
+/* Column span utilities - Mobile (4 columns) */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+
+/* Responsive column utilities */
+@media (width >= 768px) {
+  /* Tablet (8 columns) */
+  .col-tablet-1 { grid-column: span 1; }
+  .col-tablet-2 { grid-column: span 2; }
+  .col-tablet-3 { grid-column: span 3; }
+  .col-tablet-4 { grid-column: span 4; }
+  .col-tablet-5 { grid-column: span 5; }
+  .col-tablet-6 { grid-column: span 6; }
+  .col-tablet-7 { grid-column: span 7; }
+  .col-tablet-8 { grid-column: span 8; }
+}
+
+@media (width >= 900px) {
+  /* Desktop (12 columns) - Figma grid system */
+  .col-desktop-1 { grid-column: span 1; }
+  .col-desktop-2 { grid-column: span 2; }
+  .col-desktop-3 { grid-column: span 3; }
+  .col-desktop-4 { grid-column: span 4; }
+  .col-desktop-5 { grid-column: span 5; }
+  .col-desktop-6 { grid-column: span 6; }
+  .col-desktop-7 { grid-column: span 7; }
+  .col-desktop-8 { grid-column: span 8; }
+  .col-desktop-9 { grid-column: span 9; }
+  .col-desktop-10 { grid-column: span 10; }
+  .col-desktop-11 { grid-column: span 11; }
+  .col-desktop-12 { grid-column: span 12; }
+  
+  /* Common desktop column spans */
+  .col-half { grid-column: span 6; } /* 50% */
+  .col-third { grid-column: span 4; } /* 33.33% */
+  .col-quarter { grid-column: span 3; } /* 25% */
+  .col-two-thirds { grid-column: span 8; } /* 66.67% */
+}
+
+/* Grid debugging (remove in production) */
+.grid-debug .grid {
+  position: relative;
+}
+
+.grid-debug .grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--grid-margin);
+  right: var(--grid-margin);
+  height: 100vh;
+  background-image: repeating-linear-gradient(
+    to right,
+    rgb(255 0 0 / 10%) 0,
+    rgb(255 0 0 / 10%) calc((100% - (var(--grid-columns) - 1) * var(--grid-gutter)) / var(--grid-columns)),
+    transparent calc((100% - (var(--grid-columns) - 1) * var(--grid-gutter)) / var(--grid-columns)),
+    transparent calc((100% - (var(--grid-columns) - 1) * var(--grid-gutter)) / var(--grid-columns) + var(--grid-gutter))
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Flexbox utilities as alternative to grid */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: var(--grid-max-width);
+  padding: 0 var(--grid-margin);
+}
+
+.flex-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.flex-item + .flex-item {
+  margin-left: var(--grid-gutter);
+}
+
+/* Section containers */
+.section {
+  width: 100%;
+}
+
+/* Block-specific grid containers */
+.teaser-hero-container,
+.cards-container,
+.columns-container {
+  max-width: unset; /* Allow blocks to use full width */
+  padding: 0; /* Let individual blocks handle their own padding */
+}
+
+.teaser-hero-wrapper,
+.cards-wrapper,
+.columns-wrapper {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}

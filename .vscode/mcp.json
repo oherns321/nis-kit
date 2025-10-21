@@ -1,0 +1,15 @@
+{
+	"servers": {
+		"my-mcp-server-6c730619": {
+			"url": "http://127.0.0.1:3845/mcp",
+			"type": "http"
+		},
+		"figma-eds": {
+			"command": "node",
+			"args": ["<location on local machine>/adobe-code-kit/figma-eds-mcp-server/dist/server.js"],
+			"env": {
+				"FIGMA_ACCESS_TOKEN": "<access token generated in figma>"
+			}
+		}
+	}
+}

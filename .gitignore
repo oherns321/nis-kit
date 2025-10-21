@@ -1,0 +1,17 @@
+.hlx/*
+coverage/*
+logs/*
+node_modules/*
+test/*
+
+# Figma EDS MCP Server build artifacts
+figma-eds-mcp-server/dist/
+figma-eds-mcp-server/node_modules/
+
+helix-importer-ui
+.DS_Store
+*.bak
+.idea
+
+# VS Code settings
+.vscode/settings.json

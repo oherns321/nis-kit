@@ -1,0 +1,107 @@
+{
+    "definitions": [
+      {
+        "title": "Carousel",
+        "id": "carousel",
+        "plugins": {
+          "xwalk": {
+            "page": {
+              "resourceType": "core/franklin/components/block/v1/block",
+              "template": {
+                "name": "Carousel",
+                "model": "carousel",
+                "filter": "carousel"
+              }
+            }
+          }
+        }
+      },
+      {
+        "title": "Carousel Slide",
+        "id": "carousel-item",
+        "plugins": {
+          "xwalk": {
+            "page": {
+              "resourceType": "core/franklin/components/block/v1/block/item",
+              "template": {
+                "name": "Carousel Slide",
+                "model": "carousel-item"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "models": [
+      {
+        "id": "carousel-item",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "media_image",
+            "label": "Carousel Item Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "media_imageAlt",
+            "value": "",
+            "label": "Image Alt Text"
+          },
+          {
+            "component": "text",
+            "name": "content_text",
+            "value": "",
+            "label": "Title",
+            "valueType": "string"
+          },
+          {
+            "component": "richtext",
+            "name": "content_more",
+            "value": "",
+            "label": "Description",
+            "valueType": "string"
+          },
+          {
+            "component": "multiselect",
+            "name": "style",
+            "label": "Style",
+            "options": [
+              {
+                "name": "Light Blue",
+                "value": "background-lightblue"
+              },
+              {
+                "name": "Medium Blue",
+                "value": "background-mediumblue"
+              },
+              {
+                "name": "Dark Blue",
+                "value": "background-darkblue"
+              },
+              {
+                "name": "Yellow",
+                "value": "background-yellow"
+              }
+            ]
+          },
+          {
+            "component": "text",
+            "name": "link_url",
+            "value": "",
+            "label": "URL",
+            "valueType": "string"
+          }
+        ]
+      }
+    ],
+    "filters": [
+      {
+        "id": "carousel",
+        "components": ["carousel-item"]
+      }
+    ]
+  }
+  

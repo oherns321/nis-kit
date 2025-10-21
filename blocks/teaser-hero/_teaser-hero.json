@@ -1,0 +1,239 @@
+{
+  "definitions": [
+    {
+      "title": "Teaser Hero",
+      "id": "teaser-hero",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Teaser Hero",
+              "model": "teaser-hero"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "teaser-hero",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "backgroundImage",
+          "label": "Background Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "backgroundImageAlt",
+          "label": "Background Image Alt Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "headline",
+          "label": "Headline",
+          "value": "Header"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subheader",
+          "label": "Subheader (Optional)",
+          "value": "Subheader"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "subheaderType",
+          "label": "Subheader Type",
+          "required": true,
+          "description": "HTML Subheader level",
+          "options": [
+            {
+              "value": "h1",
+              "name": "h1"
+            },
+            {
+              "value": "h2",
+              "name": "h2"
+            },
+            {
+              "value": "h3",
+              "name": "h3"
+            },
+            {
+              "value": "h4",
+              "name": "h4"
+            },
+            {
+              "value": "h5",
+              "name": "h5"
+            },
+            {
+              "value": "h6",
+              "name": "h6"
+            }
+          ],
+          "value": "h2"
+        },
+        {
+          "component": "richtext",
+          "name": "body",
+          "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "label": "Body Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primaryButton",
+          "label": "Primary Button Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "primaryButtonText",
+          "label": "Primary Button Text"
+        },
+        {
+          "component": "select",
+          "name": "primaryButtonType",
+          "label": "Primary Button Type",
+          "valueType": "string",
+           "options": [
+            {
+              "value": "primary",
+              "name": "primary"
+            },
+            {
+              "value": "secondary",
+              "name": "secondary"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondaryButton",
+          "label": "Secondary Button Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "secondaryButtonText",
+          "label": "Secondary Button Text"
+        },
+        {
+          "component": "select",
+          "name": "secondaryButtonType",
+          "label": "Secondary Button Type",
+          "valueType": "string",
+           "options": [
+            {
+              "value": "primary",
+              "name": "primary"
+            },
+            {
+              "value": "secondary",
+              "name": "secondary"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "name": "variant",
+          "label": "Theme Variant",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Light", 
+              "value": "light"
+            }
+          ],
+          "value": "dark"
+        },
+        {
+          "component": "boolean",
+          "name": "showOverlay",
+          "label": "Show Overlay",
+          "value": true
+        },
+        {
+          "component": "select",
+          "name": "backgroundPosition",
+          "label": "Background Position",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Center",
+              "value": "bg-center"
+            },
+            {
+              "name": "Top",
+              "value": "bg-top"
+            },
+            {
+              "name": "Bottom",
+              "value": "bg-bottom"
+            },
+            {
+              "name": "Left",
+              "value": "bg-left"
+            },
+            {
+              "name": "Right",
+              "value": "bg-right"
+            },
+            {
+              "name": "Top Left",
+              "value": "bg-top-left"
+            },
+            {
+              "name": "Top Right",
+              "value": "bg-top-right"
+            },
+            {
+              "name": "Bottom Left",
+              "value": "bg-bottom-left"
+            },
+            {
+              "name": "Bottom Right",
+              "value": "bg-bottom-right"
+            }
+          ],
+          "value": "bg-center"
+        },
+        {
+          "component": "select",
+          "name": "heightVariant",
+          "label": "Height Behavior",
+          "valueType": "string",
+          "description": "Choose how the hero height should behave",
+          "options": [
+            {
+              "name": "Full Page (Viewport Height)",
+              "value": "height-full-page"
+            },
+            {
+              "name": "Fit Content (Auto Height)",
+              "value": "height-fit-content"
+            }
+          ],
+          "value": "height-full-page"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -1,0 +1,160 @@
+/* Super Cards Block */
+
+/* Container styling */
+.super-cards-container .super-cards-wrapper {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+.super-cards {
+  padding: var(--spacing-xl) var(--grid-margin);
+}
+
+/* Main heading uses design system typography automatically */
+.super-cards .container-heading {
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+  text-align: left;
+}
+
+/* Cards container with responsive grid */
+.super-cards .cards-container {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gutter);
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+}
+
+/* Individual card styling */
+.super-cards .card {
+  background: var(--surface-white);
+  border: 1px solid var(--border-tertiary);
+  padding: var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  grid-column: span var(--grid-columns); /* Full width on mobile */
+  min-width: 282px; /* Figma min-width */
+}
+
+/* Card heading */
+.super-cards .card-heading {
+  color: var(--text-primary);
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-headings);
+  font-size: var(--heading-font-size-l);
+  line-height: var(--line-height-headings-l);
+}
+
+/* Card body text */
+.super-cards .card-body {
+  color: var(--text-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* CTA buttons container */
+.super-cards .card-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+/* Button base styles */
+.super-cards .card-ctas .button {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-button);
+  font-size: var(--font-size-button-m);
+  line-height: var(--line-height-button-m);
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Primary button */
+.super-cards .card-ctas .button-primary {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  border: 2px solid var(--button-primary);
+}
+
+.super-cards .card-ctas .button-primary:hover {
+  background-color: var(--button-primary-hover, var(--button-primary));
+  border-color: var(--button-primary-hover, var(--button-primary));
+}
+
+/* Secondary button */
+.super-cards .card-ctas .button-secondary {
+  background-color: transparent;
+  color: var(--button-primary);
+  border: 2px solid var(--button-primary);
+}
+
+.super-cards .card-ctas .button-secondary:hover {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+}
+
+/* Empty state placeholder styling for Universal Editor */
+.super-cards [data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.super-cards .empty-cta[data-placeholder] {
+  background-color: transparent;
+  border: 2px dashed #ccc;
+  color: #999;
+  cursor: default;
+}
+
+.super-cards .empty-cta[data-placeholder]:hover {
+  background-color: transparent;
+  border-color: #999;
+  color: #666;
+}
+
+.super-cards [data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  display: inline-block;
+  min-height: 1em;
+  min-width: 100px;
+}
+
+/* Tablet breakpoint (768px+) */
+@media (width >= 768px) {
+  .super-cards .card {
+    grid-column: span 4; /* Half width on tablet */
+  }
+}
+
+/* Desktop breakpoint (900px+) */
+@media (width >= 900px) {
+  .super-cards .card {
+    grid-column: span 6; /* Half width on desktop (2 columns) */
+  }
+  
+  /* Container heading spans appropriate columns */
+  .super-cards .container-heading {
+    grid-column: span 8;
+  }
+}
