@@ -1,8 +1,8 @@
 {
   "mappings": [
-    "/content/NISource/:/"  
+    "/content/NI-Kit/:/"  
   ],
   "includes": [
-    "/content/NISource/"
+    "/content/NI-Kit/"
   ]
 }
