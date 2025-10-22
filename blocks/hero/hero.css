@@ -27,17 +27,45 @@
   margin-top: 64px;
 }
 
+/* Optimized background image styling */
+.hero .hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero .hero-background-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 400px 400px #ffffffaa;
+  pointer-events: none;
+}
+
+.hero .hero-background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Mobile banner (login-banner-bg-mobile equivalent) */
 .hero .login-banner-mobile {
   display: block;
-  background-size: cover;
-  background-position: center;
-  box-shadow: inset 0 0 400px 400px #fffa;
+  position: relative;
   min-height: 400px;
   padding: 40px 20px;
 }
 
 .hero .login-banner-mobile .chatnow__content {
+  position: relative;
+  z-index: 1;
   color: #000;
   max-width: 600px;
   margin: 0 auto;
@@ -47,14 +75,13 @@
 /* Desktop banner structure */
 .hero .login-banner-desktop {
   display: none;
-  background-size: cover;
-  background-position: center;
-  box-shadow: inset 0 0 400px 400px #fffa;
-  min-height: 500px;
   position: relative;
+  min-height: 500px;
 }
 
 .hero .login-banner__container {
+  position: relative;
+  z-index: 1;
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
