@@ -1,6 +1,8 @@
 {
   "mappings": [
-    "/content/NISource/:/"  
+    "/content/NISource/:/",
+    "/content/NISource/configuration:/.helix/config.json",
+    "/content/NISource/metadata:/metadata.json"
   ],
   "includes": [
     "/content/NISource/"
