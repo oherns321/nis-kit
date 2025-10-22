@@ -6,6 +6,14 @@
  * - Mobile-first responsive design
  */
 
+ @media (width > 882px) {
+    .login-banner__right {
+        padding: 50px 55px 0;
+        margin: 60px 8% 60px 30px;
+        max-width: 400px;
+    }
+}
+
 .hero-container .hero-wrapper {
   max-width: unset; /* Allow background to span full width */
   padding: 0; /* No padding on wrapper */
