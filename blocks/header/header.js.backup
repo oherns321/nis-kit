@@ -63,7 +63,7 @@ function handleKeyboardEvents(e) {
  */
 function createSearchModal() {
   const searchModal = document.createElement('div');
-  searchModal.className = 'search-modal';
+  searchModal.className = 'SearchModal';
   searchModal.innerHTML = `
     <div class="form-field text-center">
       <input type="text" name="modal-search" id="modal-search-input" placeholder="Search" autocomplete="off">
@@ -110,7 +110,7 @@ export default async function decorate(block) {
 
   // Desktop Header
   const desktopHeader = document.createElement('div');
-  desktopHeader.className = 'site-header site-header--desktop';
+  desktopHeader.className = 'SiteHeader SiteHeader--desktop';
 
   const desktopContainer = document.createElement('div');
   desktopContainer.className = 'container';
@@ -128,12 +128,12 @@ export default async function decorate(block) {
   // Desktop Main Navigation
   const mainNavigation = document.createElement('div');
   mainNavigation.id = 'main-navigation';
-  mainNavigation.className = 'main-nav main-nav--desktop';
+  mainNavigation.className = 'MainNav MainNav--desktop';
   mainNavigation.setAttribute('tabindex', '-1');
 
   // Auxiliary navigation
   const auxNav = document.createElement('div');
-  auxNav.className = 'main-nav__auxiliary';
+  auxNav.className = 'MainNav__auxiliary';
   const auxList = document.createElement('ul');
 
   const auxItems = [
@@ -169,7 +169,7 @@ export default async function decorate(block) {
   // Add search trigger to auxiliary nav
   const searchLi = document.createElement('li');
   const searchTrigger = document.createElement('div');
-  searchTrigger.className = 'search-modal-desktop-trigger';
+  searchTrigger.className = 'SearchModalDesktopTrigger';
 
   const searchIcon = document.createElement('img');
   searchIcon.src = '/icons/search.svg';
@@ -185,7 +185,7 @@ export default async function decorate(block) {
 
   // Main navigation
   const mainNav = document.createElement('div');
-  mainNav.className = 'main-nav__main';
+  mainNav.className = 'MainNav__main';
   const mainList = document.createElement('ul');
 
   const mainItems = [
@@ -214,11 +214,11 @@ export default async function decorate(block) {
 
   // Mobile Header
   const mobileHeader = document.createElement('div');
-  mobileHeader.className = 'site-header site-header--mobile';
+  mobileHeader.className = 'SiteHeader SiteHeader--mobile';
 
   // Mobile always visible section
   const mobileAlwaysVisible = document.createElement('div');
-  mobileAlwaysVisible.className = 'site-header__mobile-always-visible';
+  mobileAlwaysVisible.className = 'SiteHeader__mobile-always-visible';
 
   // Mobile Logo
   const mobileLogo = document.createElement('a');
@@ -235,7 +235,7 @@ export default async function decorate(block) {
   mobileControls.className = 'flex';
 
   const mobileSearchTrigger = document.createElement('div');
-  mobileSearchTrigger.className = 'search-modal-mobile-trigger';
+  mobileSearchTrigger.className = 'SearchModalMobileTrigger';
 
   const mobileSearchIcon = document.createElement('img');
   mobileSearchIcon.src = '/icons/search.svg';
@@ -281,10 +281,10 @@ export default async function decorate(block) {
 
   // Mobile navigation menu
   const mobileNav = document.createElement('div');
-  mobileNav.className = 'mobile-nav';
+  mobileNav.className = 'MobileNav';
 
   const mobileNavMain = document.createElement('div');
-  mobileNavMain.className = 'mobile-nav__main';
+  mobileNavMain.className = 'MobileNav__main';
 
   const mobileNavList = document.createElement('ul');
 

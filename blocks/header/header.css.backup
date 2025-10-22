@@ -1,15 +1,15 @@
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
 /*
- * Header Block - Based on Columbia Gas SiteHeader Structure
+ * Header Block - Matching Columbia Gas SiteHeader Structure
  * - Dual desktop/mobile header structure
  * - White background with proper positioning
  * - Logo on left, navigation sections
  * - Responsive design with mobile toggle
- * - Uses kebab-case naming for consistency
- * - See CLASS_MAPPING.md for original class name references
+ * - Uses original Columbia Gas class names for exact structure matching
  */
 
 /* Base SiteHeader styling */
-header .site-header {
+header .SiteHeader {
   top: 46px;
   padding-bottom: 1px;
   background: #fff;
@@ -20,17 +20,17 @@ header .site-header {
 }
 
 /* Desktop Header */
-header .site-header--desktop {
+header .SiteHeader--desktop {
   display: block;
 }
 
 @media (width <= 882px) {
-  header .site-header--desktop {
+  header .SiteHeader--desktop {
     display: none;
   }
 }
 
-header .site-header--desktop .container {
+header .SiteHeader--desktop .container {
   max-width: var(--grid-max-width, 1200px);
   margin: 0 auto;
   padding: 0 var(--grid-margin, 24px);
@@ -41,17 +41,17 @@ header .site-header--desktop .container {
 }
 
 /* Mobile Header */
-header .site-header--mobile {
+header .SiteHeader--mobile {
   display: none;
 }
 
 @media (width <= 882px) {
-  header .site-header--mobile {
+  header .SiteHeader--mobile {
     display: block;
   }
 }
 
-header .site-header__mobile-always-visible {
+header .SiteHeader__mobile-always-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,7 +60,7 @@ header .site-header__mobile-always-visible {
   min-height: 70px;
 }
 
-header .site-header__mobile-always-visible .flex {
+header .SiteHeader__mobile-always-visible .flex {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -77,17 +77,17 @@ header .logo img {
 }
 
 /* Main Navigation - Desktop */
-header .main-nav--desktop {
+header .MainNav--desktop {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-header .main-nav__auxiliary {
+header .MainNav__auxiliary {
   display: flex;
 }
 
-header .main-nav__auxiliary ul {
+header .MainNav__auxiliary ul {
   display: flex;
   list-style: none;
   margin: 0;
@@ -96,11 +96,11 @@ header .main-nav__auxiliary ul {
   align-items: center;
 }
 
-header .main-nav__main {
+header .MainNav__main {
   display: flex;
 }
 
-header .main-nav__main ul {
+header .MainNav__main ul {
   display: flex;
   list-style: none;
   margin: 0;
@@ -124,16 +124,16 @@ header nav a:hover {
 }
 
 /* Mobile Search and Menu Toggle */
-header .search-modal-mobile-trigger,
-header .search-modal-desktop-trigger {
+header .SearchModalMobileTrigger,
+header .SearchModalDesktopTrigger {
   cursor: pointer;
   padding: 8px;
   background: none;
   border: none;
 }
 
-header .search-modal-mobile-trigger .search-icon,
-header .search-modal-desktop-trigger .search-icon {
+header .SearchModalMobileTrigger .search-icon,
+header .SearchModalDesktopTrigger .search-icon {
   width: 18px;
   height: 18px;
 }
@@ -158,13 +158,13 @@ header .toggle-navigation .icon.icon-close-menu {
   display: none;
 }
 
-header .site-header--mobile.is-open .toggle-navigation .icon-open-menu,
-header .site-header--mobile.is-open .toggle-navigation .icon.icon-open-menu {
+header .SiteHeader--mobile.is-open .toggle-navigation .icon-open-menu,
+header .SiteHeader--mobile.is-open .toggle-navigation .icon.icon-open-menu {
   display: none;
 }
 
-header .site-header--mobile.is-open .toggle-navigation .icon-close-menu,
-header .site-header--mobile.is-open .toggle-navigation .icon.icon-close-menu {
+header .SiteHeader--mobile.is-open .toggle-navigation .icon-close-menu,
+header .SiteHeader--mobile.is-open .toggle-navigation .icon.icon-close-menu {
   display: block;
 }
 
@@ -173,7 +173,7 @@ header .toggle-navigation span {
 }
 
 /* Mobile Navigation */
-header .mobile-nav {
+header .MobileNav {
   position: absolute;
   top: 100%;
   left: 0;
@@ -184,21 +184,21 @@ header .mobile-nav {
   z-index: 999;
 }
 
-header .site-header--mobile.is-open .mobile-nav {
+header .SiteHeader--mobile.is-open .MobileNav {
   display: block;
 }
 
-header .mobile-nav__main ul {
+header .MobileNav__main ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-header .mobile-nav__main li {
+header .MobileNav__main li {
   border-bottom: 1px solid #eee;
 }
 
-header .mobile-nav__main a {
+header .MobileNav__main a {
   display: block;
   padding: 15px var(--grid-margin, 24px);
   color: #333;
@@ -207,7 +207,7 @@ header .mobile-nav__main a {
   font-size: 16px;
 }
 
-header .mobile-nav__main a:hover {
+header .MobileNav__main a:hover {
   background-color: #f5f5f5;
 }
 
@@ -229,7 +229,7 @@ header .icon-warning-2 {
 }
 
 /* Search Modal Styling */
-header .search-modal {
+header .SearchModal {
   position: fixed;
   inset: 0;
   background: rgb(0 0 0 / 80%);
@@ -239,11 +239,11 @@ header .search-modal {
   justify-content: center;
 }
 
-header .search-modal.is-open {
+header .SearchModal.is-open {
   display: flex;
 }
 
-header .search-modal .form-field {
+header .SearchModal .form-field {
   background: white;
   padding: 40px;
   border-radius: 8px;
@@ -251,7 +251,7 @@ header .search-modal .form-field {
   max-width: 600px;
 }
 
-header .search-modal input {
+header .SearchModal input {
   width: 80%;
   padding: 12px;
   font-size: 16px;
@@ -259,7 +259,7 @@ header .search-modal input {
   border-radius: 4px;
 }
 
-header .search-modal button {
+header .SearchModal button {
   width: 18%;
   padding: 12px;
   background: #06c;
@@ -271,28 +271,28 @@ header .search-modal button {
 }
 
 /* Scrolled state styling */
-body[ui-scrolled="true"] header .site-header--desktop,
-body[ui-scrolled="true"] header .site-header--mobile .site-header__mobile-always-visible {
+body[ui-scrolled="true"] header .SiteHeader--desktop,
+body[ui-scrolled="true"] header .SiteHeader--mobile .SiteHeader__mobile-always-visible {
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 10%);
 }
 
-body[ui-scrolled="true"] header .site-header--desktop,
-body[ui-scrolled="true"] header .site-header--mobile,
-body[ui-scrolled="true"] header .site-header--mobile .site-header__mobile-always-visible {
+body[ui-scrolled="true"] header .SiteHeader--desktop,
+body[ui-scrolled="true"] header .SiteHeader--mobile,
+body[ui-scrolled="true"] header .SiteHeader--mobile .SiteHeader__mobile-always-visible {
   top: 0;
 }
 
 /* Responsive adjustments */
 @media (width >= 883px) {
-  header .site-header + main,
-  header .site-header + .sf-cols > main {
+  header .SiteHeader + main,
+  header .SiteHeader + .sf_cols > main {
     padding-top: 142px;
   }
 }
 
 @media (width <= 882px) {
-  header .site-header + main,
-  header .site-header + .sf-cols > main {
+  header .SiteHeader + main,
+  header .SiteHeader + .sf_cols > main {
     padding-top: 146px;
   }
 }

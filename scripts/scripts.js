@@ -11,10 +11,8 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
-import {
-  initializeCodeKit,
-  getConfigValue,
-} from './aem-code-kit.js';
+
+import { initializeCodeKit } from './aem-code-kit.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -100,7 +98,7 @@ async function loadEager(doc) {
   if (main) {
     await initializeCodeKit();
     await loadCSS(`${window.hlx.codeBasePath}/styles/root.css`);
-   
+
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

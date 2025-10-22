@@ -4,7 +4,7 @@
   /* Colors - Figma Design System Variables */
   
   /* Text Colors */
-  --text-primary: #fff;
+  --text-primary: #000;
   --text-secondary: #505050;
   --text-tertiary: #b0b0b0;
   --text-on-color: #f8f8f8;
@@ -14,13 +14,13 @@
   
   /* Text - Link Colors */
   --text-link-general-disabled: #b0b0b0;
-  --text-link-header-default: #fff;
-  --text-link-header-hover: #fff;
-  --text-link-header-visited: #fff;
+  --text-link-header-default: #000;
+  --text-link-header-hover: #000;
+  --text-link-header-visited: #505050;
   --text-link-header-disabled: #b0b0b0;
-  --text-link-footer-default: #fff;
+  --text-link-footer-default: #000;
   --text-link-footer-hover: #fff;
-  --text-link-footer-visited: #fff;
+  --text-link-footer-visited: #505050;
   --text-link-footer-disabled: #b0b0b0;
 
   /* Surface Colors */
@@ -30,22 +30,22 @@
   --surface-disabled: #e7e7e7;
   
   /* Border Colors */
-  --border-primary: #FFFFFF80;
-  --border-button: #fff;
+  --border-primary: #000;
+  --border-button: #000;
   --border-interactive: transparent;
   --border-tertiary: #d1d1d1;
   
   /* Button Colors */
-  --button-primary: #fff;
+  --button-primary: #000;
   --button-primary-background: transparent;
-  --button-primary-border: #fff;
-  --button-primary-hover: #000;
+  --button-primary-border: #000;
+  --button-primary-hover: #fff;
   --button-primary-hover-background: #fff;
   --button-primary-hover-border: #000;
   --button-primary-disabled: #e7e7e7;
-  --button-secondary: #fff;
+  --button-secondary: #000;
   --button-secondary-hover: #000;
-  --button-tertiary: #fff;
+  --button-tertiary: #000;
   --button-tertiary-disabled: #b0b0b0;
   
   /* Semantic Colors */
