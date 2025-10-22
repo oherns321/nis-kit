@@ -1,50 +1,63 @@
-# Columbia Gas Header Class Name Mapping
+# Header Block - Columbia Gas Ohio Exact Match
 
-This document provides a mapping between the original Columbia Gas website class names and the kebab-case equivalents used in our header block.
+This document describes the header implementation that **exactly matches** the Columbia Gas Ohio website at columbiagasohio.com.
 
-## Original vs. Kebab-case Mapping
+## Class Names Used (EXACT MATCH)
 
-| Original Columbia Gas Class | Kebab-case Equivalent | Description |
-|----------------------------|----------------------|-------------|
-| `SiteHeader` | `site-header` | Main header container |
-| `SiteHeader--desktop` | `site-header--desktop` | Desktop header variant |
-| `SiteHeader--mobile` | `site-header--mobile` | Mobile header variant |
-| `SiteHeader__mobile-always-visible` | `site-header__mobile-always-visible` | Mobile header always visible section |
-| `MainNav` | `main-nav` | Main navigation container |
-| `MainNav--desktop` | `main-nav--desktop` | Desktop navigation variant |
-| `MainNav__auxiliary` | `main-nav__auxiliary` | Auxiliary navigation section |
-| `MainNav__main` | `main-nav__main` | Main navigation section |
-| `MobileNav` | `mobile-nav` | Mobile navigation container |
-| `MobileNav__main` | `mobile-nav__main` | Mobile navigation main section |
-| `SearchModal` | `search-modal` | Search modal container |
-| `SearchModalMobileTrigger` | `search-modal-mobile-trigger` | Mobile search trigger |
-| `SearchModalDesktopTrigger` | `search-modal-desktop-trigger` | Desktop search trigger |
+### Main Structure
+- `SiteHeader` - Base header container
+- `SiteHeader--desktop` - Desktop header variant
+- `SiteHeader--mobile` - Mobile header variant  
+- `SiteHeader__mobile-always-visible` - Mobile header always visible section
 
-## BEM Convention Notes
+### Navigation
+- `MainNav` - Main navigation container
+- `MainNav--desktop` - Desktop navigation variant
+- `MainNav__auxiliary` - Auxiliary/secondary navigation (Our Company, Partner with Us, Emergency Contact, Search)
+- `MainNav__main` - Primary navigation (My Account, Bills & Payments, Products & Services, Safety)
 
-- `--` indicates a modifier (variant of a block)
-- `__` indicates an element (child of a block)
-- All converted to kebab-case for consistency with project standards
+### Mobile Navigation
+- `MobileNav` - Mobile navigation menu
+- `MobileNav__main` - Mobile navigation main section
 
-## Original Structure Reference
+### Search Components
+- `SearchModalDesktopTrigger` - Desktop search trigger button
+- `SearchModalMobileTrigger` - Mobile search trigger button
+- `SearchModal` - Search modal overlay
 
-The original Columbia Gas website uses this structure:
-```html
-<!-- Desktop -->
-<div class="SiteHeader SiteHeader--desktop">
-  <div class="MainNav MainNav--desktop">
-    <div class="MainNav__auxiliary">...</div>
-    <div class="MainNav__main">...</div>
-  </div>
-</div>
+### Interactive Elements
+- `toggle-navigation` - Mobile menu toggle button
+- `is-open` - State class for open mobile menu
 
-<!-- Mobile -->
-<div class="SiteHeader SiteHeader--mobile">
-  <div class="SiteHeader__mobile-always-visible">...</div>
-  <div class="MobileNav">
-    <div class="MobileNav__main">...</div>
-  </div>
-</div>
-```
+## Navigation Items (Exact Match)
 
-Our implementation maintains the same structural hierarchy but uses kebab-case naming.
+### Auxiliary Navigation (Desktop Top)
+1. Our Company → `/our-company`
+2. Partner with Us → `/partner-with-us`
+3. Emergency Contact → `tel:+18001234567` (with warning icon)
+4. Search (glyphicon-search)
+
+### Main Navigation
+1. My Account → `https://myaccount.columbiagasohio.com/login`
+2. Bills & Payments → `https://myaccount.columbiagasohio.com/bills`
+3. Products & Services → `/products-and-services`
+4. Safety → `/safety`
+
+## Logo
+Uses the exact Columbia Gas of Ohio logo:
+`https://nieus2prodazstg01.blob.core.windows.net/cdr-prod/images/librariesprovider3/design-elements/logos/columbia-gas-of-ohio-logo.png`
+
+## Icons
+- Uses Bootstrap glyphicons for search (`glyphicon-search`)
+- Uses SVG symbols for menu icons (`icon-open-menu`, `icon-close-menu`)
+- Uses warning icon for Emergency Contact (`icon-warning-2`)
+
+## Reference Site
+Exact match for: https://www.columbiagasohio.com/home
+
+## Implementation Notes
+- Fixed positioning at `top: 46px` 
+- Responsive breakpoint at 882px
+- White background (`#fff`)
+- Box shadow for scrolled state
+- Matches exact CSS properties from Columbia Gas Ohio

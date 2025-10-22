@@ -425,7 +425,7 @@
         "options": [
           {
             "name": "Default (3 columns)",
-            "value": "three-columns"
+            "value": ""
           },
           {
             "name": "Two Columns",
@@ -541,6 +541,27 @@
       {
         "component": "richtext",
         "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "bannerSummary",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
         "value": "",
         "label": "Text",
         "valueType": "string"
@@ -925,6 +946,109 @@
           }
         ],
         "value": "height-full-page"
+      }
+    ]
+  },
+  {
+    "id": "test-super-cards",
+    "fields": [
+      {
+        "name": "heading",
+        "label": "Heading 1",
+        "component": "text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text1",
+        "label": "Text 2",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text2",
+        "label": "Text 3",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text3",
+        "label": "Text 4",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "heading4",
+        "label": "Heading 5",
+        "component": "text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text5",
+        "label": "Text 6",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text6",
+        "label": "Text 7",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text7",
+        "label": "Text 8",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text8",
+        "label": "Text 9",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text9",
+        "label": "Text 10",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "heading10",
+        "label": "Heading 11",
+        "component": "text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text11",
+        "label": "Text 12",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text12",
+        "label": "Text 13",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "name": "text13",
+        "label": "Text 14",
+        "component": "richtext",
+        "valueType": "string",
+        "required": true
       }
     ]
   }

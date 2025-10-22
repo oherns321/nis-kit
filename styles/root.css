@@ -64,7 +64,9 @@
   /* Overlay Colors */
   --overlay-dark: #0d0d0c80;            /* Figma: EYDS Colors/neutral/transparent-dark */
   --overlay-light: #f3f2f280;           /* Light overlay equivalent */
-  --background-primary: var(--surface-black);
+  --background-primary: #fff;
+  --background-secondary: #f6f6fa;
+  --background-tertiary: #f3f3f3;
 
   /* Legacy color compatibility */
   --background-color: var(--background-primary);
@@ -79,10 +81,10 @@
   /* --body-font-family: "Roboto", roboto-fallback, sans-serif;
   --heading-font-family: "Roboto Condensed", roboto-condensed-fallback, sans-serif;
   --inter-font-family: "Inter", inter-fallback, sans-serif; /* For display typography */
- 
-  --body-font-family: 'EY Interstate', sans-serif;
-  --heading-font-family: 'EY Interstate', sans-serif;
-  --inter-font-family: 'EY Interstate', sans-serif;
+
+  --body-font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica Neue', helvetica, arial, sans-serif;
+  --heading-font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica Neue', helvetica, arial, sans-serif;
+  --inter-font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica Neue', helvetica, arial, sans-serif;
 
   /* Typography - Font Sizes (Complete Figma Set - Mobile First) */
   --font-size-heading-xxl: 48px;  /* Mobile: scaled down from 126px */
