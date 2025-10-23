@@ -177,19 +177,9 @@ export default function decorate(block) {
       return;
     }
 
-    // Check if this is a CTA card item (Universal Editor or content)
-    const hasUEMarkers = cell.querySelector('[data-aue-type="component"]')
-                        || cell.hasAttribute('data-aue-type')
-                        || cell.hasAttribute('data-aue-prop');
-
-    const hasContent = textContent.length > 0;
-    const hasImage = cells.some((cellEl) => cellEl.querySelector('img'));
-    const hasLink = cells.some((cellEl) => cellEl.querySelector('a'));
-
-    // Process as card if it has UE markers OR meaningful content
-    if (hasUEMarkers || hasImage || hasLink || hasContent) {
-      cardItems.push({ element: row, row, index });
-    }
+    // Process ALL non-configuration rows as CTA card items
+    // This includes empty rows created by Universal Editor
+    cardItems.push({ element: row, row, index });
   });
 
   // Process card items
