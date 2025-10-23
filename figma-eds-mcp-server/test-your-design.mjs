@@ -2,7 +2,7 @@
 
 // Test Figma API access for your specific design
 async function testYourFigmaDesign() {
-  const token = 'figd_GVQkNvt8A1N71azd9KbcVU4UFlg5MOld3FQqIKOd';
+  const token = '';
   const fileKey = 'gDpSOY8rJbFGt4aXlmlGVZ';  // Your file
   const nodeId = '4118-11899';  // Your node
 

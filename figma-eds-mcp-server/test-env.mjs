@@ -14,7 +14,7 @@ const server = spawn('node', [serverPath], {
   stdio: ['pipe', 'pipe', 'pipe'],
   env: {
     ...process.env,
-    FIGMA_ACCESS_TOKEN: 'figd_GVQkNvt8A1N71azd9KbcVU4UFlg5MOld3FQqIKOd',
+    FIGMA_ACCESS_TOKEN: '',
     DEBUG: 'true'
   }
 });

@@ -2,7 +2,7 @@
 
 // Test Figma API access directly
 async function testFigmaAccess() {
-  const token = 'figd_GVQkNvt8A1N71azd9KbcVU4UFlg5MOld3FQqIKOd';
+  const token = '';
   const fileKey = 'uNaqf803xH0QtIb65S4klS';
 
   console.log('🔑 Testing Figma API access...\n');

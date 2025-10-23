@@ -10,7 +10,7 @@ async function testCorrectToolNames() {
     cwd: '/Users/seanohern/adobe-code-kit/adobe-code-kit/figma-eds-mcp-server',
     env: {
       ...process.env,
-      FIGMA_ACCESS_TOKEN: 'figd_GVQkNvt8A1N71azd9KbcVU4UFlg5MOld3FQqIKOd',
+      FIGMA_ACCESS_TOKEN: '',
     },
     stdio: ['pipe', 'pipe', 'pipe'],
   });
