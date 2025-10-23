@@ -16,9 +16,9 @@ module.exports = {
   },
   rules: {
     'class-methods-use-this': 'off', // Allow utility methods in classes
-    'no-console': 'off', // Allow console in development
-    '@typescript-eslint/no-unused-vars': 'off', // Warn about unused variables
-    'max-len': ['error', { code: 240 }], // Slightly longer lines for readability
+    'no-console': 'warn', // Allow console in development
+    '@typescript-eslint/no-unused-vars': 'warn', // Warn about unused variables
+    'max-len': ['error', { code: 120 }], // Slightly longer lines for readability
     '@typescript-eslint/no-explicit-any': 'warn', // Warn about any usage
   },
 };

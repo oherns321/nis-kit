@@ -174,6 +174,7 @@ export interface AnalyzeBlockStructureArgs {
   figmaNodeId: string;
   figmaFileKey: string;
   accessToken?: string;
+  generatedCode?: string; // Optional pre-generated code from external MCP tools
 }
 
 export interface ValidateBlockOutputArgs {

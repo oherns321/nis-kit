@@ -118,6 +118,7 @@ export const BlockAnalysisSchema = z.object({
     }),
     keyboardNavigation: z.boolean(),
   }),
+  debug: z.record(z.any()).optional(),
 });
 
 export type BlockAnalysis = z.infer<typeof BlockAnalysisSchema>;
@@ -168,6 +169,7 @@ export const AnalyzeBlockStructureParamsSchema = z.object({
   figmaNodeId: z.string(),
   figmaFileKey: z.string(),
   accessToken: z.string().optional(),
+  generatedCode: z.string().optional(),
 });
 
 export type AnalyzeBlockStructureParams = z.infer<typeof AnalyzeBlockStructureParamsSchema>;

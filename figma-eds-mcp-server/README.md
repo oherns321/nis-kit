@@ -82,13 +82,13 @@ For each block, the server generates:
    npm run build
    ```
 
-2. Configure in your VS Code settings or chat mode:
+2. Configure in your VS Code settings (`.vscode/settings.json`):
    ```json
    {
-     "mcpServers": {
+     "chat.mcp.servers": {
        "figma-eds": {
          "command": "node",
-         "args": ["./dist/server.js"],
+         "args": ["/absolute/path/to/figma-eds-mcp-server/dist/server.js"],
          "env": {
            "FIGMA_ACCESS_TOKEN": "your-figma-token"
          }
@@ -96,6 +96,8 @@ For each block, the server generates:
      }
    }
    ```
+
+3. **VS Code will automatically start and manage the MCP server** when you use the tools in AI chat.
 
 ## Environment Variables
 
@@ -110,26 +112,27 @@ Generated blocks meet these standards:
 - **Code Quality**: Zero ESLint and Stylelint errors
 - **Bundle Size**: CSS ≤5KB, JavaScript ≤3KB (minified+gzipped)
 
-## Usage Example
+## Usage in VS Code Chat
+
+Once configured, the MCP tools are available directly in GitHub Copilot Chat:
 
 1. **Analyze a Figma design:**
-   ```typescript
-   const analysis = await mcpClient.callTool('analyze-block-structure', {
-     figmaUrl: 'https://figma.com/design/...',
-     blockName: 'feature-cards'
-   });
+   ```
+   @GitHub Copilot analyze the Figma design at node 4118-11899 in file gDpSOY8rJbFGt4aXlmlGVZ
    ```
 
-2. **Generate the complete block:**
-   ```typescript
-   const result = await mcpClient.callTool('generate-eds-block', {
-     figmaUrl: 'https://figma.com/design/...',
-     blockName: 'feature-cards',
-     outputPath: '/path/to/eds-project'
-   });
+2. **Generate a complete block:**
+   ```
+   @GitHub Copilot generate an EDS block called "feature-carousel" from Figma node 4118-11899 
+   in file gDpSOY8rJbFGt4aXlmlGVZ, output to /blocks
    ```
 
-3. **Review generated files** and customize as needed
+3. **Validate generated blocks:**
+   ```
+   @GitHub Copilot validate the feature-carousel block at /blocks/feature-carousel
+   ```
+
+The AI will use the appropriate MCP tools (`mcp_figma-eds_analyzeBlockStructure`, `mcp_figma-eds_generateEdsBlock`, etc.) automatically to complete your requests.
 
 ## Block Types Supported
 

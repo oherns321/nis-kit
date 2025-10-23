@@ -406,6 +406,71 @@
     ]
   },
   {
+    "id": "cta-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta",
+        "value": "",
+        "label": "CTA URL",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "value": "",
+        "label": "CTA Text",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "label-variant",
+        "label": "Label Variant",
+        "description": "Choose the text color for this CTA card's label",
+        "options": [
+          {
+            "name": "Default (black)",
+            "value": ""
+          },
+          {
+            "name": "Blue",
+            "value": "blue-label"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "cta-variant",
+        "label": "CTA Variant",
+        "description": "Choose the layout style for this CTA card",
+        "options": [
+          {
+            "name": "Default (white background, separator, bolder text)",
+            "value": ""
+          },
+          {
+            "name": "Grey Background",
+            "value": "grey-background"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "feature-cards",
     "fields": [
       {

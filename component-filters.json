@@ -68,6 +68,12 @@
     ]
   },
   {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
     "id": "feature-cards",
     "components": [
       "feature-card"

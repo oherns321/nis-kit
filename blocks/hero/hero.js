@@ -131,7 +131,13 @@ export default async function decorate(block) {
         <div class="form-headline p-b-0">
           <h1 class="form-headline__title">Manage Your Account</h1>
         </div>
-        <div data-vue-app="logged-in-user"><!----> <div><div class="login-banner__welcome"><div class="test m-t-30 m-b-100"><p class="text-700 text-sm m-b-0 m-t-10">Email</p> <p>Tyler Schleich <a href="https://myaccount.columbiagasohio.com/logout" class="text-xs text-300 text-gray m-l-md-5"> Sign Out</a></p> <a href="https://myaccount.columbiagasohio.com/dashboard" class="btn btn--primary m-t-10 m-b-10">Access My Account</a></div></div></div></div>
+        <div data-vue-app="logged-in-user">
+        <!----> <div>
+          <div class="login-banner__welcome">
+            <div class="test m-t-30 m-b-100">
+            <p class="text-700 text-sm m-b-0 m-t-10">Email</p>
+            <p>Zoey <a href="https://myaccount.columbiagasohio.com/logout" class="text-xs text-300 text-gray m-l-md-5"> Sign Out</a></p> 
+            <a href="https://myaccount.columbiagasohio.com/dashboard" class="btn btn--primary m-t-10 m-b-10">Access My Account</a></div></div></div></div>
       </div>
     </div>
   `;

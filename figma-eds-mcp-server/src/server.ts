@@ -64,18 +64,15 @@ class FigmaEdsServer {
       }
     );
 
-    // Initialize components - try MCP client first, fallback to direct API
+    // Initialize components - use Figma API when token available, fallback to MCP client
     const figmaToken = process.env.FIGMA_ACCESS_TOKEN;
-    const mcpServerUrl = process.env.FIGMA_MCP_URL || 'http://127.0.0.1:3845/mcp';
     
     if (figmaToken) {
-      // Use direct API if token is available
+      // Use direct Figma API client when token is available
       this.figmaClient = new FigmaClient(figmaToken);
     } else {
-      // Use existing MCP server as proxy
-      /* eslint-disable-next-line no-console */
-      console.log(`Using existing Figma MCP server at ${mcpServerUrl}`);
-      this.figmaClient = new MCPFigmaClient(mcpServerUrl);
+      // Fallback to MCP client when no token
+      this.figmaClient = new MCPFigmaClient();
     }
     this.designAnalyzer = new DesignAnalyzer();
     this.modelGenerator = new ModelGenerator();
@@ -95,7 +92,7 @@ class FigmaEdsServer {
       tools: [
         {
           name: 'analyzeBlockStructure',
-          description: 'Analyze a Figma design to determine block structure and content types',
+          description: 'Analyze a Figma design to determine block structure and content types. For best results, first call mcp_my-mcp-server_get_code to generate code from the Figma design, then pass that code as the generatedCode parameter.',
           inputSchema: {
             type: 'object',
             properties: {
@@ -110,6 +107,10 @@ class FigmaEdsServer {
               accessToken: {
                 type: 'string',
                 description: 'Figma access token (optional if set in environment)',
+              },
+              generatedCode: {
+                type: 'string',
+                description: 'Pre-generated code from mcp_my-mcp-server_get_code (recommended for best analysis results)',
               },
             },
             required: ['figmaNodeId', 'figmaFileKey'],
@@ -247,18 +248,44 @@ class FigmaEdsServer {
 
   private async handleAnalyzeBlockStructure(args: AnalyzeBlockStructureArgs) {
     const params = AnalyzeBlockStructureParamsSchema.parse(args);
-    
+    const originalNodeId = params.figmaNodeId;
+    const normalizedNodeId = this.normalizeNodeId(originalNodeId);
+
     try {
-      // Fetch Figma node data
+      // 1. Fetch node data from Figma
       const figmaData = await this.figmaClient.getNode(
         params.figmaFileKey,
-        params.figmaNodeId,
+        normalizedNodeId,
         params.accessToken
       );
 
-      // Analyze the design structure
-      const analysis = await this.designAnalyzer.analyze(figmaData as FigmaNode);
+      // 2. Use generated code if provided
+      let rawCode: string | undefined;
+      if (params.generatedCode) {
+        rawCode = params.generatedCode;
+        console.log('[DEBUG] Using provided generated code parameter, length:', rawCode.length);
+      } else {
+        console.log('[INFO] No generated code provided. For best results, first call mcp_my-mcp-server_get_code and pass the result as generatedCode parameter');
+      }
 
+      // 3. Run analyzer
+      const analysis = await this.designAnalyzer.analyze(figmaData as FigmaNode, rawCode);
+
+      // 4. Add debug information
+      if (!(analysis as any).debug) {
+        (analysis as any).debug = {};
+      }
+
+      (analysis as any).debug.rawCodePresent = !!rawCode;
+      (analysis as any).debug.rawCodeLength = rawCode ? rawCode.length : 0;
+      (analysis as any).debug.codeSource = params.generatedCode ? 'provided-parameter' : 'none';
+      (analysis as any).debug.nodeIdNormalization = {
+        original: originalNodeId,
+        used: normalizedNodeId,
+        changed: originalNodeId !== normalizedNodeId,
+      };
+
+      // 5. Return response
       return {
         content: [
           {
@@ -272,7 +299,7 @@ class FigmaEdsServer {
         throw new McpError(ErrorCode.InvalidRequest, `Figma API error: ${error.message}`);
       }
       throw new McpError(
-        ErrorCode.InternalError, 
+        ErrorCode.InternalError,
         `Analysis failed: ${error instanceof Error ? error.message : String(error)}`
       );
     }
@@ -280,11 +307,12 @@ class FigmaEdsServer {
 
   private async handleGenerateEdsBlock(args: unknown) {
     const params = GenerateEdsBlockParamsSchema.parse(args);
+    const normalizedNodeId = this.normalizeNodeId(params.figmaNodeId);
     
     try {
       // Analyze the block structure first
       const analysisResult = await this.handleAnalyzeBlockStructure({
-        figmaNodeId: params.figmaNodeId,
+        figmaNodeId: normalizedNodeId,
         figmaFileKey: params.figmaFileKey,
       });
 
@@ -329,6 +357,23 @@ class FigmaEdsServer {
         `Block generation failed: ${error instanceof Error ? error.message : String(error)}`
       );
     }
+  }
+
+  // Synthetic HTML generation removed per directive: rely solely on authentic generated code
+
+  /**
+   * Normalize a Figma node ID. Figma REST API expects colon-separated IDs (e.g. 13157:13513)
+   * while some contexts (URLs, user copy/paste) provide a hyphen form (13157-13513).
+   * This converts simple digit-digit hyphen patterns to colon form. If the ID already
+   * contains a colon or does not match the simple pattern, it is returned unchanged.
+   */
+  private normalizeNodeId(id: string): string {
+    if (id.includes(':')) return id; // Already normalized
+    // Match exactly two numeric segments separated by a single hyphen
+    if (/^\d+-\d+$/.test(id)) {
+      return id.replace('-', ':');
+    }
+    return id; // Fallback: return as-is (complex IDs may already be valid)
   }
 
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */

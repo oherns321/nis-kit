@@ -76,7 +76,7 @@
 .hero .login-banner-desktop {
   display: none;
   position: relative;
-  min-height: 500px;
+  min-height: 700px;
 }
 
 .hero .login-banner__container {
@@ -154,6 +154,7 @@
 .hero .login-banner__form {
   width: 100%;
   max-width: 350px;
+  min-height: 350px;
 }
 
 .hero .form-headline {

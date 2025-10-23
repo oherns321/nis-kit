@@ -1,0 +1,114 @@
+/* Feature Carousel Block */
+
+/* Container styling */
+.feature-carousel-container .feature-carousel-wrapper {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+  padding: 0 var(--grid-margin);
+}
+
+.feature-carousel {
+  padding: var(--spacing-xl) var(--grid-margin);
+}
+
+/* Content styling */
+.feature-carousel .content {
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+}
+
+/* Heading styling */
+.feature-carousel .heading {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-l);
+}
+
+/* Text content styling */
+.feature-carousel .text-content {
+  color: var(--text-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+}
+
+/* CTA buttons container */
+.feature-carousel .ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+/* Button base styles */
+.feature-carousel .ctas .button {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-button);
+  font-size: var(--font-size-button-m);
+  line-height: var(--line-height-button-m);
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+/* Primary button */
+.feature-carousel .ctas .button-primary {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+  border: 2px solid var(--button-primary);
+}
+
+.feature-carousel .ctas .button-primary:hover {
+  background-color: var(--button-primary-hover, var(--button-primary));
+  border-color: var(--button-primary-hover, var(--button-primary));
+}
+
+/* Secondary button */
+.feature-carousel .ctas .button-secondary {
+  background-color: transparent;
+  color: var(--button-primary);
+  border: 2px solid var(--button-primary);
+}
+
+.feature-carousel .ctas .button-secondary:hover {
+  background-color: var(--button-primary);
+  color: var(--text-on-color);
+}
+
+/* Empty state placeholder styling for Universal Editor */
+.feature-carousel [data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.feature-carousel .empty-cta[data-placeholder] {
+  background-color: transparent;
+  border: 2px dashed #ccc;
+  color: #999;
+  cursor: default;
+}
+
+.feature-carousel .empty-cta[data-placeholder]:hover {
+  background-color: transparent;
+  border-color: #999;
+  color: #666;
+}
+
+.feature-carousel [data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  display: inline-block;
+  min-height: 1em;
+  min-width: 100px;
+}
+
