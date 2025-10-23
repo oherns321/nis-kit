@@ -406,10 +406,6 @@
     ]
   },
   {
-    "id": "cta-cards",
-    "fields": []
-  },
-  {
     "id": "cta-card",
     "fields": [
       {
