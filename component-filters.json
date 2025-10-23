@@ -81,6 +81,12 @@
     ]
   },
   {
+    "id": "slideshow",
+    "components": [
+      "slide"
+    ]
+  },
+  {
     "id": "super-cards",
     "components": [
       "super-card"

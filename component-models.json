@@ -658,6 +658,67 @@
     ]
   },
   {
+    "id": "slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Slide image (recommended: 800x600px or similar aspect ratio)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt Text",
+        "description": "Alternative text for the slide image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "super",
+        "value": "",
+        "label": "Super Text",
+        "description": "Small text above the title (e.g., 'RESTORING YOUR PROPERTY AFTER GAS LINE WORK')",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "Main slide title/heading",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "copy",
+        "value": "",
+        "label": "Content",
+        "description": "Main slide content/description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "value": "",
+        "label": "CTA Button Text",
+        "description": "Call-to-action button text (e.g., 'Learn More')",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "cta",
+        "value": "",
+        "label": "CTA Button URL",
+        "description": "Call-to-action button destination URL",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "super-cards",
     "fields": [
       {

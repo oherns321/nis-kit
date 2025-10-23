@@ -1,0 +1,336 @@
+/*
+ * Slideshow Block - Promotional Content Slideshow
+ * - Based on Columbia Gas slideshow design
+ * - Responsive image and content layout
+ * - Accessible navigation controls
+ * - Auto-play capability
+ */
+
+/* Accessibility helper */
+.a11y-hide {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Main slideshow container */
+.slideshow {
+  position: relative;
+  margin: var(--spacing-xl) 0;
+  background-color: var(--surface-white);
+  border-radius: var(--border-radius-default);
+  overflow: hidden;
+  box-shadow: var(--shadow-default);
+}
+
+/* Slides container */
+.slideshow ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 400px; /* Fixed height for slideshow */
+  overflow: hidden;
+}
+
+/* Individual slide */
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Promotion container */
+.promotion {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  gap: var(--spacing-l);
+  padding: var(--spacing-l);
+}
+
+/* Promotion image */
+.promotion__image {
+  flex: 0 0 300px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius-default);
+}
+
+.promotion__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.slideshow-slide:hover .promotion__image img {
+  transform: scale(1.05);
+}
+
+/* Promotion content */
+.promotion__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+}
+
+/* Super text */
+.promotion__super {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Title */
+.promotion__title {
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-heading-s);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading-s);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+/* Copy content */
+.promotion__copy {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body-m);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-m);
+}
+
+.promotion__copy p {
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.promotion__copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA Button */
+.promotion__content .btn {
+  align-self: flex-start;
+  padding: var(--spacing-s) var(--spacing-m);
+  background-color: var(--button-dark);
+  color: var(--text-on-color);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button-s);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button-s);
+  border: none;
+  border-radius: var(--border-radius-default);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.promotion__content .btn:hover {
+  background-color: var(--button-dark-hover);
+  transform: translateY(-1px);
+}
+
+/* Slideshow Controls */
+.slideshow-controls {
+  position: absolute;
+  bottom: var(--spacing-l);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  background-color: rgb(0 0 0 / 70%);
+  padding: var(--spacing-s) var(--spacing-m);
+  border-radius: var(--border-radius-round);
+}
+
+/* Control buttons */
+.slideshow-control {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.slideshow-control:hover {
+  background-color: rgb(255 255 255 / 20%);
+}
+
+.slideshow-control:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Dots container */
+.slideshow-dots {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+/* Individual dot */
+.slideshow-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgb(255 255 255 / 50%);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slideshow-dot.active {
+  background-color: white;
+  border-color: white;
+}
+
+.slideshow-dot:hover {
+  border-color: white;
+  background-color: rgb(255 255 255 / 70%);
+}
+
+.slideshow-dot:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Mobile responsive */
+@media (width < 768px) {
+  .slideshow ul {
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .promotion {
+    flex-direction: column;
+    gap: var(--spacing-m);
+    padding: var(--spacing-m);
+  }
+  
+  .promotion__image {
+    flex: none;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .promotion__content {
+    text-align: center;
+  }
+  
+  .slideshow-controls {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: var(--spacing-m);
+    justify-content: center;
+  }
+}
+
+/* Tablet responsive */
+@media (width >= 768px) and (width < 900px) {
+  .promotion__image {
+    flex: 0 0 250px;
+  }
+  
+  .promotion__title {
+    font-size: var(--font-size-heading-xs);
+  }
+}
+
+/* Large desktop */
+@media (width >= 1200px) {
+  .slideshow ul {
+    height: 450px;
+  }
+  
+  .promotion__image {
+    flex: 0 0 350px;
+  }
+  
+  .promotion__title {
+    font-size: var(--font-size-heading-m);
+  }
+}
+
+/* Slideshow variants */
+.slideshow.compact ul {
+  height: 300px;
+}
+
+.slideshow.compact .promotion {
+  padding: var(--spacing-m);
+}
+
+.slideshow.compact .promotion__image {
+  flex: 0 0 200px;
+}
+
+/* Auto-play indicator */
+.slideshow.autoplay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) 100%);
+  animation: slide-progress 5s linear infinite;
+  z-index: 10;
+}
+
+@keyframes slide-progress {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Dark theme variant */
+.slideshow.dark {
+  background-color: var(--surface-dark);
+  color: var(--text-on-dark);
+}
+
+.slideshow.dark .promotion__title {
+  color: var(--text-on-dark);
+}
+
+.slideshow.dark .promotion__copy {
+  color: var(--text-secondary-on-dark);
+}
+
+.slideshow.dark .promotion__super {
+  color: var(--text-accent-on-dark);
+}

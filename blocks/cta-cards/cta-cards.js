@@ -118,26 +118,14 @@ function createCtaCardElement(cardData, index, originalRow = null) {
   const contentContainer = document.createElement('div');
   contentContainer.className = 'cta-card-content';
 
-  // Add CTA text element
-  const ctaTextElement = document.createElement('h3');
-  ctaTextElement.className = 'cta-card-title';
-
-  // Apply label-variant class if specified
-  if (safeCardData['label-variant']) {
-    ctaTextElement.classList.add(safeCardData['label-variant']);
-  }
-
-  if (safeCardData.ctaText) {
-    ctaTextElement.innerHTML = safeCardData.ctaText;
-  } else {
-    ctaTextElement.innerHTML = '';
-    ctaTextElement.setAttribute('data-placeholder', 'Add CTA text...');
-  }
-  contentContainer.appendChild(ctaTextElement);
-
   // Add call-to-action button
   const ctaButton = document.createElement('a');
   ctaButton.className = 'cta-card-button btn btn-primary';
+
+  // Apply label-variant class if specified
+  if (safeCardData['label-variant'] === 'blue-label') {
+    ctaButton.classList.add('blue-label');
+  }
 
   if (safeCardData.cta) {
     ctaButton.href = safeCardData.cta;
@@ -158,7 +146,7 @@ function createCtaCardElement(cardData, index, originalRow = null) {
 export default function decorate(block) {
   const rows = [...block.children];
   const ctaContainer = document.createElement('div');
-  ctaContainer.className = 'cta-cards-container';
+  ctaContainer.className = 'cta-cards-grid';
 
   const configurationValues = [];
   const cardItems = [];
@@ -211,7 +199,12 @@ export default function decorate(block) {
     row.remove();
   });
 
+  // Create wrapper for positioning and styling
+  const wrapper = document.createElement('div');
+  wrapper.className = 'cta-cards-wrap';
+  wrapper.appendChild(ctaContainer);
+
   // Clear block content and add processed content
   block.innerHTML = '';
-  block.appendChild(ctaContainer);
+  block.appendChild(wrapper);
 }

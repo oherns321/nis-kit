@@ -126,6 +126,7 @@
   --font-weight-link: 400;        /* Figma: typography/font-weight/link */
   --font-weight-list: 400;        /* Figma: typography/font-weight/list */
   --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
   --font-weight-medium: 500;
   --font-weight-regular: 400;
 
@@ -235,7 +236,7 @@
   --grid-columns-desktop: 12;
   --grid-gutter-desktop: 24px; /* Desktop: 24px */
   --grid-margin-desktop: 120px; /* Figma: grid/margin */
-  --grid-max-width-desktop: 1200px; /* Figma: grid/containers - components/max-width */
+  --grid-max-width-desktop: 1600px; /* Figma: grid/containers - components/max-width */
   
   /* Legacy grid variables for compatibility */
   --grid-gap: var(--grid-gutter);
