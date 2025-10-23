@@ -44,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: inset 0 0 400px 400px #ffffffaa;
+  box-shadow: inset 0 0 400px 400px #fffa;
   pointer-events: none;
 }
 
@@ -105,8 +105,9 @@
   flex: 0 0 400px;
   background: #fff;
   display: flex;
-  align-items: center;
-  padding: 40px;
+
+  /* align-items: center; */
+  padding: 40px 60px;
   box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 }
 
@@ -253,7 +254,8 @@
 }
 
 .hero .text-sm {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700
 }
 
 .hero .text-center {
@@ -292,6 +294,38 @@
 .hero input[type="checkbox"] {
   width: auto;
   margin-right: 8px;
+}
+
+/* Sign Out link styling */
+.hero .text-xs.text-300.text-gray {
+  color: #898d8d;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.hero .text-xs.text-300.text-gray:hover {
+  color: #898d8d;
+  text-decoration: underline;
+}
+
+/* Access My Account button styling - match Learn More button */
+.hero .btn.btn--primary {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #0072ce;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.hero .btn.btn--primary:hover {
+  background: #005ba3;
 }
 
 /* Responsive design */
