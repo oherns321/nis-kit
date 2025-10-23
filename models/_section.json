@@ -76,7 +76,8 @@
         "tabs",
         "carousel",
         "super-cards",
-        "feature-cards"
+        "feature-cards",
+        "cta-cards"
       ]
     }
   ]

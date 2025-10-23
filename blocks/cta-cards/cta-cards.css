@@ -1,0 +1,223 @@
+/*
+ * CTA Cards Block - Call to Action Cards
+ * - Styled to match Columbia Gas call-to-action cards
+ * - Responsive grid layout
+ * - Image + title + description + button structure
+ * - Optimized for conversion-focused content
+ */
+
+.cta-cards {
+  margin: var(--spacing-xl) 0;
+  padding: 0 var(--spacing-m);
+}
+
+.cta-cards-container {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--spacing-l);
+  max-width: var(--grid-max-width);
+  margin: 0 auto;
+}
+
+/* Individual CTA Card */
+.cta-card {
+  /* Mobile: Full width */
+  grid-column: span var(--grid-columns);
+  background-color: var(--surface-white);
+  border-radius: var(--border-radius-default);
+  overflow: hidden;
+  box-shadow: var(--shadow-default);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* Card Image */
+.cta-card-image {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--surface-light);
+}
+
+.cta-card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cta-card:hover .cta-card-image img {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.cta-card-content {
+  padding: var(--spacing-l);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+/* Card Title */
+.cta-card-title {
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-heading-s);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading-s);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Card Description */
+.cta-card-description {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body-m);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.cta-card-description p {
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.cta-card-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA Button */
+.cta-card-button {
+  display: inline-block;
+  padding: var(--spacing-s) var(--spacing-m);
+  background-color: #0072ce;
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-default);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button-m);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button-m);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.cta-card-button:hover {
+  background-color: #005ba3;
+  transform: translateY(-1px);
+  color: white;
+  text-decoration: none;
+}
+
+/* Tablet responsive (768px+) */
+@media (width >= 768px) {
+  .cta-cards {
+    padding: 0 var(--spacing-l);
+  }
+
+  .cta-card {
+    /* Tablet: 2 cards per row */
+    grid-column: span 6;
+  }
+
+  .cta-card-image img {
+    height: 220px;
+  }
+
+  .cta-card-title {
+    font-size: var(--font-size-heading-m);
+    line-height: var(--line-height-heading-m);
+  }
+}
+
+/* Desktop responsive (900px+) */
+@media (width >= 900px) {
+  .cta-cards {
+    margin: var(--spacing-xxl) 0;
+    padding: 0;
+  }
+
+  .cta-card {
+    /* Desktop: 3 cards per row */
+    grid-column: span 4;
+  }
+
+  .cta-card-image img {
+    height: 240px;
+  }
+
+  .cta-card-content {
+    padding: var(--spacing-xl);
+  }
+
+  .cta-card-title {
+    font-size: var(--font-size-heading-l);
+    line-height: var(--line-height-heading-l);
+  }
+
+  .cta-card-description {
+    font-size: var(--font-size-body-l);
+    line-height: var(--line-height-body-l);
+  }
+}
+
+/* Large desktop (1200px+) */
+@media (width >= 1200px) {
+  .cta-card {
+    /* Large desktop: 4 cards per row */
+    grid-column: span 3;
+  }
+
+  .cta-card-image img {
+    height: 200px;
+  }
+}
+
+/* CTA Cards variant: 2-column layout */
+.cta-cards.two-columns .cta-card {
+  grid-column: span var(--grid-columns); /* Mobile: full width */
+}
+
+@media (width >= 768px) {
+  .cta-cards.two-columns .cta-card {
+    grid-column: span 6; /* Tablet & Desktop: 2 per row */
+  }
+}
+
+/* CTA Cards variant: large cards with horizontal layout */
+.cta-cards.horizontal .cta-card {
+  grid-column: span var(--grid-columns);
+}
+
+@media (width >= 768px) {
+  .cta-cards.horizontal .cta-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .cta-cards.horizontal .cta-card-image {
+    flex: 0 0 300px;
+  }
+
+  .cta-cards.horizontal .cta-card-image img {
+    height: 100%;
+    min-height: 250px;
+  }
+
+  .cta-cards.horizontal .cta-card-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+  }
+}
