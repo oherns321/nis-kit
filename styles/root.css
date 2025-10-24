@@ -18,10 +18,11 @@
   --text-link-header-hover: #000;
   --text-link-header-visited: #505050;
   --text-link-header-disabled: #b0b0b0;
-  --text-link-footer-default: #000;
-  --text-link-footer-hover: #fff;
-  --text-link-footer-visited: #505050;
+  --text-link-footer-default: #0072ce;
+  --text-link-footer-hover: #0072ce;
+  --text-link-footer-visited: #0072ce;
   --text-link-footer-disabled: #b0b0b0;
+  --text-link-footer-top-level: #004b87;
 
   /* Surface Colors */
   --surface-white: #fff;
