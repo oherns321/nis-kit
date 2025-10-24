@@ -250,7 +250,8 @@ main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
-  padding: var(--spacing-xl) 0;
+
+  /* padding: var(--spacing-xs) 0; */
 }
 
 main .section.dark {

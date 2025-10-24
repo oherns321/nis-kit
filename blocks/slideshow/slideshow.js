@@ -1,103 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-// Helper function to create slideshow controls
-function createSlideshowControls(slideshow, slides) {
-  const controls = document.createElement('div');
-  controls.className = 'slideshow-controls';
-
-  // Previous button
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'slideshow-control slideshow-prev';
-  prevBtn.innerHTML = '&#8249;';
-  prevBtn.setAttribute('aria-label', 'Previous slide');
-
-  // Next button
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'slideshow-control slideshow-next';
-  nextBtn.innerHTML = '&#8250;';
-  nextBtn.setAttribute('aria-label', 'Next slide');
-
-  // Dots indicators
-  const dots = document.createElement('div');
-  dots.className = 'slideshow-dots';
-
-  slides.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.className = 'slideshow-dot';
-    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-    if (index === 0) dot.classList.add('active');
-    dots.appendChild(dot);
-  });
-
-  controls.appendChild(prevBtn);
-  controls.appendChild(dots);
-  controls.appendChild(nextBtn);
-
-  return {
-    controls, prevBtn, nextBtn, dots,
-  };
-}
-
-// Helper function to initialize slideshow functionality
-function initializeSlideshow(slideshow, slides, controls) {
-  let currentSlide = 0;
-  const { prevBtn, nextBtn, dots } = controls;
-  const dotButtons = dots.querySelectorAll('.slideshow-dot');
-
-  function showSlide(index) {
-    // Hide all slides
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-      slide.setAttribute('aria-hidden', i !== index);
-    });
-
-    // Update dots
-    dotButtons.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-
-    currentSlide = index;
-  }
-
-  function nextSlide() {
-    const next = (currentSlide + 1) % slides.length;
-    showSlide(next);
-  }
-
-  function prevSlide() {
-    const prev = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(prev);
-  }
-
-  // Event listeners
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
-
-  dotButtons.forEach((dot, index) => {
-    dot.addEventListener('click', () => showSlide(index));
-  });
-
-  // Keyboard navigation
-  slideshow.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      prevSlide();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      nextSlide();
-    }
-  });
-
-  // Auto-play (optional - can be enabled via configuration)
-  if (slideshow.classList.contains('autoplay')) {
-    setInterval(nextSlide, 5000); // 5 seconds
-  }
-
-  // Initialize first slide
-  showSlide(0);
-}
-
 // Extract slide data from table row
 function extractSlideData(row) {
   const cells = [...row.children];
@@ -109,9 +12,18 @@ function extractSlideData(row) {
     copy: '',
     ctaText: '',
     cta: '',
+    // Store original elements for instrumentation
+    originalElements: {
+      superCell: null,
+      titleCell: null,
+      copyCell: null,
+      ctaTextCell: null,
+      ctaCell: null,
+    },
   };
 
-  cells.forEach((cell) => {
+  // Process cells based on Universal Editor attributes or column position
+  cells.forEach((cell, index) => {
     const img = cell.querySelector('img');
     const link = cell.querySelector('a');
     const textContent = cell.textContent.trim();
@@ -124,21 +36,46 @@ function extractSlideData(row) {
       slideData.imageAlt = img.alt || '';
     } else if (aueProps.includes('super')) {
       slideData.super = textContent;
+      slideData.originalElements.superCell = cell;
     } else if (aueProps.includes('title')) {
       slideData.title = textContent;
+      slideData.originalElements.titleCell = cell;
     } else if (aueProps.includes('copy')) {
       slideData.copy = cell.innerHTML;
+      slideData.originalElements.copyCell = cell;
     } else if (aueProps.includes('ctaText')) {
       slideData.ctaText = textContent;
+      slideData.originalElements.ctaTextCell = cell;
     } else if (aueProps.includes('cta')) {
       slideData.cta = textContent;
+      slideData.originalElements.ctaCell = cell;
     } else if (link) {
       // Extract link information
       if (!slideData.cta) slideData.cta = link.href;
       if (!slideData.ctaText) slideData.ctaText = link.textContent.trim();
-    } else if (textContent && !slideData.title) {
-      // Fallback: first text content becomes title
-      slideData.title = textContent;
+    } else if (textContent) {
+      // Fallback: assign based on column position
+      // Expected order: Image | Super | Title | Copy | CTA Text | CTA URL
+      if (index === 1 && !slideData.super) {
+        slideData.super = textContent;
+        slideData.originalElements.superCell = cell;
+      } else if (index === 2 && !slideData.title) {
+        slideData.title = textContent;
+        slideData.originalElements.titleCell = cell;
+      } else if (index === 3 && !slideData.copy) {
+        slideData.copy = cell.innerHTML;
+        slideData.originalElements.copyCell = cell;
+      } else if (index === 4 && !slideData.ctaText) {
+        slideData.ctaText = textContent;
+        slideData.originalElements.ctaTextCell = cell;
+      } else if (index === 5 && !slideData.cta) {
+        slideData.cta = textContent;
+        slideData.originalElements.ctaCell = cell;
+      } else if (!slideData.title) {
+        // Final fallback: first available text becomes title
+        slideData.title = textContent;
+        slideData.originalElements.titleCell = cell;
+      }
     }
   });
 
@@ -146,10 +83,9 @@ function extractSlideData(row) {
 }
 
 // Create individual slide element
-function createSlideElement(slideData, index) {
+function createSlideElement(slideData) {
   const slide = document.createElement('li');
   slide.className = 'slideshow-slide';
-  slide.setAttribute('aria-hidden', index !== 0);
 
   const promotion = document.createElement('div');
   promotion.className = 'promotion';
@@ -181,6 +117,12 @@ function createSlideElement(slideData, index) {
     const superText = document.createElement('span');
     superText.className = 'promotion__super';
     superText.textContent = slideData.super;
+
+    // Move instrumentation from original cell
+    if (slideData.originalElements.superCell) {
+      moveInstrumentation(slideData.originalElements.superCell, superText);
+    }
+
     content.appendChild(superText);
   }
 
@@ -189,6 +131,12 @@ function createSlideElement(slideData, index) {
     const title = document.createElement('h6');
     title.className = 'promotion__title';
     title.textContent = slideData.title;
+
+    // Move instrumentation from original cell
+    if (slideData.originalElements.titleCell) {
+      moveInstrumentation(slideData.originalElements.titleCell, title);
+    }
+
     content.appendChild(title);
   }
 
@@ -197,16 +145,30 @@ function createSlideElement(slideData, index) {
     const copy = document.createElement('div');
     copy.className = 'promotion__copy';
     copy.innerHTML = slideData.copy;
+
+    // Move instrumentation from original cell
+    if (slideData.originalElements.copyCell) {
+      moveInstrumentation(slideData.originalElements.copyCell, copy);
+    }
+
     content.appendChild(copy);
   }
 
   // CTA Button
   if (slideData.cta && slideData.ctaText) {
     const ctaButton = document.createElement('a');
-    ctaButton.className = 'btn btn--small btn--dark';
+    ctaButton.className = 'btn btn--primary';
     ctaButton.href = slideData.cta;
     ctaButton.textContent = slideData.ctaText;
-    ctaButton.setAttribute('tabindex', '-1'); // Navigation handled by slideshow controls
+
+    // Move instrumentation from original cells
+    // Prefer ctaTextCell for the button text, fallback to ctaCell
+    if (slideData.originalElements.ctaTextCell) {
+      moveInstrumentation(slideData.originalElements.ctaTextCell, ctaButton);
+    } else if (slideData.originalElements.ctaCell) {
+      moveInstrumentation(slideData.originalElements.ctaCell, ctaButton);
+    }
+
     content.appendChild(ctaButton);
   }
 
@@ -231,32 +193,19 @@ export default function decorate(block) {
 
   // Create slides container
   const ul = document.createElement('ul');
-  const slides = [];
 
   // Process each row as a slide
-  [...block.children].forEach((row, index) => {
+  [...block.children].forEach((row) => {
     const slideData = extractSlideData(row);
-    const slideElement = createSlideElement(slideData, index);
+    const slideElement = createSlideElement(slideData);
 
     // Move Universal Editor instrumentation
     moveInstrumentation(row, slideElement);
 
-    slides.push(slideElement);
     ul.appendChild(slideElement);
   });
 
   slideshow.appendChild(ul);
-
-  // Create and add controls
-  if (slides.length > 1) {
-    const controlsData = createSlideshowControls(slideshow, slides);
-    slideshow.appendChild(controlsData.controls);
-
-    // Initialize slideshow functionality
-    setTimeout(() => {
-      initializeSlideshow(slideshow, slides, controlsData);
-    }, 100);
-  }
 
   // Replace block content
   block.textContent = '';

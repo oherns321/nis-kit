@@ -1,14 +1,13 @@
 # Slideshow Block
 
-A responsive slideshow block for promotional content, based on the Columbia Gas slideshow design pattern.
+A responsive vertical layout block for promotional content, based on the Columbia Gas slideshow design pattern. Each slide is displayed in its own row, creating a vertical stack of promotional content.
 
 ## Features
 
 - **Responsive Design**: Adapts to mobile, tablet, and desktop viewports
-- **Accessible Navigation**: Keyboard navigation, ARIA labels, and screen reader support
-- **Smooth Transitions**: CSS-based slide transitions with fade and slide effects
-- **Touch/Swipe Support**: (Can be extended with touch libraries)
-- **Auto-play Option**: Optional auto-advance functionality
+- **Vertical Layout**: All slides are visible in a vertical stack
+- **Accessible Markup**: Proper semantic structure and ARIA labels
+- **Universal Editor Support**: Full integration with AEM Universal Editor
 - **Multiple Variants**: Compact, dark theme, and other styling options
 
 ## Usage
@@ -39,12 +38,7 @@ The block supports Universal Editor with the following data attributes:
 
 Add CSS classes to the slideshow block for different styles:
 
-#### Auto-play
-```html
-<div class="slideshow autoplay">
-```
-- Automatically advances slides every 5 seconds
-- Shows progress indicator at the top
+
 
 #### Compact
 ```html
@@ -60,14 +54,14 @@ Add CSS classes to the slideshow block for different styles:
 - Dark background with light text
 - Inverted color scheme
 
-### Controls
+### Layout
 
-The slideshow includes:
+The slideshow displays:
 
-1. **Previous/Next Buttons**: Navigate between slides
-2. **Dot Indicators**: Jump to specific slides
-3. **Keyboard Navigation**: Arrow keys for slide navigation
-4. **Touch/Swipe**: (Ready for touch library integration)
+1. **Vertical Stack**: All slides are visible in a vertical layout
+2. **Individual Rows**: Each slide appears in its own row
+3. **Responsive Content**: Content adapts to different screen sizes
+4. **Consistent Spacing**: Proper gaps between each promotional item
 
 ### Accessibility
 
