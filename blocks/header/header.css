@@ -546,45 +546,61 @@ header svg.icon {
 }
 
 /* Search Modal Styling */
-header .SearchModal {
+.SearchModal {
   position: fixed;
-  inset: 0;
-  background: rgb(0 0 0 / 80%);
+  top: 136px; /* Position below SiteHeader */
+  left: 0;
+  right: 0;
+  background-color: var(--background-primary);
   z-index: 9999;
   display: none;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 20%);
+  border-top: 1px solid rgb(0 0 0 / 5%);
 }
 
-header .SearchModal.is-open {
+.SearchModal.is-open {
+  display: block;
+}
+
+/* Responsive positioning */
+@media (width <= 882px) {
+  .SearchModal {
+    top: 121px; /* Position below mobile header */
+  }
+}
+
+.SearchModal .form-field {
+  background: var(--background-primary);
+  padding-top: 50px;
+  padding-bottom: 30px;
+  width: 60%;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-header .SearchModal .form-field {
-  background: white;
-  padding: 40px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 600px;
-}
-
-header .SearchModal input {
-  width: 80%;
+.SearchModal input {
+  flex: 1;
   padding: 12px;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-header .SearchModal button {
-  width: 18%;
-  padding: 12px;
+.SearchModal button {
+  padding: 12px 24px;
   background: #06c;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 2%;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.SearchModal button:hover {
+  background: #0052a3;
 }
 
 /* Scrolled state styling */
@@ -612,4 +628,10 @@ body[ui-scrolled="true"] header .SiteHeader--mobile .SiteHeader__mobile-always-v
   header .SiteHeader + .sf_cols > main {
     padding-top: 146px;
   }
+}
+
+.SearchModal input:focus {
+  outline: none;
+  border-color: #62b5e5;
+  border-width: 2px;
 }

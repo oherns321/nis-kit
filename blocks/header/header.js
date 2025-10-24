@@ -119,7 +119,6 @@ function createSearchModal() {
       <input type="text" name="modal-search" id="modal-search-input" placeholder="Search" autocomplete="off">
       <button class="btn btn-primary btnSearch" id="modal-search">
         <span class="text">Search</span>
-        <span class="glyphicon glyphicon-search"></span>
       </button>
     </div>
   `;
@@ -154,9 +153,11 @@ export default async function decorate(block) {
   // Create header structure matching Columbia Gas SiteHeader design
   block.textContent = '';
 
-  // Create search modal
+  // Create search modal (initially hidden)
   const searchModal = createSearchModal();
-  document.body.appendChild(searchModal);
+
+  // Insert search modal after the header block to position it correctly
+  block.parentNode.insertBefore(searchModal, block.nextSibling);
 
   // Desktop Header
   const desktopHeader = document.createElement('div');
