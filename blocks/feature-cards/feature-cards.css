@@ -20,6 +20,8 @@
   margin: 0 0 var(--spacing-l) 0;
   color: var(--text-primary);
   text-align: center;
+  font-size: 32px;
+  line-height: 35px;
 }
 
 /* Feature cards list */
@@ -301,4 +303,12 @@
 
 .feature-cards.dark .feature-card:hover {
   border-color: var(--text-on-color);
+}
+
+main > .section > div.feature-cards-wrapper {
+    max-width: var(--grid-max-width);
+    margin: auto;
+    padding: 0 var(--grid-margin);
+    padding-top: unset;
+    padding-bottom: var(--grid-section-margin);
 }

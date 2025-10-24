@@ -1,20 +1,18 @@
 /**
- * Separator Block - Creates a gradient horizontal line separator
- * Works with Universal Editor for content authoring
+ * Separator Block - Creates a horizontal rule separator matching Columbia Gas design
+ * Matches: <div class="nisource-custom-hr"><hr class="m-t-40 m-b-40"></div>
  */
 export default async function decorate(block) {
-  // Create the separator structure
-  const separatorContent = document.createElement('div');
-  separatorContent.className = 'separator-content';
+  // Create the separator structure matching Columbia Gas design
+  const customHrContainer = document.createElement('div');
+  customHrContainer.className = 'nisource-custom-hr';
 
-  const separatorLine = document.createElement('div');
-  separatorLine.className = 'separator-line';
-  separatorLine.setAttribute('role', 'separator');
-  separatorLine.setAttribute('aria-label', 'Content separator');
+  const hr = document.createElement('hr');
+  hr.className = 'm-t-40 m-b-40';
 
-  separatorContent.appendChild(separatorLine);
+  customHrContainer.appendChild(hr);
 
   // Clear any existing content and add the separator structure
   block.innerHTML = '';
-  block.appendChild(separatorContent);
+  block.appendChild(customHrContainer);
 }

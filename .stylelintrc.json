@@ -2,7 +2,7 @@
   "extends": ["stylelint-config-standard"],
   "rules": {
     "selector-class-pattern": [
-      "^([a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)*(--([a-z0-9]+-?)+)*|SiteHeader|SiteHeader--desktop|SiteHeader--mobile|SiteHeader__mobile-always-visible|MainNav|MainNav--desktop|MainNav__auxiliary|MainNav__main|MobileNav|MobileNav__main|SearchModal|SearchModalDesktopTrigger|SearchModalMobileTrigger|sf_cols|sf_colsOut|sf_colsIn|UserSection|Login|PortalLink__ready|PortalLink__avatar|PortalLink__right|PortalLink__logout|LoginButton|LoginButton__text|LoginButton__arrow|LoginModal|container|footer__column|body-content|menu|menu--footer|top-level|linkhover|social-icons-container|text-sm|text-gray|m-t-30|text-xs|md-flex)$",
+      "^([a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)*(--([a-z0-9]+-?)+)*|SiteHeader|SiteHeader--desktop|SiteHeader--mobile|SiteHeader__mobile-always-visible|MainNav|MainNav--desktop|MainNav__auxiliary|MainNav__main|MobileNav|MobileNav__main|SearchModal|SearchModalDesktopTrigger|SearchModalMobileTrigger|sf_cols|sf_colsOut|sf_colsIn|UserSection|Login|PortalLink__ready|PortalLink__avatar|PortalLink__right|PortalLink__logout|LoginButton|LoginButton__text|LoginButton__arrow|LoginModal|container|footer__column|body-content|menu|menu--footer|top-level|linkhover|social-icons-container|text-sm|text-gray|m-t-30|text-xs|md-flex|nisource-custom-hr|m-t-40|m-b-40)$",
       {
         "message": "Class name should follow BEM kebab-case pattern or be an exact Columbia Gas Ohio class name"
       }
