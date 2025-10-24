@@ -193,19 +193,124 @@ export default function decorate(block) {
 
   // Create slides container
   const ul = document.createElement('ul');
+  ul.className = 'slideshow-slides';
+
+  const slides = [];
 
   // Process each row as a slide
-  [...block.children].forEach((row) => {
+  [...block.children].forEach((row, index) => {
     const slideData = extractSlideData(row);
     const slideElement = createSlideElement(slideData);
+
+    // Add active class to first slide
+    if (index === 0) {
+      slideElement.classList.add('active');
+    }
 
     // Move Universal Editor instrumentation
     moveInstrumentation(row, slideElement);
 
+    slides.push(slideElement);
     ul.appendChild(slideElement);
   });
 
   slideshow.appendChild(ul);
+
+  // Create navigation controls matching Columbia Gas design
+  if (slides.length > 1) {
+    const controls = document.createElement('div');
+    controls.className = 'js-slideshow-buttons';
+
+    // Previous button
+    const prevButton = document.createElement('button');
+    prevButton.className = 'slideshow-buttons__previous ui-none';
+    prevButton.setAttribute('aria-label', 'previous');
+    prevButton.innerHTML = '<span class="arrow arrow--left">‹</span>';
+
+    // Counter
+    const counter = document.createElement('div');
+    counter.className = 'slideshow-counter';
+    counter.setAttribute('aria-hidden', 'true');
+    counter.innerHTML = `
+      <span class="slideshow-counter__current">1</span>
+      <span class="slideshow-counter__separator">/</span>
+      <span class="slideshow-counter__total">${slides.length}</span>
+    `;
+
+    // Next button
+    const nextButton = document.createElement('button');
+    nextButton.className = 'slideshow-buttons__next ui-none';
+    nextButton.setAttribute('aria-label', 'next');
+    nextButton.innerHTML = '<span class="arrow arrow--right">›</span>';
+
+    controls.appendChild(prevButton);
+    controls.appendChild(counter);
+    controls.appendChild(nextButton);
+    slideshow.appendChild(controls);
+
+    // Slideshow functionality
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    const updateSlide = (newIndex) => {
+      // Remove active from current slide
+      slides[currentSlide].classList.remove('active');
+
+      // Update current slide index
+      currentSlide = newIndex;
+
+      // Add active to new slide
+      slides[currentSlide].classList.add('active');
+
+      // Update counter
+      counter.querySelector('.slideshow-counter__current').textContent = currentSlide + 1;
+    };
+
+    const nextSlide = () => {
+      const newIndex = (currentSlide + 1) % slides.length;
+      updateSlide(newIndex);
+    };
+
+    const prevSlide = () => {
+      const newIndex = (currentSlide - 1 + slides.length) % slides.length;
+      updateSlide(newIndex);
+    };
+
+    const stopAutoSlide = () => {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    };
+
+    const startAutoSlide = () => {
+      // Ensure any existing interval is cleared before starting a new one
+      stopAutoSlide();
+      autoSlideInterval = setInterval(nextSlide, 10000); // 10 seconds
+    };
+
+    // Event listeners
+    nextButton.addEventListener('click', () => {
+      stopAutoSlide();
+      nextSlide();
+      // Reset timer completely by starting a fresh auto-slide cycle
+      startAutoSlide();
+    });
+
+    prevButton.addEventListener('click', () => {
+      stopAutoSlide();
+      prevSlide();
+      // Reset timer completely by starting a fresh auto-slide cycle
+      startAutoSlide();
+    });
+
+    // Pause auto-slide on hover
+    slideshow.addEventListener('mouseenter', stopAutoSlide);
+    slideshow.addEventListener('mouseleave', startAutoSlide);
+
+    // Start auto-slide
+    startAutoSlide();
+  }
 
   // Replace block content
   block.textContent = '';
