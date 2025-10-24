@@ -44,7 +44,7 @@
   --button-primary-hover-background: #fff;
   --button-primary-hover-border: #000;
   --button-primary-disabled: #e7e7e7;
-  --button-secondary: #000;
+  --button-secondary: #0072ce;
   --button-secondary-hover: #000;
   --button-tertiary: #000;
   --button-tertiary-disabled: #b0b0b0;
@@ -92,6 +92,7 @@
   --font-size-heading-xl: 32px;   /* Mobile: scaled down from 60px */
   --font-size-heading-l: 28px;    /* Mobile: scaled down from 48px */
   --font-size-heading-m: 24px;    /* Mobile: scaled down from 32px */
+  --font-size-heading-m-s: 22px;   /* Mobile: new size between m and s */
   --font-size-heading-s: 20px;    /* Mobile: scaled down from 24px */
   --font-size-heading-xs: 16px;   /* Mobile: scaled down from 18px */
   --font-size-body-l: 18px;       /* Mobile: scaled down from 20px */

@@ -29,56 +29,66 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
-  gap: var(--grid-gutter);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
 }
 
 /* Individual feature card */
 .feature-cards .feature-card {
-  /* Mobile: Full width (12 columns) */
-  grid-column: span var(--grid-columns);
-  
-  /* Card styling using design system */
-  background-color: var(--surface-white);
-  border: var(--border-width-default) solid var(--border-primary);
-  border-radius: var(--border-radius-small);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  
-  /* Elevation for depth */
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  /* Mobile: Full width */
+  width: 100%;
+  flex: 0 0 100%;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  transition: none;
+  box-shadow: none;
+  padding: 0 15px; /* Bootstrap col padding */
   
   /* Flex layout for consistent card heights */
   display: flex;
   flex-direction: column;
 }
 
-.feature-cards .feature-card:hover {
-  /* Hover state using design tokens */
-  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
-  transform: translateY(-4px);
-  border-color: var(--border-tertiary);
+/* Feature card inner structure */
+.feature-cards .feature-card-inner {
+  /* Match container-fluid structure */
+  width: 100%;
 }
 
-/* Feature card image container */
-.feature-cards .feature-card-image {
+.feature-cards .feature-card-content-wrapper {
+  /* Match l-content-block-grid m-t-40 */
+  margin-top: 40px;
+}
+
+.feature-cards .feature-card-content-block {
+  /* Match c-content-block */
+  background-color: var(--surface-white);
+}
+
+/* Feature card image container - matching c-content-block__image */
+.feature-cards .feature-card-image,
+.feature-cards .c-content-block__image {
   line-height: 0;
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background-color: var(--surface-grey-light);
+  margin-bottom: var(--spacing-s);
 }
 
-.feature-cards .feature-card-image img {
+.feature-cards .feature-card-image img,
+.feature-cards .c-content-block__image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: none;
 }
 
-.feature-cards .feature-card:hover .feature-card-image img {
-  transform: scale(1.05);
+/* Remove image hover effects */
+.feature-cards .feature-card:hover .feature-card-image img,
+.feature-cards .feature-card:hover .c-content-block__image img {
+  transform: none;
 }
 
 /* Empty image placeholder */
@@ -96,71 +106,74 @@
   content: attr(data-placeholder);
 }
 
-/* Feature card content */
 .feature-cards .feature-card-content {
-  padding: var(--spacing-m);
+  padding: 0;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-s);
+  gap: 0;
 }
 
 /* Feature card heading */
-.feature-cards .feature-card-heading {
-  /* Heading uses design system automatic scaling */
-  margin: 0;
+.feature-cards .feature-card-heading,
+.feature-cards .titling-medium {
+  margin: 10px 0 0;
   color: var(--text-primary);
-  font-size: var(--font-size-heading-s);
+  font-size: var(--font-size-heading-m-s);
   font-weight: var(--font-weight-headings);
   line-height: var(--line-height-headings-s);
 }
 
-/* Feature card description */
-.feature-cards .feature-card-description {
-  /* Body text using design system */
+/* Feature card description - matching c-content-block__copy */
+.feature-cards .feature-card-description,
+.feature-cards .c-content-block__copy {
   font-family: var(--body-font-family);
   font-size: var(--font-size-body-m);
   font-weight: var(--font-weight-body);
   line-height: var(--line-height-body-m);
   color: var(--text-secondary);
-  margin: 0;
+  margin: var(--spacing-s) 0;
   flex-grow: 1;
 }
 
-.feature-cards .feature-card-description p {
+.feature-cards .feature-card-description p,
+.feature-cards .c-content-block__copy p {
   margin: 0 0 var(--spacing-xs) 0;
 }
 
-.feature-cards .feature-card-description p:last-child {
+.feature-cards .feature-card-description p:last-child,
+.feature-cards .c-content-block__copy p:last-child {
   margin-bottom: 0;
 }
 
-/* Feature card CTA button */
-.feature-cards .feature-card-cta {
+/* Feature card CTA button - matching btn btn-primary btn--small m-t-5 btn--ghosted */
+.feature-cards .feature-card-cta,
+.feature-cards .btn.btn-primary.btn--small.btn--ghosted {
   display: inline-block;
   align-self: flex-start;
-  margin-top: var(--spacing-s);
-  padding: var(--spacing-s) var(--spacing-m);
-  background-color: var(--button-primary);
-  color: var(--button-primary-background) !important;
-  border: var(--border-width-default) solid var(--button-primary-border);
+  margin-top: 5px; /* m-t-5 */
+  padding: 8px 16px; /* btn--small sizing */
+  background-color: transparent; /* btn--ghosted */
+  color: var(--button-secondary) !important;
+  border: 1px solid var(--button-secondary);
   font-family: var(--body-font-family);
-  font-size: var(--font-size-button-m);
-  font-weight: var(--font-weight-button);
-  line-height: var(--line-height-button-m);
-  border-radius: var(--border-radius-button);
+  font-size: 14px; /* Fixed 14px font size for all screen sizes */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2; /* Adjusted line-height for 14px font */
+  border-radius: 4px;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  text-transform: none;
+  letter-spacing: normal;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.feature-cards .feature-card-cta:hover {
-  background-color: var(--button-primary-hover-background);
-  color: var(--button-primary-hover) !important;
-  border-color: var(--button-primary-hover-border);
-  transform: translateY(-1px);
+.feature-cards .feature-card-cta:hover,
+.feature-cards .btn.btn-primary.btn--small.btn--ghosted:hover {
+  background-color: var(--text-link-footer-top-level);
+  color: var(--surface-white) !important;
+  border-color: var(--text-link-footer-top-level);
+  transform: none;
 }
 
 /* Empty CTA placeholder */
@@ -185,41 +198,33 @@
   opacity: 0.6;
 }
 
-/* Tablet responsive (768px+) */
+/* Mobile responsive (default) - stacked cards */
+@media (width < 768px) {
+  .feature-cards .feature-card-content-wrapper,
+  .feature-cards .l-content-block-grid {
+    margin-top: 24px; /* Reduced from 40px for mobile */
+  }
+}
+
+/* Tablet responsive (768px+) - matching col-md-3 (4 columns) */
 @media (width >= 768px) {
   .feature-cards {
     margin: var(--spacing-xxl) 0;
   }
   
   .feature-cards .feature-card {
-    /* Tablet: 2 cards per row (6 columns each) */
-    grid-column: span 6;
-  }
-  
-  .feature-cards .feature-card-heading {
-    font-size: var(--font-size-heading-m);
-    line-height: var(--line-height-headings-m);
-  }
-  
-  .feature-cards .feature-card-description {
-    font-size: var(--font-size-body-l);
-    line-height: var(--line-height-body-l);
+    /* Tablet: 2 cards per row (50% each, matching Bootstrap responsive) */
+    width: 50%;
+    flex: 0 0 50%;
   }
 }
 
-/* Desktop responsive (900px+) */
-@media (width >= 900px) {
+/* Desktop responsive (992px+) - matching Bootstrap md breakpoint and col-md-3 */
+@media (width >= 992px) {
   .feature-cards .feature-card {
-    /* Desktop: 3 cards per row (4 columns each) */
-    grid-column: span 4;
-  }
-}
-
-/* Large desktop responsive (1200px+) */
-@media (width >= 1200px) {
-  .feature-cards .feature-card-heading {
-    font-size: var(--font-size-heading-l);
-    line-height: var(--line-height-headings-l);
+    /* Desktop: 4 cards per row (25% each, matching col-md-3) */
+    width: 25%;
+    flex: 0 0 25%;
   }
 }
 
@@ -273,37 +278,12 @@
   align-self: center;
 }
 
-/* Variant: Dark mode */
-.feature-cards.dark {
-  color: var(--text-on-color);
-}
-
-.feature-cards.dark .container-heading {
-  color: var(--text-on-color);
-}
-
-.feature-cards.dark .feature-card {
-  background-color: var(--surface-black);
-  border-color: var(--border-primary);
-}
-
-.feature-cards.dark .feature-card-heading {
-  color: var(--text-on-color);
-}
-
-.feature-cards.dark .feature-card-description {
-  color: var(--text-tertiary);
-}
-
 /* Variant: Light mode (explicit) */
 .feature-cards.light .feature-card {
   background-color: var(--surface-white);
   border-color: var(--border-tertiary);
 }
 
-.feature-cards.dark .feature-card:hover {
-  border-color: var(--text-on-color);
-}
 
 main > .section > div.feature-cards-wrapper {
     max-width: var(--grid-max-width);

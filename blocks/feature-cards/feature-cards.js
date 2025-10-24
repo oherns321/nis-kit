@@ -123,9 +123,10 @@ function extractFeatureCardData(row) {
 }
 
 /**
- * Create a feature card element from card data
+ * Create a feature card element from card data matching Columbia Gas structure
  */
 function createFeatureCardElement(cardData, originalRow = null) {
+  // Main card container (sf_colsIn col-md-3 equivalent)
   const cardContainer = document.createElement('li');
   cardContainer.className = 'feature-card';
 
@@ -144,16 +145,35 @@ function createFeatureCardElement(cardData, originalRow = null) {
     ctaText: '',
   };
 
-  // Create image container
+  // Create container-fluid equivalent
+  const containerFluid = document.createElement('div');
+  containerFluid.className = 'feature-card-inner';
+
+  // Create row equivalent
+  const row = document.createElement('div');
+  row.className = 'feature-card-row';
+
+  // Create col-sm-12 equivalent
+  const col = document.createElement('div');
+  col.className = 'feature-card-col';
+
+  // Create l-content-block-grid m-t-40 equivalent
+  const contentBlockGrid = document.createElement('div');
+  contentBlockGrid.className = 'feature-card-content-wrapper l-content-block-grid m-t-40';
+
+  // Create c-content-block equivalent
+  const contentBlock = document.createElement('div');
+  contentBlock.className = 'feature-card-content-block c-content-block';
+
+  // Create article
+  const article = document.createElement('article');
+
+  // Create image container (c-content-block__image)
   if (safeCardData.image) {
     const imageContainer = document.createElement('div');
-    imageContainer.className = 'feature-card-image';
+    imageContainer.className = 'feature-card-image c-content-block__image';
 
-    const img = document.createElement('img');
-    img.src = safeCardData.image;
-    img.alt = safeCardData.imageAlt || safeCardData.heading || '';
-
-    // Create optimized picture
+    // Create optimized picture with img-responsive class
     const optimizedPic = createOptimizedPicture(
       safeCardData.image,
       safeCardData.imageAlt || safeCardData.heading || '',
@@ -161,65 +181,68 @@ function createFeatureCardElement(cardData, originalRow = null) {
       [{ width: '750' }],
     );
 
-    if (originalRow) {
-      moveInstrumentation(img, optimizedPic.querySelector('img'));
+    const img = optimizedPic.querySelector('img');
+    if (img) {
+      img.classList.add('img-responsive');
+      if (originalRow) {
+        moveInstrumentation(originalRow, img);
+      }
     }
 
     imageContainer.appendChild(optimizedPic);
-    cardContainer.appendChild(imageContainer);
-  } else {
-    // Empty placeholder for image
-    const imageContainer = document.createElement('div');
-    imageContainer.className = 'feature-card-image empty-image';
-    imageContainer.setAttribute('data-placeholder', 'Add feature image...');
-    cardContainer.appendChild(imageContainer);
+    article.appendChild(imageContainer);
   }
 
-  // Create content container
-  const contentContainer = document.createElement('div');
-  contentContainer.className = 'feature-card-content';
-
-  // Create heading
-  const headingElement = document.createElement('h3');
-  headingElement.className = 'feature-card-heading';
+  // Create heading (titling-medium m-t-10 m-b-0)
+  const headingElement = document.createElement('h2');
+  headingElement.className = 'feature-card-heading titling-medium m-t-10 m-b-0';
   if (safeCardData.heading) {
     headingElement.innerHTML = safeCardData.heading;
   } else {
     headingElement.innerHTML = '';
     headingElement.setAttribute('data-placeholder', 'Add feature heading...');
   }
+  article.appendChild(headingElement);
 
-  // Create description
-  const descriptionElement = document.createElement('div');
-  descriptionElement.className = 'feature-card-description';
+  // Create description (c-content-block__copy)
+  const descriptionElement = document.createElement('p');
+  descriptionElement.className = 'feature-card-description c-content-block__copy';
   if (safeCardData.description) {
     descriptionElement.innerHTML = safeCardData.description;
   } else {
     descriptionElement.innerHTML = '';
     descriptionElement.setAttribute('data-placeholder', 'Add feature description...');
   }
+  article.appendChild(descriptionElement);
 
-  // Create CTA
+  // Create CTA paragraph
+  const ctaParagraph = document.createElement('p');
   if (safeCardData.cta && safeCardData.ctaText) {
     const ctaButton = document.createElement('a');
-    ctaButton.className = 'button button-primary feature-card-cta';
+    ctaButton.className = 'btn btn-primary btn--small m-t-5 btn--ghosted feature-card-cta';
     ctaButton.href = safeCardData.cta;
     ctaButton.textContent = safeCardData.ctaText;
-    contentContainer.appendChild(ctaButton);
+    ctaButton.setAttribute('target', '_self');
+    ctaParagraph.appendChild(ctaButton);
   } else {
     // Empty placeholder for CTA
     const placeholderCta = document.createElement('a');
-    placeholderCta.className = 'button button-primary feature-card-cta empty-cta';
+    placeholderCta.className = 'btn btn-primary btn--small m-t-5 btn--ghosted feature-card-cta empty-cta';
     placeholderCta.textContent = 'Add CTA';
     placeholderCta.href = '#';
+    placeholderCta.setAttribute('target', '_self');
     placeholderCta.setAttribute('data-placeholder', 'true');
-    contentContainer.appendChild(placeholderCta);
+    ctaParagraph.appendChild(placeholderCta);
   }
+  article.appendChild(ctaParagraph);
 
-  // Assemble content
-  contentContainer.appendChild(headingElement);
-  contentContainer.appendChild(descriptionElement);
-  cardContainer.appendChild(contentContainer);
+  // Assemble the structure
+  contentBlock.appendChild(article);
+  contentBlockGrid.appendChild(contentBlock);
+  col.appendChild(contentBlockGrid);
+  row.appendChild(col);
+  containerFluid.appendChild(row);
+  cardContainer.appendChild(containerFluid);
 
   return cardContainer;
 }
