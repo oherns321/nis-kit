@@ -12,7 +12,7 @@ import {
   loadCSS,
 } from './aem.js';
 
-import { initializeCodeKit } from './aem-code-kit.js';
+import { initializeCodeKit, getConfigValue, } from './aem-code-kit.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -97,8 +97,13 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     await initializeCodeKit();
-    await loadCSS(`${window.hlx.codeBasePath}/styles/root.css`);
-
+    const theme = await getConfigValue('theme');
+    // Load theme-specific root CSS if theme is configured, otherwise load default root CSS
+    if (theme) {
+      await loadCSS(`${window.hlx.codeBasePath}/styles/root-${theme}.css`);
+    } else {
+      await loadCSS(`${window.hlx.codeBasePath}/styles/root.css`);
+    }
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

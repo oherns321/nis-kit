@@ -36,7 +36,7 @@ export async function getConfigFromSession() {
 
 export async function getConfigValue(key) {
   const config = await getConfigFromSession();
-  for (let i = 0; i < config.data.length; i += 1) {
+  for (let i = 0; i < config.data?.length; i += 1) {
     if (config.data[i].Name.toLowerCase() === key.toLowerCase()) {
       return config.data[i].Value;
     }
