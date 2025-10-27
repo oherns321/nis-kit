@@ -152,6 +152,10 @@
           {
             "name": "Initially hidden",
             "value": "hidden"
+          },
+          {
+            "name": "Center Content",
+            "value": "center"
           }
         ]
       }

@@ -263,3 +263,10 @@ main .section.dark > div {
   background-color: var(--background-primary);
   color: var(--color-eysp-text);
 }
+
+main .section.center > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
