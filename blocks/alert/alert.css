@@ -1,0 +1,17 @@
+.alert .block {
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert .title {
+  font-size: 56px;
+}
+
+.alert .description {
+  white-space: pre-line;
+}
