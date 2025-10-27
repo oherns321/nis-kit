@@ -265,7 +265,6 @@ main .section.dark > div {
 }
 
 main .section.center > div {
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
