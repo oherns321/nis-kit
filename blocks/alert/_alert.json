@@ -21,11 +21,12 @@
       "id": "alert",
       "fields": [
         {
-          "component": "text",
-          "name": "Text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
+        "component": "text",
+        "valueType": "string",
+        "name": "alertText",
+        "label": "Alert Text",
+        "description": "Text for the alert",
+        "required": false
         }
       ]
     }
