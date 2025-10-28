@@ -1,17 +1,190 @@
-.alert .block {
-  padding: 1rem;
-  box-sizing: border-box;
+/* ===== Alert (Gold Notification) - Matching Columbia Gas Ohio ===== */
+.alert-container {
+  /* Theme tokens - Updated to match Columbia Gas Ohio */
+  --alert-bg: rgb(255 199 44);  /* Exact Columbia Gas gold */
+  --alert-text: rgb(38 51 58);  /* Columbia Gas text color */
+  --alert-title: rgb(38 51 58); /* Same as text */
+  --alert-border: #e6c773;        /* subtle border */
+  --alert-link: #0b5cab;          /* link color */
+  --alert-radius: 0px;            /* No border radius like Columbia Gas */
+  --alert-pad-y: 7px;             /* Match Columbia Gas padding */
+  --alert-pad-x: 40px;            /* Match Columbia Gas padding */
+  --alert-gap: 12px;              /* Gap between icon and text */
+  --alert-maxw: 1300px;           /* Match Columbia Gas max-width */
+  --alert-shadow: none;           /* No shadow like Columbia Gas */
+  --focus-ring: 0 0 0 3px rgb(11 92 171 / 25%);
+  
+  /* Apply yellow background to container - full width like Columbia Gas */
+  background: var(--alert-bg);
+  color: var(--alert-text);
+  position: relative;
+  width: 100%;
+}
+
+/* Remove page gutters - let background extend full width */
+.alert-container .alert-wrapper {
+  padding: 0;
+}
+
+/* Remove width constraint - let block extend full width */
+.alert-container .alert.block .block {
+  margin: 16px 0;
+  width: 100%;
+}
+
+/* Card - Match Columbia Gas notification-bar styling */
+.alert-container .alert-content {
+  position: relative;
+  background: transparent;
+  color: inherit;
+  padding: var(--alert-pad-y) var(--alert-pad-x);
+  box-shadow: var(--alert-shadow);
+  width: 100%;
+  display: flex;
+  align-items: center;  /* Center align like Columbia Gas */
+  gap: var(--alert-gap);
+  max-width: var(--alert-maxw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Icon styling - Match Columbia Gas */
+.alert-container .notification-bar__icon {
+  flex-shrink: 0;
+  margin-top: 0; /* Remove top margin for center alignment */
+}
+
+.alert-container .notification-bar__icon .icon img {
+  width: 20px;
+  height: 20px;
+
+  /* No filter - keeps the icon black */
+}
+
+/* Text content wrapper */
+.alert-container .alert-text-content {
+  flex: 1;
+  min-width: 0; /* Allow text to wrap properly */
+}
+
+/* Title - Match Columbia Gas notification styling */
+.alert-container .alert-text-content .title {
+  margin: 0 0 4px; /* Smaller margin like Columbia Gas */
+  font-weight: 700;
+  font-size: 1.0625rem; /* ~17px on mobile */
+  line-height: 1.3;
+  color: var(--alert-title);
+}
+
+/* Body copy */
+.alert-container .alert-text-content p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.alert-container .alert-text-content p + p,
+.alert-container .alert-text-content .message + p {
+  margin-top: 8px;
+}
+
+/* Links */
+.alert-container .alert-text-content a {
+  color: var(--alert-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- Optional dismiss affordance (CSS-only) ---------- */
+
+/* Option A: purely decorative “×” (no markup change) */
+.alert-container .alert-content::after {
+  content: "×";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 20px;
+  line-height: 1;
+  color: rgb(0 0 0 / 45%);
+  pointer-events: none; /* decorative only */
+}
+
+/* Option B: if you add a real button inside .alert-content
+   <button class="alert-close" aria-label="Dismiss notification"></button>
+   This is still nonfunctional until you add JS, but accessible/focusable. */
+.alert-container .alert-content .alert-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  inline-size: 32px;
+  block-size: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: rgb(0 0 0 / 60%);
+  cursor: default; /* toggle to pointer when wired up */
+}
+
+.alert-container .alert-content .alert-close::before {
+  content: "×";
+  display: block;
+  font-size: 20px;
+  line-height: 32px;
   text-align: center;
 }
 
-.alert p {
-  margin: 0;
+.alert-container .alert-content .alert-close:hover {
+  background: rgb(0 0 0 / 4%);
 }
 
-.alert .title {
-  font-size: 56px;
+.alert-container .alert-content .alert-close:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
-.alert .description {
-  white-space: pre-line;
+/* ---------- Responsive refinements ---------- */
+@media (width >= 600px) {
+  .alert-container .alert-content {
+    padding: var(--alert-pad-y) var(--alert-pad-x);
+    gap: var(--alert-gap);
+  }
+
+  .alert-container .notification-bar__icon .icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .alert-container .alert-text-content .title {
+    font-size: 1.125rem; /* ~18px */
+  }
+}
+
+@media (width >= 960px) {
+  .alert-container .alert-content {
+    padding: var(--alert-pad-y) var(--alert-pad-x);
+    gap: var(--alert-gap);
+  }
+
+  .alert-container .notification-bar__icon .icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .alert-container .alert-text-content .title {
+    font-size: 1.25rem; /* ~20px desktop */
+  }
+}
+
+/* High-contrast users */
+@media (prefers-contrast: more) {
+  .alert-container .alert-content {
+    border-color: #a8862b;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

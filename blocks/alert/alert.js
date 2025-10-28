@@ -1,4 +1,5 @@
 import { isAuthorEnvironment, moveInstrumentation } from '../../scripts/scripts.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 /**
  *
@@ -9,7 +10,7 @@ export default async function decorate(block) {
   const aemauthorurl = 'https://author-p7906-e1488805.adobeaemcloud.com';
   const aempublishurl = 'https://publish-p7906-e1488805.adobeaemcloud.com';
   const now = new Date().toISOString();
-  const persistedquery = `/graphql/execute.json/NISource/GetLatestAlert;now=${encodeURIComponent(now)}`;
+  const persistedquery = `/graphql/execute.json/NISource/GetLatestAlert;now=${now}`;
 
   block.innerHTML = '';
 
@@ -24,7 +25,7 @@ export default async function decorate(block) {
     .then((contentfragment) => {
       let data = '';
       if (contentfragment.data) {
-        data = contentfragment.data[Object.keys(contentfragment.data)[0]].item;
+        data = contentfragment?.data?.alertList?.items[0] || [];
       }
       return data;
     });
@@ -35,15 +36,23 @@ export default async function decorate(block) {
   block.innerHTML = `
   <div class='block' data-aue-resource=${itemId} data-aue-label='alert' data-aue-type='reference' data-aue-filter='cf'>
     <div class='alert-content'>
+      <div class="notification-bar__icon">
+        <span class="icon icon-success"></span>
+      </div>
+      <div class="alert-text-content">
         <h2 data-aue-prop='title' data-aue-label='Title' data-aue-type='text' class='title'>${
   cfReq?.title
 }</h2>
         <p data-aue-prop='message' data-aue-label='Message' data-aue-type='richtext' class='message'>${
   cfReq?.message?.html
 }</p>
+      </div>
     </div>
   </div>
 `;
+
+  // Decorate icons to convert span.icon elements to img elements
+  decorateIcons(block);
 
   if (!isAuthor) {
     moveInstrumentation(block, null);
