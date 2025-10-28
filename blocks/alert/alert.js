@@ -11,7 +11,7 @@ export default async function decorate(block) {
   const now = new Date().toISOString();
   const persistedquery = `/graphql/execute.json/NISource/GetLatestAlert;now=${encodeURIComponent(now)}`;
 
-  block.innerHTML = ``;
+  block.innerHTML = '';
 
   const isAuthor = isAuthorEnvironment();
   const url = window?.location?.origin?.includes('author')
@@ -28,21 +28,22 @@ export default async function decorate(block) {
       }
       return data;
     });
+  // eslint-disable-next-line no-underscore-dangle
   const itemId = `urn:aemconnection:${cfReq?._path}/jcr:content/data/${cfReq?._variation}`;
 
   block.setAttribute('data-aue-type', 'container');
   block.innerHTML = `
   <div class='block' data-aue-resource=${itemId} data-aue-label='alert' data-aue-type='reference' data-aue-filter='cf'>
-		<div class='alert-content'>
+    <div class='alert-content'>
         <h2 data-aue-prop='title' data-aue-label='Title' data-aue-type='text' class='title'>${
-          cfReq?.title
-        }</h2>
+  cfReq?.title
+}</h2>
         <p data-aue-prop='message' data-aue-label='Message' data-aue-type='richtext' class='message'>${
-          cfReq?.message?.html
-        }</p>
+  cfReq?.message?.html
+}</p>
     </div>
   </div>
-	`;
+`;
 
   if (!isAuthor) {
     moveInstrumentation(block, null);

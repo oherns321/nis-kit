@@ -12,7 +12,14 @@ import {
   loadCSS,
 } from './aem.js';
 
-import { initializeCodeKit, getConfigValue, } from './aem-code-kit.js';
+import { initializeCodeKit, getConfigValue } from './aem-code-kit.js';
+
+export function isAuthorEnvironment() {
+  if (window?.location?.origin?.includes('author')) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
