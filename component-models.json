@@ -162,6 +162,18 @@
     ]
   },
   {
+    "id": "alert",
+    "fields": [
+      {
+        "component": "text",
+        "name": "Text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "background-cards",
     "fields": [
       {
