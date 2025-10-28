@@ -82,7 +82,8 @@
         "super-cards",
         "feature-cards",
         "cta-cards",
-        "slideshow"
+        "slideshow",
+        "alert"
       ]
     }
   ]
