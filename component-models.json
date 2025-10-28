@@ -167,9 +167,9 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "alertText",
-        "label": "Alert Text",
-        "description": "Text for the alert",
+        "name": "alertTitle",
+        "label": "Alert Title",
+        "description": "Title for the alert",
         "required": false
       }
     ]
