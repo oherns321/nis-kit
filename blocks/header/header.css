@@ -7,15 +7,143 @@
  * - Responsive design with mobile toggle
  */
 
+/* Header Alert Wrapper - Match alert-container styling */
+header .alert-wrapper {
+  /* Copy styling from alert-container */
+  --alert-bg: rgb(255 199 44);  /* Exact Columbia Gas gold */
+  --alert-text: rgb(38 51 58);  /* Columbia Gas text color */
+  --alert-title: rgb(38 51 58); /* Same as text */
+  --alert-link: #0b5cab;        /* link color */
+  --alert-pad-y: 7px;           /* Match Columbia Gas padding */
+  --alert-pad-x: 40px;          /* Match Columbia Gas padding */
+  --alert-gap: 12px;            /* Gap between icon and text */
+  --alert-maxw: 1300px;         /* Match Columbia Gas max-width */
+  
+  /* Apply yellow background to container - full width like Columbia Gas */
+  background: var(--alert-bg);
+  color: var(--alert-text);
+  
+  /* Stick to top of page */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001; /* Above other content but below modals */
+  padding: 0; /* Remove any default padding */
+}
+
+/* Header Alert Block Structure */
+header .alert-wrapper .alert.block .block {
+  margin: 0;
+  width: 100%;
+}
+
+/* Header Alert Content - Match alert-container styling */
+header .alert-wrapper .alert-content {
+  position: relative;
+  background: transparent;
+  color: inherit;
+  padding: var(--alert-pad-y) var(--alert-pad-x);
+  width: 100%;
+  display: flex;
+  align-items: center;  /* Center align like Columbia Gas */
+  gap: var(--alert-gap);
+  max-width: var(--alert-maxw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header Alert Icon styling */
+header .alert-wrapper .notification-bar__icon {
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+header .alert-wrapper .notification-bar__icon .icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Header Alert Text content wrapper */
+header .alert-wrapper .alert-text-content {
+  flex: 1;
+  min-width: 0; /* Allow text to wrap properly */
+}
+
+/* Header Alert Title */
+header .alert-wrapper .alert-text-content .title {
+  margin: 0 0 4px; /* Smaller margin like Columbia Gas */
+  font-weight: 700;
+  font-size: 1.0625rem; /* ~17px on mobile */
+  line-height: 1.3;
+  color: var(--alert-title);
+}
+
+/* Header Alert Body copy */
+header .alert-wrapper .alert-text-content p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+header .alert-wrapper .alert-text-content p + p,
+header .alert-wrapper .alert-text-content .message + p {
+  margin-top: 8px;
+}
+
+/* Header Alert Links */
+header .alert-wrapper .alert-text-content a {
+  color: var(--alert-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Responsive refinements for header alert */
+@media (width >= 600px) {
+  header .alert-wrapper .alert-content {
+    padding: var(--alert-pad-y) var(--alert-pad-x);
+    gap: var(--alert-gap);
+  }
+
+  header .alert-wrapper .notification-bar__icon .icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  header .alert-wrapper .alert-text-content .title {
+    font-size: 1.125rem; /* ~18px */
+  }
+}
+
+@media (width >= 960px) {
+  header .alert-wrapper .alert-content {
+    padding: var(--alert-pad-y) var(--alert-pad-x);
+    gap: var(--alert-gap);
+  }
+
+  header .alert-wrapper .notification-bar__icon .icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  header .alert-wrapper .alert-text-content .title {
+    font-size: 1.25rem; /* ~20px desktop */
+  }
+}
+
 /* Base SiteHeader styling */
 header .SiteHeader {
-  top: 46px;
+  top: 0; /* Default position when no alert */
   padding-bottom: 1px;
   background: #fff;
   position: fixed;
   width: 100%;
   z-index: var(--z-index-nav, 1000);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+/* When alert-wrapper is present, push down the SiteHeader */
+header .alert-wrapper ~ .SiteHeader {
+  top: 112px; /* Space for the alert bar above */
 }
 
 /* Desktop Header */
@@ -548,7 +676,7 @@ header svg.icon {
 /* Search Modal Styling */
 .SearchModal {
   position: fixed;
-  top: 136px; /* Position below SiteHeader */
+  top: 90px; /* Position below SiteHeader (no alert) */
   left: 0;
   right: 0;
   background-color: var(--background-primary);
@@ -563,10 +691,20 @@ header svg.icon {
   display: block;
 }
 
+/* When alert is present, position below alert + header */
+header .alert-wrapper ~ * .SearchModal {
+  top: 136px; /* Position below alert + header */
+}
+
 /* Responsive positioning */
 @media (width <= 882px) {
   .SearchModal {
-    top: 121px; /* Position below mobile header */
+    top: 75px; /* Position below mobile header (no alert) */
+  }
+  
+  /* When alert is present on mobile */
+  header .alert-wrapper ~ * .SearchModal {
+    top: 121px; /* Position below alert + mobile header */
   }
 }
 
@@ -609,24 +747,47 @@ body[ui-scrolled="true"] header .SiteHeader--mobile .SiteHeader__mobile-always-v
   box-shadow: 0 4px 4px 0 rgb(0 0 0 / 10%);
 }
 
+/* When scrolled, position based on alert presence */
 body[ui-scrolled="true"] header .SiteHeader--desktop,
 body[ui-scrolled="true"] header .SiteHeader--mobile,
 body[ui-scrolled="true"] header .SiteHeader--mobile .SiteHeader__mobile-always-visible {
-  top: 0;
+  top: 0; /* Default when no alert */
 }
 
-/* Responsive adjustments */
+/* When scrolled AND alert is present, maintain space for alert */
+body[ui-scrolled="true"] header .alert-wrapper ~ .SiteHeader--desktop,
+body[ui-scrolled="true"] header .alert-wrapper ~ .SiteHeader--mobile,
+body[ui-scrolled="true"] header .alert-wrapper ~ .SiteHeader--mobile .SiteHeader__mobile-always-visible {
+  top: 46px; /* Space for alert when scrolled */
+}
+
+/* Responsive adjustments - Default without alert */
 @media (width >= 883px) {
   header .SiteHeader + main,
   header .SiteHeader + .sf_cols > main {
-    padding-top: 142px;
+    padding-top: 90px; /* Header height only */
   }
 }
 
 @media (width <= 882px) {
   header .SiteHeader + main,
   header .SiteHeader + .sf_cols > main {
-    padding-top: 146px;
+    padding-top: 75px; /* Mobile header height only */
+  }
+}
+
+/* When alert is present, add space for alert + header */
+@media (width >= 883px) {
+  header .alert-wrapper ~ .SiteHeader + main,
+  header .alert-wrapper ~ .SiteHeader + .sf_cols > main {
+    padding-top: 142px; /* Alert height + header height */
+  }
+}
+
+@media (width <= 882px) {
+  header .alert-wrapper ~ .SiteHeader + main,
+  header .alert-wrapper ~ .SiteHeader + .sf_cols > main {
+    padding-top: 146px; /* Alert height + mobile header height */
   }
 }
 

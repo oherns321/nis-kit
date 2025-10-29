@@ -1,6 +1,97 @@
 // media query match that indicates mobile/tablet width
 const isMobile = window.matchMedia('(max-width: 882px)');
 
+// function for alert
+async function createAlertElement() {
+  // Note: Hard-coded for demo purposes
+  const aemauthorurl = 'https://author-p7906-e1488805.adobeaemcloud.com';
+  const aempublishurl = 'https://publish-p7906-e1488805.adobeaemcloud.com';
+  const now = new Date().toISOString();
+  const persistedquery = `/graphql/execute.json/NISource/GetLatestAlert;now=${now}`;
+
+  const url = window?.location?.origin?.includes('author')
+    ? `${aemauthorurl}${persistedquery}`
+    : `${aempublishurl}${persistedquery}`;
+  const options = { credentials: 'include' };
+
+  const cfReq = await fetch(url, options)
+    .then((response) => response.json())
+    .then((contentfragment) => {
+      let data = '';
+      if (contentfragment.data) {
+        data = contentfragment?.data?.alertList?.items[0] || [];
+      }
+      return data;
+    });
+
+  if (cfReq.length === 0) {
+    return null;
+  }
+
+  // Create wrapper
+  const wrapper = document.createElement('div');
+  wrapper.className = 'alert-wrapper';
+
+  // Create alert block
+  const alertBlock = document.createElement('div');
+  alertBlock.className = 'alert block';
+  alertBlock.dataset.blockName = 'alert';
+  alertBlock.dataset.blockStatus = 'loaded';
+
+  // Inner block
+  const block = document.createElement('div');
+  block.className = 'block';
+
+  // Alert content
+  const alertContent = document.createElement('div');
+  alertContent.className = 'alert-content';
+
+  // Notification icon container
+  const iconContainer = document.createElement('div');
+  iconContainer.className = 'notification-bar__icon';
+
+  const spanIcon = document.createElement('span');
+  spanIcon.className = 'icon icon-success';
+
+  const img = document.createElement('img');
+  img.dataset.iconName = 'success';
+  img.src = '/icons/success.svg';
+  img.alt = '';
+  img.loading = 'lazy';
+  img.width = 16;
+  img.height = 16;
+
+  spanIcon.appendChild(img);
+  iconContainer.appendChild(spanIcon);
+
+  // Text content
+  const textContent = document.createElement('div');
+  textContent.className = 'alert-text-content';
+
+  const title = document.createElement('h2');
+  title.className = 'title';
+  title.textContent = cfReq?.title || 'Alert Title';
+
+  const message1 = document.createElement('p');
+  message1.className = 'message';
+
+  const message2 = document.createElement('p');
+  message2.innerHTML = cfReq?.message?.html || 'This is an important alert message for users to see.';
+
+  const message3 = document.createElement('p');
+
+  textContent.append(title, message1, message2, message3);
+
+  // Assemble all parts
+  alertContent.append(iconContainer, textContent);
+  block.appendChild(alertContent);
+  alertBlock.appendChild(block);
+  wrapper.appendChild(alertBlock);
+
+  // Return the final element
+  return wrapper;
+}
+
 // Force close all dropdowns function
 function forceCloseAllDropdowns() {
   const megaMenus = document.querySelectorAll('.js-megamenu');
@@ -687,6 +778,10 @@ export default async function decorate(block) {
   mobileHeader.appendChild(mobileNav);
 
   // Assemble the complete header
+  const alertBlock = await createAlertElement();
+  if (alertBlock) {
+    block.appendChild(alertBlock);
+  }
   block.appendChild(desktopHeader);
   block.appendChild(mobileHeader);
 

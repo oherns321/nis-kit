@@ -29,6 +29,10 @@ export default async function decorate(block) {
       }
       return data;
     });
+
+  if (cfReq.length === 0) {
+    return;
+  }
   // eslint-disable-next-line no-underscore-dangle
   const itemId = `urn:aemconnection:${cfReq?._path}/jcr:content/data/${cfReq?._variation}`;
 
