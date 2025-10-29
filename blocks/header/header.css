@@ -292,7 +292,7 @@ header .logo--mobile {
 /* High-DPI display support */
 @media (min-device-pixel-ratio: 2), (resolution >= 192dpi) {
   header .logo {
-    background-image: url('https://nieus2prodazstg01.blob.core.windows.net/cdr-prod/images/librariesprovider3/design-elements/logos/columbia-gas-of-ohio-logo.png');
+    background-image: var(--logo-image);
   }
 }
 
