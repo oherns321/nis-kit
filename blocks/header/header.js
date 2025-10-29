@@ -261,13 +261,9 @@ export default async function decorate(block) {
 
   // Desktop Logo
   const desktopLogo = document.createElement('a');
-  desktopLogo.className = 'image logo';
+  desktopLogo.className = 'logo logo--desktop';
   desktopLogo.href = '/';
-
-  const desktopLogoImg = document.createElement('img');
-  desktopLogoImg.src = 'https://nieus2prodazstg01.blob.core.windows.net/cdr-prod/images/librariesprovider3/design-elements/logos/columbia-gas-of-ohio-logo.png';
-  desktopLogoImg.alt = 'Columbia Gas Logo';
-  desktopLogo.appendChild(desktopLogoImg);
+  desktopLogo.setAttribute('aria-label', 'Columbia Gas Logo');
 
   // Desktop Main Navigation
   const mainNavigation = document.createElement('div');
@@ -688,13 +684,9 @@ export default async function decorate(block) {
 
   // Mobile Logo
   const mobileLogo = document.createElement('a');
-  mobileLogo.className = 'image logo';
+  mobileLogo.className = 'logo logo--mobile';
   mobileLogo.href = '/';
-
-  const mobileLogoImg = document.createElement('img');
-  mobileLogoImg.src = 'https://nieus2prodazstg01.blob.core.windows.net/cdr-prod/images/librariesprovider3/design-elements/logos/columbia-gas-of-ohio-logo.png';
-  mobileLogoImg.alt = 'Logo';
-  mobileLogo.appendChild(mobileLogoImg);
+  mobileLogo.setAttribute('aria-label', 'Columbia Gas Logo');
 
   // Mobile controls (search + menu toggle)
   const mobileControls = document.createElement('div');

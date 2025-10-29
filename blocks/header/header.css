@@ -266,14 +266,34 @@ header .SiteHeader__mobile-always-visible .flex {
   gap: 20px;
 }
 
-/* Logo styling for both desktop and mobile */
+/* Logo styling - CSS-based approach */
 header .logo {
   flex-shrink: 0;
+  display: block;
+  background-image: var(--logo-image);
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: contain;
+  text-decoration: none;
 }
 
-header .logo img {
+/* Desktop logo sizing */
+header .logo--desktop {
+  width: 200px;
   height: 50px;
-  width: auto;
+}
+
+/* Mobile logo sizing */
+header .logo--mobile {
+  width: 180px;
+  height: 45px;
+}
+
+/* High-DPI display support */
+@media (min-device-pixel-ratio: 2), (resolution >= 192dpi) {
+  header .logo {
+    background-image: url('https://nieus2prodazstg01.blob.core.windows.net/cdr-prod/images/librariesprovider3/design-elements/logos/columbia-gas-of-ohio-logo.png');
+  }
 }
 
 /* Main Navigation - Desktop */
