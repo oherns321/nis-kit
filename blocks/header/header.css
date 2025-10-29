@@ -290,7 +290,7 @@ header .logo--mobile {
 }
 
 /* High-DPI display support */
-@media (min-device-pixel-ratio: 2), (resolution >= 192dpi) {
+@media (resolution >= 192dpi) {
   header .logo {
     background-image: var(--logo-image);
   }
