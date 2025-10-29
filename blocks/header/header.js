@@ -57,7 +57,7 @@ async function createAlertElement() {
 
   const img = document.createElement('img');
   img.dataset.iconName = 'success';
-  img.src = '/icons/success.svg';
+  img.src = 'https://main--nis-kit--oherns321.aem.live//icons/success.svg';
   img.alt = '';
   img.loading = 'lazy';
   img.width = 16;
@@ -298,7 +298,7 @@ export default async function decorate(block) {
     if (item.isEmergency) {
       link.className = 'color-red';
       const icon = document.createElement('img');
-      icon.src = '/icons/warning.svg';
+      icon.src = 'https://main--nis-kit--oherns321.aem.live//icons/warning.svg';
       icon.alt = 'Warning';
       icon.className = 'icon icon-warning-2';
       icon.style.width = '16px';
@@ -316,7 +316,7 @@ export default async function decorate(block) {
   searchTrigger.className = 'SearchModalDesktopTrigger';
 
   const searchIcon = document.createElement('img');
-  searchIcon.src = '/icons/search.svg';
+  searchIcon.src = 'https://main--nis-kit--oherns321.aem.live//icons/search.svg';
   searchIcon.alt = 'Search';
   searchIcon.className = 'icon search-icon';
   searchIcon.style.width = '18px';
