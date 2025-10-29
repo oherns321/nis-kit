@@ -38,7 +38,7 @@ export default async function decorate(block) {
 
   block.setAttribute('data-aue-type', 'container');
   block.innerHTML = `
-  <div class='block' data-aue-resource=${itemId} data-aue-label='alert' data-aue-type='reference' data-aue-filter='cf'>
+  <div class='block alert-${cfReq?.severity}' data-aue-resource=${itemId} data-aue-label='alert' data-aue-type='reference' data-aue-filter='cf'>
     <div class='alert-content'>
       <div class="notification-bar__icon">
         <span class="icon icon-success"></span>
@@ -54,6 +54,17 @@ export default async function decorate(block) {
     </div>
   </div>
 `;
+
+  // Apply severity class to the main container as well
+  if (cfReq?.severity) {
+    block.classList.add(`alert-${cfReq.severity}`);
+
+    // Also apply to the alert-container parent if it exists
+    const alertContainer = block.closest('.alert-container');
+    if (alertContainer) {
+      alertContainer.classList.add(`alert-${cfReq.severity}`);
+    }
+  }
 
   // Decorate icons to convert span.icon elements to img elements
   decorateIcons(block);

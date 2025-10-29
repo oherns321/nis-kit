@@ -28,9 +28,11 @@ async function createAlertElement() {
     return null;
   }
 
+  const severity = cfReq?.severity || 'success';
   // Create wrapper
   const wrapper = document.createElement('div');
   wrapper.className = 'alert-wrapper';
+  wrapper.className += ` alert-${severity}`;
 
   // Create alert block
   const alertBlock = document.createElement('div');

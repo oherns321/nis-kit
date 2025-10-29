@@ -2,8 +2,11 @@
 .alert-container {
   /* Theme tokens - Updated to match Columbia Gas Ohio */
   --alert-bg: rgb(255 199 44);  /* Exact Columbia Gas gold */
+  --alert-bg-error: rgb(255 0 0);  /* Red */
   --alert-text: rgb(38 51 58);  /* Columbia Gas text color */
+  --alert-text-error: rgb(255 255 255);  /* White */
   --alert-title: rgb(38 51 58); /* Same as text */
+  --alert-title-error: rgb(255 255 255); /* White */
   --alert-border: #e6c773;        /* subtle border */
   --alert-link: #0b5cab;          /* link color */
   --alert-radius: 0px;            /* No border radius like Columbia Gas */
@@ -19,6 +22,38 @@
   color: var(--alert-text);
   position: relative;
   width: 100%;
+}
+
+.alert-container.alert-warn {
+  background: var(--alert-bg);
+}
+
+.alert-container.alert-error {
+  background: var(--alert-bg-error);
+  color: var(--alert-text-error);
+}
+
+.alert-container.alert-error h2,
+.alert-container.alert-error .title {
+  color: var(--alert-text-error) !important;
+}
+
+.alert-container.alert-error svg,
+.alert-container.alert-error .icon img {
+  display: none; /* Hide the original icon */
+}
+
+/* Show X icon for error alerts */
+.alert-container.alert-error .notification-bar__icon::after {
+  content: "✕"; /* X symbol */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: var(--alert-text-error);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
 }
 
 /* Remove page gutters - let background extend full width */
@@ -156,6 +191,14 @@
   .alert-container .alert-text-content .title {
     font-size: 1.125rem; /* ~18px */
   }
+
+  /* Responsive sizing for error X icon */
+  .alert-container.alert-error .notification-bar__icon::after {
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 @media (width >= 960px) {
@@ -171,6 +214,13 @@
 
   .alert-container .alert-text-content .title {
     font-size: 1.25rem; /* ~20px desktop */
+  }
+
+  .alert-container.alert-error .notification-bar__icon::after {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
   }
 }
 

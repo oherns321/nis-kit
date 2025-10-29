@@ -11,8 +11,11 @@
 header .alert-wrapper {
   /* Copy styling from alert-container */
   --alert-bg: rgb(255 199 44);  /* Exact Columbia Gas gold */
+  --alert-bg-error: rgb(255 0 0);  /* Red */
   --alert-text: rgb(38 51 58);  /* Columbia Gas text color */
+  --alert-text-error: rgb(255 255 255);  /* White */
   --alert-title: rgb(38 51 58); /* Same as text */
+  --alert-title-error: rgb(255 255 255); /* White */
   --alert-link: #0b5cab;        /* link color */
   --alert-pad-y: 7px;           /* Match Columbia Gas padding */
   --alert-pad-x: 40px;          /* Match Columbia Gas padding */
@@ -30,6 +33,57 @@ header .alert-wrapper {
   width: 100%;
   z-index: 1001; /* Above other content but below modals */
   padding: 0; /* Remove any default padding */
+}
+
+header .alert-wrapper.alert-warn {
+  background: var(--alert-bg);
+}
+
+header .alert-wrapper.alert-error {
+  background: var(--alert-bg-error);
+  color: var(--alert-text-error);
+}
+
+header .alert-wrapper.alert-error h2,
+header .alert-wrapper.alert-error .title {
+  color: var(--alert-text-error) !important;
+}
+
+header .alert-wrapper.alert-error svg,
+header .alert-wrapper.alert-error .icon img {
+  display: none; /* Hide the original icon */
+}
+
+/* Show X icon for error alerts */
+header .alert-wrapper.alert-error .notification-bar__icon::after {
+  content: "✕"; /* X symbol */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: var(--alert-text-error);
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
+}
+
+/* Responsive sizing for error X icon */
+@media (width >= 600px) {
+  header .alert-wrapper.alert-error .notification-bar__icon::after {
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media (width >= 960px) {
+  header .alert-wrapper.alert-error .notification-bar__icon::after {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 
 /* Header Alert Block Structure */
