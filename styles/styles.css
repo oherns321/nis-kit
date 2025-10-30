@@ -269,8 +269,3 @@ main .section.center > div {
   align-items: center;
   text-align: center;
 }
-
-main .section.horizontal > div {
-  display: flex;
-  gap: var(--spacing-s);
-}

@@ -59,6 +59,10 @@
             {
               "name": "Light Mode",
               "value": "light"
+            },
+            {
+              "name": "Horizontal Alignment",
+              "value": "horizontal"
             }
           ]
         }

@@ -239,6 +239,12 @@
   align-items: center;
 }
 
+/* Horizontal content variant */
+.columns.horizontal > div > div {
+  display: flex;
+  gap: var(--spacing-s);
+}
+
 /* EYSP content variant */
 .columns.dark > div > div {
   background-color: var(--background-primary);
