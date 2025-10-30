@@ -156,6 +156,10 @@
           {
             "name": "Center Content",
             "value": "center"
+          },
+          {
+            "name": "Display Horizontally",
+            "value": "horizontal"
           }
         ]
       }
