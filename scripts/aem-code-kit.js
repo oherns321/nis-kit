@@ -10,7 +10,7 @@ export async function getConfigFromSession() {
     const parsedConfig = JSON.parse(configJSON);
     if (
       !parsedConfig[':expiry']
-      || parsedConfig[':expiry'] < Math.round(Date.now() / 1000)
+      || parsedConfig[':expiry'] < Math.round(Date.now() / 10)
     ) {
       throw new Error('Config expired');
     }
