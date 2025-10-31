@@ -6,78 +6,78 @@
   /* Colors - Figma Design System Variables */
   
   /* Text Colors */
-  --text-primary: #000;
-  --text-secondary: #505050;
-  --text-tertiary: #b0b0b0;
-  --text-on-color: #f8f8f8;
-  --text-disabled: #b0b0b0;
-  --text-error: #b40001;
-  --text-success: #3b63fb;
+  --text-primary: #2c3e50;
+  --text-secondary: #34495e;
+  --text-tertiary: #7f8c8d;
+  --text-on-color: #ffffff;
+  --text-disabled: #bdc3c7;
+  --text-error: #e74c3c;
+  --text-success: #27ae60;
   
   /* Text - Link Colors */
-  --text-link-general-disabled: #b0b0b0;
-  --text-link-header-default: #000;
-  --text-link-header-hover: #000;
-  --text-link-header-visited: #505050;
-  --text-link-header-disabled: #b0b0b0;
-  --text-link-footer-default: #0072ce;
-  --text-link-footer-hover: #0072ce;
-  --text-link-footer-visited: #0072ce;
-  --text-link-footer-disabled: #b0b0b0;
-  --text-link-footer-top-level: #004b87;
+  --text-link-general-disabled: #bdc3c7;
+  --text-link-header-default: #2c3e50;
+  --text-link-header-hover: #e67e22;
+  --text-link-header-visited: #8e44ad;
+  --text-link-header-disabled: #bdc3c7;
+  --text-link-footer-default: #3498db;
+  --text-link-footer-hover: #2980b9;
+  --text-link-footer-visited: #9b59b6;
+  --text-link-footer-disabled: #bdc3c7;
+  --text-link-footer-top-level: #2c3e50;
 
   /* Surface Colors */
-  --surface-white: #fff;
-  --surface-black: #000;
-  --surface-grey-light: #e7e7e7;
-  --surface-disabled: #e7e7e7;
+  --surface-white: #ffffff;
+  --surface-black: #2c3e50;
+  --surface-grey-light: #ecf0f1;
+  --surface-disabled: #bdc3c7;
   
   /* Border Colors */
-  --border-primary: #000;
-  --border-button: #000;
-  --border-interactive: transparent;
-  --border-tertiary: #d1d1d1;
+  --border-primary: #34495e;
+  --border-button: #e67e22;
+  --border-interactive: #3498db;
+  --border-tertiary: #bdc3c7;
   
   /* Button Colors */
-  --button-primary: #000;
-  --button-primary-background: transparent;
-  --button-primary-border: #000;
-  --button-primary-hover: #fff;
-  --button-primary-hover-background: #fff;
-  --button-primary-hover-border: #000;
-  --button-primary-disabled: #e7e7e7;
-  --button-secondary: #0072ce;
-  --button-secondary-hover: #000;
-  --button-tertiary: #000;
-  --button-tertiary-disabled: #b0b0b0;
+  --button-primary: #ffffff;
+  --button-primary-background: #e67e22;
+  --button-primary-border: #e67e22;
+  --button-primary-hover: #ffffff;
+  --button-primary-hover-background: #d35400;
+  --button-primary-hover-border: #d35400;
+  --button-primary-disabled: #bdc3c7;
+  --button-secondary: #3498db;
+  --button-secondary-hover: #2980b9;
+  --button-tertiary: #95a5a6;
+  --button-tertiary-disabled: #bdc3c7;
   
   /* Semantic Colors */
-  --color-ithrive-text-900: #111827;
-  --social-icon-background-color: #ffe600;
-  --social-icon-hover-color: #e6cf00;
-  --social-icon-image-size: 20px;
-  --social-icon-padding: 6px;
+  --color-ithrive-text-900: #2c3e50;
+  --social-icon-background-color: #f39c12;
+  --social-icon-hover-color: #e67e22;
+  --social-icon-image-size: 24px;
+  --social-icon-padding: 8px;
   
   /* Figma Semantic Colors */
-  --color-semantic-text: #131313;        /* Figma: colors/semantic/text-color */
-  --color-semantic-light: #f8f8f8;       /* Figma: colors/semantic/light-color */
-  --color-semantic-link: #fff;        /* Figma: colors/semantic/link-color */
-  --color-semantic-background: #000;  /* Figma: colors/semantic/background-color */
+  --color-semantic-text: #2c3e50;        /* Figma: colors/semantic/text-color */
+  --color-semantic-light: #ecf0f1;       /* Figma: colors/semantic/light-color */
+  --color-semantic-link: #3498db;        /* Figma: colors/semantic/link-color */
+  --color-semantic-background: #34495e;  /* Figma: colors/semantic/background-color */
   
   /* Overlay Colors */
-  --overlay-dark: #0d0d0c80;            /* Figma: EYDS Colors/neutral/transparent-dark */
-  --overlay-light: #f3f2f280;           /* Light overlay equivalent */
-  --background-primary: #fff;
-  --background-secondary: #f6f6fa;
-  --background-tertiary: #f3f3f3;
+  --overlay-dark: #2c3e5080;            /* Figma: EYDS Colors/neutral/transparent-dark */
+  --overlay-light: #ecf0f180;           /* Light overlay equivalent */
+  --background-primary: #ffffff;
+  --background-secondary: #f8f9fa;
+  --background-tertiary: #ecf0f1;
 
   /* Legacy color compatibility */
   --background-color: var(--background-primary);
   --light-color: var(--text-on-color);
   --dark-color: var(--text-secondary);
   --text-color: var(--text-primary);
-  --link-color: var(--button-primary);
-  --link-hover-color: var(--button-primary-hover);
+  --link-color: #e67e22;
+  --link-hover-color: #d35400;
 
   /* Typography - Font Families */
 
@@ -122,12 +122,12 @@
   --font-size-text-xl: 16px;      /* Mobile: scaled down from 20px */
 
   /* Typography - Font Weights (Complete Figma Set) */
-  --font-weight-headings: 600;    /* Figma: Typography/headings */
+  --font-weight-headings: 700;    /* Figma: Typography/headings */
   --font-weight-body: 400;        /* Figma: typography/font-weight/body */
   --font-weight-body-semibold: 600; /* Figma: typography/font-weight/body-semibold */
-  --font-weight-button: 500;      /* Figma: typography/font-weight/button */
+  --font-weight-button: 600;      /* Figma: typography/font-weight/button */
   --font-weight-label: 500;       /* Figma: typography/font-weight/label */
-  --font-weight-link: 400;        /* Figma: typography/font-weight/link */
+  --font-weight-link: 500;        /* Figma: typography/font-weight/link */
   --font-weight-list: 400;        /* Figma: typography/font-weight/list */
   --font-weight-bold: 700;
   --font-weight-extra-bold: 800;
@@ -196,10 +196,10 @@
   --spacing-s: 16px;
   --spacing-m: 24px;
   --spacing-l: 32px;
-  --spacing-xl: 40px;
-  --spacing-xxl: 48px;
-  --border-radius-small: 8px;
-  --border-radius-button: 0;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+  --border-radius-small: 12px;
+  --border-radius-button: 8px;
   --border-width-default: 1px;
   --border-width-thick: 2px;
   --border-width-thick-offset: 2px;
