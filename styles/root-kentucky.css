@@ -9,7 +9,7 @@
   --text-primary: #2c3e50;
   --text-secondary: #34495e;
   --text-tertiary: #7f8c8d;
-  --text-on-color: #ffffff;
+  --text-on-color: #fff;
   --text-disabled: #bdc3c7;
   --text-error: #e74c3c;
   --text-success: #27ae60;
@@ -27,7 +27,7 @@
   --text-link-footer-top-level: #2c3e50;
 
   /* Surface Colors */
-  --surface-white: #ffffff;
+  --surface-white: #fff;
   --surface-black: #2c3e50;
   --surface-grey-light: #ecf0f1;
   --surface-disabled: #bdc3c7;
@@ -39,10 +39,10 @@
   --border-tertiary: #bdc3c7;
   
   /* Button Colors */
-  --button-primary: #ffffff;
+  --button-primary: #fff;
   --button-primary-background: #e67e22;
   --button-primary-border: #e67e22;
-  --button-primary-hover: #ffffff;
+  --button-primary-hover: #fff;
   --button-primary-hover-background: #d35400;
   --button-primary-hover-border: #d35400;
   --button-primary-disabled: #bdc3c7;
@@ -67,7 +67,7 @@
   /* Overlay Colors */
   --overlay-dark: #2c3e5080;            /* Figma: EYDS Colors/neutral/transparent-dark */
   --overlay-light: #ecf0f180;           /* Light overlay equivalent */
-  --background-primary: #ffffff;
+  --background-primary: #fff;
   --background-secondary: #f8f9fa;
   --background-tertiary: #ecf0f1;
 
