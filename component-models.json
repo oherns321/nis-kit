@@ -427,6 +427,19 @@
     ]
   },
   {
+    "id": "country",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "countryCode",
+        "label": "Country Code",
+        "description": "Code of the country",
+        "required": false
+      }
+    ]
+  },
+  {
     "id": "cta-card",
     "fields": [
       {

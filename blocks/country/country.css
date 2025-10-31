@@ -1,0 +1,4 @@
+.country-container .country-wrapper {
+  max-width: unset; /* Allow background to span full width */
+  padding: 0; /* No padding on wrapper */
+}
