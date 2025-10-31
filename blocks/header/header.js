@@ -28,6 +28,11 @@ async function createAlertElement() {
     return null;
   }
 
+  const firstSection = document.querySelector('main > .section');
+  if (firstSection) {
+    firstSection.style.marginTop = '112px';
+  }
+
   const severity = cfReq?.severity || 'success';
   // Create wrapper
   const wrapper = document.createElement('div');
