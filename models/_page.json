@@ -18,6 +18,18 @@
         {
           "component": "text",
           "valueType": "string",
+          "name": "experiment",
+          "label": "Experiment"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "experiment variants",
+          "label": "Experiment Variants"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
           "name": "keywords",
           "multi": true,
           "label": "Keywords"

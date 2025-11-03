@@ -2,7 +2,6 @@ module.exports = {
   root: true,
   extends: [
     'airbnb-base',
-    'plugin:json/recommended',
     'plugin:xwalk/recommended',
   ],
   env: {
@@ -14,6 +13,12 @@ module.exports = {
     sourceType: 'module',
     requireConfigFile: false,
   },
+  overrides: [
+    {
+      files: ['*.json'],
+      extends: ['plugin:json/recommended'],
+    },
+  ],
   rules: {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
