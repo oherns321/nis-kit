@@ -188,7 +188,7 @@ header .alert-wrapper .alert-text-content a {
 header .SiteHeader {
   top: 0; /* Default position when no alert */
   padding-bottom: 1px;
-  background: #fff;
+  background: var(--background-primary);
   position: fixed;
   width: 100%;
   z-index: var(--z-index-nav, 1000);
@@ -256,7 +256,7 @@ header .SiteHeader__mobile-always-visible {
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px;
-  background: #fff;
+  background: var(--background-primary);
   min-height: 75px;
 }
 

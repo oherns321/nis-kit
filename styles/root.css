@@ -78,6 +78,7 @@
   --text-color: var(--text-primary);
   --link-color: var(--button-primary);
   --link-hover-color: var(--button-primary-hover);
+   --background-color-feature-card: var(--background-primary);
 
   /* Typography - Font Families */
 

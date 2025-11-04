@@ -5,7 +5,7 @@
  */
 
 footer {
-  background-color: var(--surface-white);
+  background-color: var(--background-primary);
   color: var(--text-primary);
   padding-top: 40px;
   padding-bottom: 40px;

@@ -65,7 +65,7 @@
 
 .feature-cards .feature-card-content-block {
   /* Match c-content-block */
-  background-color: var(--surface-white);
+  background-color: var(--background-color-feature-card);
 }
 
 /* Feature card image container - matching c-content-block__image */

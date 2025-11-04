@@ -198,6 +198,9 @@ async function loadLazy(doc) {
     || Object.keys(getAllMetadata('audience')).length)) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
+
+    // Mark customer as having viewed the page once
+    localStorage.setItem('franklin-visitor-returning', true);
     await runLazy(document, { audiences: AUDIENCES }, pluginContext);
   }
 }
